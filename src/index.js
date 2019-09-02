@@ -4,12 +4,8 @@ import App from './App';
 import './index.css';
 import { createStore } from 'redux';
 import { Provider } from "react-redux";
-import { Router } from 'react-router-dom';
-import { createBrowserHistory } from "history";
+import { BrowserRouter } from 'react-router-dom';
 
-
-
- export const history =  createBrowserHistory();
 
 
 const initialState = {
@@ -24,14 +20,15 @@ const reducers = (state = initialState, action) =>{
   }
 }
 
-const store = createStore(reducers);
+const store = createStore(reducers,window.__REDUX_DEVTOOLS__EXTENSION__ && window.__REDUX_DEVTOOLS__EXTENSION__());
 
 console.log(store.getState());
+
 ReactDOM.render(
-    <Router history ={history}>
-      {/* <Provider store={store}> */}
+    <BrowserRouter>
+      <Provider store={store}>
       <App />
-    {/* </Provider> */}
-    </Router>,
+    </Provider>
+    </BrowserRouter>,
   document.getElementById('root')
 );

@@ -6,7 +6,10 @@ class Mainpage extends Component{
   render(){
     return(
       <div>
-        main-page
+        <div className="wpapper__main__button">
+          <Link to="/register"> <button>Login in</button></Link>
+          <Link to="/login"><button>Sign in</button></Link>
+        </div>   
       </div>
 
     );
