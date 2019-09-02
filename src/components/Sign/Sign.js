@@ -2,6 +2,20 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter,Route,Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+
+
+
+const StyleButton = styled.button`
+background-color: transparent;
+margin:0.5rem;
+height: 40px;
+text-transform: uppercase;
+width:200px;
+cursor: pointer;
+float: right;
+`
 
 class Sign extends Component{
   constructor(props){
@@ -35,7 +49,7 @@ class Sign extends Component{
     	return(
         <div>
           <div className="wpapper__main__button">
-          <Link to="/register"> <button>Login in</button></Link>
+          <Link to="/register"><StyleButton>Login in</StyleButton></Link>
         </div>
          	<div className="global">
              <form onSubmit={this.handleSubmit}>
