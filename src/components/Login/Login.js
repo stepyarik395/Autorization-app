@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux"; 
 import { withRouter } from 'react-router-dom'
+import {userPost} from '../actions/actions';
+import ReduxThunk from 'redux-thunk';
+
 
 class Login extends Component{
   constructor(props){
@@ -28,21 +31,8 @@ class Login extends Component{
   }
   handleSubmit(e){
     e.preventDefault();
-    axios.post('http://localhost:8080/register',this.state )
-    .then(res => {
-      console.log(res);
-      const token = res.data.token;
-      console.log(token)
-      this.props.history.push('/main');
-      this.props.onAddToken(token);
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  }
-
-  requestHendler(){
-    
+    this.props.userPost(this.state);
+    this.props.history.push('/main');
   }
 
   render(){
@@ -63,19 +53,18 @@ class Login extends Component{
         );
   }
 }
-export default withRouter(connect(
-  state => ({
-    testStore: state
-  }),
-  dispatch => ({
-    onAddToken: (token) => {
-      dispatch({ type: 'LOGIN_USER', payload: token });
-    }
-  })
 
-)(Login))
-  
-// )(Login);
+const mapDispatchToProps = dispatch => ({
+  userPost: userInfo => dispatch(userPost(userInfo))
+
+})
+const mapStateToProps = state =>({
+  testStore: state
+})
+
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Login))
+
   
 
 

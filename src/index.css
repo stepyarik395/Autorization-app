@@ -27,6 +27,7 @@ body {
   text-transform: uppercase;
 }
 .wrapper__login button{
+  width:100%;
   outline: none;
   cursor: pointer;
   margin-top:50px;

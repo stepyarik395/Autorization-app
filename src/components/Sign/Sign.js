@@ -2,20 +2,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter,Route,Link } from 'react-router-dom';
-import styled from 'styled-components';
-
-
-
-
-const StyleButton = styled.button`
-background-color: transparent;
-margin:0.5rem;
-height: 40px;
-text-transform: uppercase;
-width:200px;
-cursor: pointer;
-float: right;
-`
+import {StyleButton} from "./SignStyle";
+import { withRouter } from 'react-router-dom'
+import {userSign} from '../actions/actions';
+import { connect } from "react-redux"; 
 
 class Sign extends Component{
   constructor(props){
@@ -29,6 +19,7 @@ class Sign extends Component{
     this.valueName = this.valueName.bind(this);
     this.valuePassword = this.valuePassword.bind(this);
   }
+  
   valueName(e){
     this.setState({ name: e.target.value });
       }
@@ -37,20 +28,14 @@ class Sign extends Component{
   }
   handleSubmit(e){
     e.preventDefault();
-    axios.post('http://localhost:8080/login', this.state)
-    .then(res => {
-      console.log(res);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+    this.props.userSign(this.state);
   }
     render(){
     	return(
         <div>
           <div className="wpapper__main__button">
-          <Link to="/register"><StyleButton>Login in</StyleButton></Link>
-        </div>
+            <Link to="/register"><StyleButton>Login in</StyleButton></Link>
+          </div>
          	<div className="global">
              <form onSubmit={this.handleSubmit}>
             <div className="wrapper__login">
@@ -66,14 +51,23 @@ class Sign extends Component{
                value={this.state.password}
                type="password"
                onChange={this.valuePassword}></input>
-              <button type="submit">Sing In</button>
+              <button type = "submit">Sing In</button>
             </div>
             </form>
         </div>
-        </div>
+      </div>
     );
   }
 }
-export default Sign;
+
+const mapDispatchToProps = dispatch => ({
+  userSign: userInfo => dispatch(userSign(userInfo))
+})
+const mapStateToProps = state =>({
+  testStore: state
+})
+
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Sign))
  
 

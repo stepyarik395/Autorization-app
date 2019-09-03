@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-import { createStore } from 'redux';
+import { createStore,applyMiddleware } from 'redux';
 import { Provider } from "react-redux";
 import { BrowserRouter } from 'react-router-dom';
+import thunk from 'redux-thunk';
 
 
 
@@ -20,7 +21,7 @@ const reducers = (state = initialState, action) =>{
   }
 }
 
-const store = createStore(reducers,window.__REDUX_DEVTOOLS__EXTENSION__ && window.__REDUX_DEVTOOLS__EXTENSION__());
+const store = createStore(reducers,applyMiddleware(thunk));
 
 console.log(store.getState());
 
