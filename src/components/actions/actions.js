@@ -3,7 +3,6 @@ import requestHendler from '../RequestHendler/RequsetHendler';
 
 export const userPost = users => {
 console.log(users);
-
     return dispatch => {
 			const options = {
 				url:'/register',

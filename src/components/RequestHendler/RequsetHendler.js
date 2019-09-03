@@ -2,10 +2,8 @@
   import axios from 'axios';
   export default function requestHendler(options){
 		// const token = cookies.get('token')
-
       options.data = options.data || {}
       options.url = process.env.REACT_APP_API_URL + options.url
-      console.log(options.url);
     
       let axiosOptions = {
         url: options.url,
