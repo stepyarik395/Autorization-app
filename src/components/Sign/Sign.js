@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter,Route,Link } from 'react-router-dom';
 import {StyleButton} from "./SignStyle";
-import { withRouter } from 'react-router-dom'
 import {userSign} from '../Actions/Actions';
 import { connect } from "react-redux";
 import ErrorPassword from '../Errors/ErrorPassword';
@@ -74,6 +73,6 @@ const mapStateToProps = state =>({
 })
 
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Sign))
+export default connect(mapStateToProps,mapDispatchToProps)(Sign)
  
 

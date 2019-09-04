@@ -19,15 +19,14 @@ const reducers = (state = initialState, action) =>{
       return {...state, currentUserToken: action.payload}
       case 'SHOW_MODAL':
       return {...state, showModalError: action.payload}
+      // case 'CLOSE_MODAL':
+      //   return {...state, showModalError: action.payload}
     default:
       return state;
   }
 }
 
 const store = createStore(reducers,applyMiddleware(thunk));
-
-// console.log(store.getState());
-
 ReactDOM.render(
     <BrowserRouter>
       <Provider store={store}>

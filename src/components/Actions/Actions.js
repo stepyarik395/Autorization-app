@@ -28,6 +28,9 @@ console.log(users);
 			requestHendler(options)
 			.then(res =>{
 				console.log(res.status);
+				if(res.status === 200){
+					window.location = "/main"
+				}
 				
 			})
 			.catch(error => {
@@ -41,7 +44,17 @@ const modalwrap = {
 	type:'SHOW_MODAL',
 	payload:true
 }
+
+// export const hideModal = users =>{
+// 	return dispatch =>{
+// 		dispatch(modalClose);
+// 	}
+// }
 	
+// const modalClose = {
+// 	type:'CLOSE_MODAL',
+// 	payload:false
+// }
 
 
 

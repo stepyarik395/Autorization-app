@@ -35,10 +35,6 @@ class Login extends Component{
   handleSubmit(e){
     e.preventDefault();
     this.props.userPost(this.state);
-    // this.props.history.push('/main');
-    // setTimeout(()=>{
-    // this.props.history.push('/main');
-    // },200)
   }
 
   render(){
@@ -68,7 +64,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state =>({
   testStore: state
 })
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Login))
+export default connect(mapStateToProps,mapDispatchToProps)(Login)
 
   
 
