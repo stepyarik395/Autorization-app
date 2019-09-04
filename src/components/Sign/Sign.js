@@ -4,16 +4,16 @@ import axios from 'axios';
 import { BrowserRouter,Route,Link } from 'react-router-dom';
 import {StyleButton} from "./SignStyle";
 import { withRouter } from 'react-router-dom'
-import {userSign} from '../actions/actions';
+import {userSign} from '../Actions/Actions';
 import { connect } from "react-redux"; 
 
 class Sign extends Component{
   constructor(props){
     super(props)
     this.state = {
-      sessionToken: null,
       email : "",
       password : "",
+      show:false
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.valueEmail = this.valueEmail.bind(this);
@@ -51,6 +51,7 @@ class Sign extends Component{
                value={this.state.password}
                type="password"
                onChange={this.valuePassword}></input>
+               <span></span>
               <button type = "submit">Sing In</button>
             </div>
             </form>

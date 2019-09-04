@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux"; 
 import { withRouter } from 'react-router-dom'
-import {userPost} from '../actions/actions';
+import {userPost} from '../Actions/Actions';
 import ReduxThunk from 'redux-thunk';
+import ErrorPassword from '../Errors/ErrorPassword';
 
 
 class Login extends Component{
@@ -14,6 +15,7 @@ class Login extends Component{
       name : "",
       password : "",
       email:"",
+      passwordError:true
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.valueName = this.valueName.bind(this);
@@ -33,6 +35,9 @@ class Login extends Component{
     e.preventDefault();
     this.props.userPost(this.state);
     // this.props.history.push('/main');
+    // setTimeout(()=>{
+    // this.props.history.push('/main');
+    // },200)
   }
 
   render(){
@@ -44,8 +49,10 @@ class Login extends Component{
           <input onChange={this.valueName}type="text"></input>
           <label>email</label>
           <input onChange = {this.valueEmail}type="email"></input>
-          <label>password</label><input onChange = {this.valuePassword} type="password"></input>
+          <label>password</label>
+          <input onChange = {this.valuePassword} type="password"></input>
           <br></br>
+          {this.state.password.length < 6 ? <ErrorPassword /> : null}
           <button type  ="submit">Login in</button>
           </form>
          </div>
