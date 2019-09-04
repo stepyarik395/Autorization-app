@@ -1,7 +1,5 @@
 import requestHendler from '../RequestHendler/RequsetHendler';
 
-
-
 export const userPost = users => {
 console.log(users);
     return dispatch => {
@@ -20,13 +18,6 @@ console.log(users);
 			})
 		}
   }
-  // const loginUser = userObj => ({
-  //     type: 'LOGIN_USER',
-  //     payload: userObj
-	// })
-
-
-
 	export const userSign = users =>{
 		return dispatch => {
 			const options = {
@@ -41,22 +32,16 @@ console.log(users);
 			})
 			.catch(error => {
 				let errObj = JSON.parse(JSON.stringify(error));
-				console.log(errObj);
+				dispatch(modalwrap);
 			});
 		}
 	}
 
-
-	export const modalTogle = users => {
-
-		return dispatch =>{
-			// dispatch(modalToggle)
-
-
-		}
-
-
-	}
+const modalwrap = {
+	type:'SHOW_MODAL',
+	payload:true
+}
+	
 
 
 

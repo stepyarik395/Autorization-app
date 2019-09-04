@@ -67,18 +67,6 @@ class Sign extends Component{
 
 const mapDispatchToProps = dispatch => ({
   userSign: userInfo => dispatch(userSign(userInfo)),
-  // modalTogle: userInfo2 => dispatch(modalTogle(userInfo2))
-
-
-  // modalTogle:() =>{
-
-  // }
-  
-  // modalTogle: (ewada) => {
-  //   dispatch({
-  //     type: 'SHOW_MODAL', payload: true 
-  //   })
-  // }
 })
 
 const mapStateToProps = state =>({

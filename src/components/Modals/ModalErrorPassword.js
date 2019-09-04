@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {DivWrapperModal,StyleSpanText} from "../Modals/ModalStyles";
 
 
 
@@ -11,7 +12,12 @@ class ModalErrorPassword extends Component{
     render(){
         return(
             <div>
-                12312
+							<DivWrapperModal>
+							<StyleSpanText>
+								Вы ввели не правильное имя или пароль
+								</StyleSpanText>
+							</DivWrapperModal>
+                
             </div>
 
         );

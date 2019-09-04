@@ -11,7 +11,7 @@ import thunk from 'redux-thunk';
 
 const initialState = {
   currentUserToken: {},
-  showModalError:false
+  showModalError:true
 }
 const reducers = (state = initialState, action) =>{
   switch (action.type) {
