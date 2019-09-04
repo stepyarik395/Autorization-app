@@ -1,6 +1,5 @@
 import requestHendler from '../RequestHendler/RequsetHendler';
-import { Route, Redirect } from 'react-router'
-import { withRouter } from 'react-router-dom'
+
 
 
 export const userPost = users => {
@@ -26,6 +25,8 @@ console.log(users);
   //     payload: userObj
 	// })
 
+
+
 	export const userSign = users =>{
 		return dispatch => {
 			const options = {
@@ -35,16 +36,27 @@ console.log(users);
 			}
 			requestHendler(options)
 			.then(res =>{
-				console.log(res);
+				console.log(res.status);
+				
 			})
 			.catch(error => {
 				let errObj = JSON.parse(JSON.stringify(error));
-				alert("Пользователь не существует авторизируйтесь")
-				window.location = "/register"
+				console.log(errObj);
 			});
 		}
 	}
 
+
+	export const modalTogle = users => {
+
+		return dispatch =>{
+			// dispatch(modalToggle)
+
+
+		}
+
+
+	}
 
 
 

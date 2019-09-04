@@ -10,12 +10,15 @@ import thunk from 'redux-thunk';
 
 
 const initialState = {
-  currentUserToken: {}
+  currentUserToken: {},
+  showModalError:false
 }
 const reducers = (state = initialState, action) =>{
   switch (action.type) {
     case 'LOGIN_USER':
       return {...state, currentUserToken: action.payload}
+      case 'SHOW_MODAL':
+      return {...state, showModalError: action.payload}
     default:
       return state;
   }
@@ -23,7 +26,7 @@ const reducers = (state = initialState, action) =>{
 
 const store = createStore(reducers,applyMiddleware(thunk));
 
-console.log(store.getState());
+// console.log(store.getState());
 
 ReactDOM.render(
     <BrowserRouter>

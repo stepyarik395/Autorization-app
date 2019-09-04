@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import {userPost} from '../Actions/Actions';
 import ReduxThunk from 'redux-thunk';
 import ErrorPassword from '../Errors/ErrorPassword';
+import ModalErrorPassword from '../Modals/ModalErrorPassword';
 
 
 class Login extends Component{

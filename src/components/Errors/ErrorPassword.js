@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
 
-// function Greeting(props) {
-//   const isLoggedIn = props.isLoggedIn;
-//   if (isLoggedIn) {
-//     return <UserGreeting />;
-//   }
-//   return <GuestGreeting />;
-// }
-
 
 
 class ErrorPassword extends Component{

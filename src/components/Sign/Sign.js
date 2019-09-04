@@ -5,7 +5,9 @@ import { BrowserRouter,Route,Link } from 'react-router-dom';
 import {StyleButton} from "./SignStyle";
 import { withRouter } from 'react-router-dom'
 import {userSign} from '../Actions/Actions';
-import { connect } from "react-redux"; 
+import { connect } from "react-redux";
+import ErrorPassword from '../Errors/ErrorPassword';
+import ModalErrorPassword from '../Modals/ModalErrorPassword';
 
 class Sign extends Component{
   constructor(props){
@@ -13,7 +15,6 @@ class Sign extends Component{
     this.state = {
       email : "",
       password : "",
-      show:false
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.valueEmail = this.valueEmail.bind(this);
@@ -29,6 +30,7 @@ class Sign extends Component{
   handleSubmit(e){
     e.preventDefault();
     this.props.userSign(this.state);
+    // this.props.modalTogle();
   }
     render(){
     	return(
@@ -37,6 +39,7 @@ class Sign extends Component{
             <Link to="/register"><StyleButton>Login in</StyleButton></Link>
           </div>
          	<div className="global">
+             {this.props.testStore.showModalError ? <ModalErrorPassword />: null}
              <form onSubmit={this.handleSubmit}>
             <div className="wrapper__login">
               <label>email</label>
@@ -52,6 +55,7 @@ class Sign extends Component{
                type="password"
                onChange={this.valuePassword}></input>
                <span></span>
+               {this.state.password.length < 6 ? <ErrorPassword /> : null}
               <button type = "submit">Sing In</button>
             </div>
             </form>
@@ -62,8 +66,21 @@ class Sign extends Component{
 }
 
 const mapDispatchToProps = dispatch => ({
-  userSign: userInfo => dispatch(userSign(userInfo))
+  userSign: userInfo => dispatch(userSign(userInfo)),
+  // modalTogle: userInfo2 => dispatch(modalTogle(userInfo2))
+
+
+  // modalTogle:() =>{
+
+  // }
+  
+  // modalTogle: (ewada) => {
+  //   dispatch({
+  //     type: 'SHOW_MODAL', payload: true 
+  //   })
+  // }
 })
+
 const mapStateToProps = state =>({
   testStore: state
 })
