@@ -4,14 +4,14 @@
 		// const token = cookies.get('token')
       options.data = options.data || {}
       options.url = process.env.REACT_APP_API_URL + options.url
-    
+    console.log(options)
       let axiosOptions = {
         url: options.url,
         method: options.type,
         headers: {
           'Content-Type': 'application/json',
         }
-			}
+      }
       // if (token) axiosOptions.headers['Authorization'] = Token `${token}`
       switch (options.type) {
         case 'get':

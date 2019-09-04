@@ -32,7 +32,7 @@ class Login extends Component{
   handleSubmit(e){
     e.preventDefault();
     this.props.userPost(this.state);
-    this.props.history.push('/main');
+    // this.props.history.push('/main');
   }
 
   render(){
@@ -61,8 +61,6 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state =>({
   testStore: state
 })
-
-
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Login))
 
   

@@ -6,8 +6,8 @@ console.log(users);
     return dispatch => {
 			const options = {
 				url:'/register',
-				method:'post',
-				data:users,
+				type:'post',
+				data: JSON.stringify(users),
 			}
 			requestHendler(options)
 			.then(res =>{
@@ -19,20 +19,18 @@ console.log(users);
   //     type: 'LOGIN_USER',
   //     payload: userObj
 	// })
-
-	export const userSign = user =>{
+	export const userSign = users =>{
 		return dispatch => {
 			const options = {
 				url:'/login',
-				method:'post',
-				data:user
+				type:'post',
+				data: JSON.stringify(users)
 			}
 			requestHendler(options)
 			.then(res =>{
 				console.log(res);
 			})
 		}
-
 	}
 
 
