@@ -12,13 +12,14 @@ console.log(users);
 			requestHendler(options)
 			.then(res =>{
 				console.log(res.status);
+				localStorage.setItem("token", res.data.token);
 			})
 		}
   }
-  // const loginUser = userObj => ({
-  //     type: 'LOGIN_USER',
-  //     payload: userObj
-	// })
+  const loginUser = userObj => ({
+      type: 'LOGIN_USER',
+      payload: userObj
+	})
 	export const userSign = users =>{
 		return dispatch => {
 			const options = {

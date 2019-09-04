@@ -12,16 +12,16 @@ class Sign extends Component{
     super(props)
     this.state = {
       sessionToken: null,
-      name : "",
+      email : "",
       password : "",
     }
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.valueName = this.valueName.bind(this);
+    this.valueEmail = this.valueEmail.bind(this);
     this.valuePassword = this.valuePassword.bind(this);
   }
   
-  valueName(e){
-    this.setState({ name: e.target.value });
+  valueEmail(e){
+    this.setState({ email: e.target.value });
       }
   valuePassword(e){
     this.setState({ password: e.target.value });
@@ -39,12 +39,12 @@ class Sign extends Component{
          	<div className="global">
              <form onSubmit={this.handleSubmit}>
             <div className="wrapper__login">
-              <label>name</label>
+              <label>email</label>
               <input
                 id="sign-name"
-                value={this.state.name}
-                type="text"
-                onChange={this.valueName}>
+                value={this.state.email}
+                type="email"
+                onChange={this.valueEmail}>
               </input>
               <label>password</label>
               <input id="sign-password"
