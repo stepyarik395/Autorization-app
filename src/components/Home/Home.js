@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
-import { BrowserRouter,Route,Link } from 'react-router-dom';
-import {StyleTitle,StyleButton} from "./HomeStyle";
+import { Link } from 'react-router-dom';
+import { StyleButton } from "./HomeStyle";
 
 class Mainpage extends Component{
   render(){

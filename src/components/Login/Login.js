@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from "react-redux"; 
-import { BrowserRouter,Route,Link } from 'react-router-dom';
 import {userPost} from '../Actions/Actions';
-import ReduxThunk from 'redux-thunk';
 import ErrorPassword from '../Errors/ErrorPassword';
 import ModalError from '../Modals/ModalError';
 
@@ -11,8 +8,8 @@ class Login extends Component{
   constructor(props){
     super(props)
     this.state = {
-      name : "",
-      password : "",
+      name: "",
+      password: "",
       email:"",
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -48,19 +45,19 @@ class Login extends Component{
            </input>
           <label>email</label>
           <input required="true"
-            onChange = {this.valueEmail}
+            onChange={this.valueEmail}
             type="email"
             value={this.state.email}>
             </input>
           <label>password</label>
           <input required="true"
-            onChange = {this.valuePassword}
+            onChange={this.valuePassword}
             type="password"
             value={this.state.password}>
            </input>
           <br></br>
           {this.state.password.length < 6 ? <ErrorPassword /> : null}
-          <button type  ="submit">Login in</button>
+          <button type="submit">Login in</button>
           </form>
          </div>
         </div>

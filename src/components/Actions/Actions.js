@@ -14,7 +14,7 @@ console.log(users);
 				localStorage.setItem("token", res.data.token);
 				console.log(res.status);
 				if(res.status === 200){
-					window.location = "/main"
+					
 				}
 			})
 			.catch(error => {

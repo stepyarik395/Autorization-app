@@ -4,8 +4,9 @@ import App from './App';
 import './index.css';
 import { createStore,applyMiddleware } from 'redux';
 import { Provider } from "react-redux";
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
+import history from './history';
 
 const initialState = {
   currentUserToken: {},
@@ -30,10 +31,10 @@ const reducers = (state = initialState, action) =>{
 const store = createStore(reducers,applyMiddleware(thunk));
 // console.log(store.getState());
 ReactDOM.render(
-    <BrowserRouter>
+    <Router history = {history}>
       <Provider store={store}>
       <App />
     </Provider>
-    </BrowserRouter>,
+    </Router>,
   document.getElementById('root')
 );

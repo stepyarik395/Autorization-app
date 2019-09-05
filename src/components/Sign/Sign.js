@@ -1,8 +1,7 @@
 
 import React, { Component } from 'react';
-import axios from 'axios';
-import { BrowserRouter,Route,Link } from 'react-router-dom';
-import {StyleButton} from "./SignStyle";
+import { Link } from 'react-router-dom';
+import { StyleButton } from "./SignStyle";
 import {userSign} from '../Actions/Actions';
 import { connect } from "react-redux";
 import ErrorPassword from '../Errors/ErrorPassword';
@@ -56,7 +55,7 @@ class Sign extends Component{
                onChange={this.valuePassword}></input>
                <span></span>
                {this.state.password.length < 6 ? <ErrorPassword /> : null}
-              <button type = "submit">Sing In</button>
+              <button type="submit">Sing In</button>
             </div>
             </form>
         </div>
