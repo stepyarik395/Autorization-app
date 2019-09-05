@@ -6,7 +6,7 @@ import {StyleButton} from "./SignStyle";
 import {userSign} from '../Actions/Actions';
 import { connect } from "react-redux";
 import ErrorPassword from '../Errors/ErrorPassword';
-import ModalErrorPassword from '../Modals/ModalErrorPassword';
+import ModalError from '../Modals/ModalError';
 
 class Sign extends Component{
   constructor(props){
@@ -29,7 +29,7 @@ class Sign extends Component{
   handleSubmit(e){
     e.preventDefault();
     this.props.userSign(this.state);
-    // this.props.modalTogle();
+    this.props.modalTogle;
   }
     render(){
     	return(
@@ -38,11 +38,12 @@ class Sign extends Component{
             <Link to="/register"><StyleButton>Login in</StyleButton></Link>
           </div>
          	<div className="global">
-             {this.props.testStore.showModalError ? <ModalErrorPassword />: null}
+             {this.props.testStore.showModalError ? <ModalError inputValue={this.state} />: null}
              <form onSubmit={this.handleSubmit}>
             <div className="wrapper__login">
               <label>email</label>
               <input
+                required="true"
                 id="sign-name"
                 value={this.state.email}
                 type="email"

@@ -10,6 +10,7 @@ export const StyleTitle = styled.h1`
   left:40%;
 `
 export const StyleWrapper = styled.div`
+
 `
 export const StyleButton = styled.button`
 background-color: transparent;
