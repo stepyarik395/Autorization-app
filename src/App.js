@@ -21,21 +21,21 @@ class App extends Component {
         <div>
           <Route exact path="/" render={() => (
             localStorage.getItem('token') ? (
-              <Main />
+              <Redirect to="/main" />
             ) : (
               <Home />
             )
            )} />
            <Route exact path="/login" render={() => (
             localStorage.getItem('token') ? (
-             <Main />
+              <Redirect to="/main" />
             ) : (
               <Sign/>
             )
            )} />
            <Route exact path="/register" render={() => (
             localStorage.getItem('token') ? (
-             <Main />
+              <Redirect to="/main" />
             ) : (
               <Login/>
             )
