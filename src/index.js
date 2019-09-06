@@ -6,7 +6,8 @@ import { createStore,applyMiddleware } from 'redux';
 import { Provider } from "react-redux";
 import { Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
-import history from './history';
+import { history } from './history';
+
 
 const initialState = {
   currentUserToken: {},
@@ -31,10 +32,10 @@ const reducers = (state = initialState, action) =>{
 const store = createStore(reducers,applyMiddleware(thunk));
 // console.log(store.getState());
 ReactDOM.render(
-    <Router history = {history}>
-      <Provider store={store}>
+  <Provider store={store}>
+    <Router history={history}>
       <App />
-    </Provider>
-    </Router>,
+    </Router>
+    </Provider>,
   document.getElementById('root')
 );

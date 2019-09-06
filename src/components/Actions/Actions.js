@@ -1,4 +1,6 @@
 import requestHendler from '../RequestHendler/RequsetHendler';
+import  { history } from '../../history';
+
 
 export const userPost = users => {
 console.log(users);
@@ -14,13 +16,13 @@ console.log(users);
 				localStorage.setItem("token", res.data.token);
 				console.log(res.status);
 				if(res.status === 200){
-					
+				history.push('/main');
 				}
 			})
 			.catch(error => {
 				let errObj = JSON.parse(JSON.stringify(error));
 				console.log(errObj);
-				dispatch(modalwrap);
+				dispatch({type:'SHOW_MODAL',payload:true});
 				dispatch({type:"ERROR_TEXT_SHOW",payload:error.response.data.message})
 				console.log(error.response)
 			});
@@ -35,6 +37,7 @@ console.log(users);
 			}
 			requestHendler(options)
 			.then(res =>{
+				localStorage.setItem("token", res.data.token);
 				console.log(res.status);
 				if(res.status === 200){
 					window.location = "/main"
@@ -43,30 +46,20 @@ console.log(users);
 			})
 			.catch(error => {
 				let errObj = JSON.parse(JSON.stringify(error));
-				dispatch(modalwrap);
+				dispatch({type:'SHOW_MODAL',payload:true});
 				dispatch({type:"ERROR_TEXT_SHOW",payload:error.response.data.message})
 				console.log(error.response)
 			});
 		}
 	}
 
-const modalwrap = {
-	type:'SHOW_MODAL',
-	payload:true
-}
-
 export const hideModal = toggle =>{
 	return dispatch =>{
-		dispatch(modalClose);
+		dispatch({type:'CLOSE_MODAL',payload:false});
 	}
 
 }
 	
-const modalClose = {
-	type:'CLOSE_MODAL',
-	payload:false
-}
-
 
 
 	

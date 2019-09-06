@@ -38,19 +38,19 @@ class Login extends Component{
         <div className="wrapper__login">
           <form onSubmit={this.handleSubmit}>
           <label>name</label>
-          <input required="true"
+          <input 
             onChange={this.valueName}
             type="text"
             value={this.state.name}>
            </input>
           <label>email</label>
-          <input required="true"
+          <input
             onChange={this.valueEmail}
             type="email"
             value={this.state.email}>
             </input>
           <label>password</label>
-          <input required="true"
+          <input
             onChange={this.valuePassword}
             type="password"
             value={this.state.password}>

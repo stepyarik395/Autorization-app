@@ -42,7 +42,6 @@ class Sign extends Component{
             <div className="wrapper__login">
               <label>email</label>
               <input
-                required="true"
                 id="sign-name"
                 value={this.state.email}
                 type="email"
