@@ -1,5 +1,6 @@
 
   import axios from 'axios';
+  import qs from 'qs';
   export default function requestHendler(options){
 		// const token = cookies.get('token')
       options.data = options.data || {}
@@ -15,9 +16,9 @@
       // if (token) axiosOptions.headers['Authorization'] = Token `${token}`
       switch (options.type) {
         case 'get':
-          // if (options.data)  {
-          //   axiosOptions.url += '?' + qs.stringify(options.data)
-          // }
+          if (options.data)  {
+            axiosOptions.url += '?' + qs.stringify(options.data)
+          }
 					break
         case 'put':
         case 'post':

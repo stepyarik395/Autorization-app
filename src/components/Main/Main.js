@@ -10,13 +10,12 @@ class Main extends Component{
 		this.state ={
 			data:[1,2,3,4,2,3]
 		}
-
 	}
 
-
 	componentDidMount() {
+
 				const options = {
-					url:'/login',
+					url:'/info',
 					type:'get',
 					// data: JSON.stringify(data),
 					}
@@ -25,9 +24,6 @@ class Main extends Component{
 								console.log(res.status);
 					});
 				}
-
-
-		
 
 		
     // axios.get(`http://yourapi.com`)
