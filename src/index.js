@@ -12,7 +12,8 @@ import { history } from './history';
 const initialState = {
   currentUserToken: {},
   showModalError:false,
-  ErrorText:""
+  ErrorText:"",
+  arrUsers:[]
 }
 const reducers = (state = initialState, action) =>{
   switch (action.type) {

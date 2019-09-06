@@ -13,5 +13,4 @@ float: right;
 
 export const StyleMain = styled.main`
 margin:0 auto;
-background-color:green;
 `

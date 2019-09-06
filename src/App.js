@@ -5,7 +5,6 @@ import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import Main from "./components/Main/Main";
 import { Route,Redirect,Switch } from 'react-router-dom';
-import  { history } from './history';
 
 
 
@@ -47,17 +46,9 @@ class App extends Component {
               <Redirect to ="/register" />
             )
            )} />
-
-
-
-               {/* <Route exact path='/' component={Home}/>
-               <Route path='/register' component={Login}/>
-               <Route path='/login' component={Sign}/> 
-               <Route path='/main' component={Main}/>  */}
         </div>
     );
   }
 }
-
 export default App;
   
