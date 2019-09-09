@@ -9,8 +9,15 @@ class Main extends Component{
 		super(props);
 	}
 
+
+
+tmp(){
+	let newarr = this.props.testStore.arrUsers;	
+	}
+
+
 	componentDidMount() {
-this.props.showUsers();
+	this.props.showUsers();
 	}
 
 
@@ -19,16 +26,33 @@ this.props.showUsers();
 	}
 
 	render(){
-		
-
+		console.log(this.props.testStore.arrUsers);
   	return(
     	<div>
       	<div className="wpapper__main__button">
           	<Link to="/"><StyleButton onClick = {this.clearLocalStorage}>Out</StyleButton></Link>
           </div> 
 						<StyleMain>
+							<table>
+								<tbody>
+								<tr>
+								<th>Id</th>
+								<th>firstName</th>
+								<th>lastName</th>
+								<th>gender</th>
+								<th>contactInformation</th>
+								</tr>
+								</tbody>
+							</table>
+							<ul>
+							{
+							this.tmp()
+							}
+							</ul>
+							
 						</StyleMain>
       		</div>
+
         );
     }
 }
@@ -38,5 +62,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state =>({
   testStore: state
 })
+
+
 
 export default connect(mapStateToProps,mapDispatchToProps)(Main)
