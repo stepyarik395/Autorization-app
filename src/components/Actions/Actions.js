@@ -52,6 +52,22 @@ console.log(users);
 			});
 		}
 	}
+	
+	export const showUsers = users =>{
+
+		return dispatch =>{
+
+			const options = {
+				url:'/',
+				type:'post',
+			}
+			requestHendler(options)
+			.then(res =>{
+				console.log(res);
+				dispatch({type:'SHOW_USERS',payload:res.data.workers});
+			})
+		}
+	}
 
 export const hideModal = toggle =>{
 	return dispatch =>{

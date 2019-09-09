@@ -2,7 +2,7 @@
   import axios from 'axios';
   import qs from 'qs';
   export default function requestHendler(options){
-		// const token = cookies.get('token')
+		const token = localStorage.getItem('token');
       options.data = options.data || {}
       options.url = process.env.REACT_APP_API_URL + options.url
     console.log(options)
@@ -11,6 +11,7 @@
         method: options.type,
         headers: {
           'Content-Type': 'application/json',
+          'x-access-token':token
         }
       }
       // if (token) axiosOptions.headers['Authorization'] = Token `${token}`
