@@ -2,19 +2,18 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import {StyleButton,StyleMain} from "./StyleMain";
 import { connect } from "react-redux";
-import {showUsers} from '../Actions/Actions'; 
+import {showUsers} from '../Actions/Actions';
+import MainContactInformation from './MainContactInformation'
+import MainGender from './MainGender'
+import Mainid  from './Mainid'
+import MainLastName from './MainLastName'
+import MainFirstName from './ManFirstName'
+
 
 class Main extends Component{
 	constructor(props){
 		super(props);
 	}
-
-
-
-tmp(){
-	let newarr = this.props.testStore.arrUsers;	
-	}
-
 
 	componentDidMount() {
 	this.props.showUsers();
@@ -36,20 +35,36 @@ tmp(){
 							<table>
 								<tbody>
 								<tr>
-								<th>Id</th>
-								<th>firstName</th>
-								<th>lastName</th>
-								<th>gender</th>
-								<th>contactInformation</th>
+									<th>Id</th>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Gender</th>
+									<th>Contact Infomation</th>
+								</tr>
+								<tr>
+									<th>
+									<Mainid />
+									</th>
+									<th>
+									<MainFirstName />
+									</th>
+									<th>
+									<MainLastName />
+									</th>
+									<th>
+									<MainGender />
+									</th>
+									<th>
+									<MainContactInformation />
+									</th>
 								</tr>
 								</tbody>
 							</table>
-							<ul>
-							{
-							this.tmp()
-							}
-							</ul>
+								
 							
+								
+								
+								
 						</StyleMain>
       		</div>
 

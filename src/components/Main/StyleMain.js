@@ -12,5 +12,13 @@ float: right;
 `
 
 export const StyleMain = styled.main`
-margin:0 auto;
+display:flex;
+justify-content:center;
+`
+export const StyleList = styled.ul`
+padding:0;
+list-style-type:none;
+`
+export const StyleLi = styled.li`
+padding:0.8rem;
 `
