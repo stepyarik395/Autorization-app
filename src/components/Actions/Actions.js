@@ -87,6 +87,14 @@ export const deleteUser = drible =>{
 		})
 	}
 }
+
+export const showModalEdit = rdaga =>{
+	return dispatch =>{
+		dispatch({type:'OPEN_MODAL__EDIT',payload:true});
+	}
+}
+
+
 	
 
 

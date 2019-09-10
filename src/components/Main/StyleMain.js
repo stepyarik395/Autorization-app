@@ -12,7 +12,7 @@ float: right;
 `
 
 export const StyleMain = styled.main`
-height:90vh;
+height:60vh;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -38,7 +38,7 @@ export const StyleTh = styled.th`
 `
 export const StyleEditButton = styled.button`
 outline:none;
-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+box-shadow: 0 0 5px rgba(0,0,0,0.3);
 margin:0.2rem;
 cursor:pointer;
 width:30px;
@@ -46,5 +46,29 @@ height:30px;
 border-radius:50%;
 background-color:transparent;
 border:2px solid #9932CC;
-
+transition:0.3s all ease-out;
+:hover{
+    
+    background:#9932CC;
+    color:#fff;
+}
+:active{
+    background-color:rgba(248,80,50,1);
+}
+`
+export const StyleButtonEdit = styled.button`
+outline:none;
+left:48%;
+position:absolute;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:2rem;
+background-color:#9932CC;
+color:#fff;
+width:100px;
+height:100px;
+border-radius:50%;
+border:none;
 `

@@ -43,3 +43,63 @@ display:flex;
 align-items:center;
 justify-content:space-around;
 `
+export const WrapperModalEdit = styled.div`
+position:relative;
+padding:3rem;
+background-color:#1B0A2A;
+border:1px solid green;
+width:500px;
+display:flex;
+flex-direction:column;
+
+`
+export const StyleInput = styled.input`
+color:#fff;
+background-color:transparent;
+outline:none;
+border-left:none;
+border-right:none;
+border-top:none;
+border-bottom:1px solid #9932CC;
+margin:1rem;
+
+    :focus{
+        border-bottom:1px solid #fff;
+    }
+
+`
+export const StyleContainerModal = styled.div`
+top:10%;
+left:34%;
+position:absolute;
+`
+export const StyleButtonAdd = styled.button`
+cursor:pointer;
+margin:1rem;
+background-color:transparent;
+border:2px solid #fff;
+color:#fff;
+outline:none;
+height:50px;
+text-transform:uppercase;
+box-shadow: 0 0 10px rgba(255,255,255,0.8);
+text-shadow: 1px 1px 2px black, 0 0 1em white;
+`
+export const ButtonCloseEdit = styled.button`
+position:absolute;
+right:10px;
+top:8px;
+background-color:transparent;
+display:flex;
+justify-content:center;
+align-items:center;
+width:30px;
+height:30px;
+border-radius:50%;
+color:#fff;
+outline:none;
+cursor:pointer;
+border:2px solid white;
+font-size:1.5rem;
+text-shadow: 1px 1px 2px black, 0 0 1em white;
+`

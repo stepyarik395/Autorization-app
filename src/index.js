@@ -12,6 +12,7 @@ import { history } from './history';
 const initialState = {
   currentUserToken: {},
   showModalError:false,
+  showModalEdit:false,
   ErrorText:"",
   arrUsers:[]
 }

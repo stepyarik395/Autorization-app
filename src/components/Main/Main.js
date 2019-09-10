@@ -1,38 +1,44 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {StyleButton,StyleMain,StyleWrapperDiv,StyleEditButton} from "./StyleMain";
+import {StyleButton,StyleMain,StyleWrapperDiv,StyleEditButton,StyleButtonEdit} from "./StyleMain";
 import { connect } from "react-redux";
 import {showUsers} from '../Actions/Actions';
-import {deleteUsers} from '../Actions/Actions';
+import {showModalEdit} from '../Actions/Actions';
+import { MdCreate} from 'react-icons/md';
+import { MdDelete,MdAdd} from 'react-icons/md';
+import ModalEdit from "../Modals/ModalEdit";
 
-import Item from '../Item/Item';
 
 
 class Main extends Component{
 	constructor(props){
 		super(props);
-		this.deleteUser = this.deleteUser.bind(this);
+		this.openModalEdit = this.openModalEdit.bind(this);
 	}
 
 	componentDidMount() {
 	this.props.showUsers();
 	}
-
-	deleteUser(){
-		this.props.deleteUsers();
-	}
 	clearLocalStorage(){
 		localStorage.clear()
+	}
+	openModalEdit(){
+		this.props.showModalEdit()
 	}
 
 	render(){
 		console.log(this.props.testStore.arrUsers);
   	return(
     	<div>
+				
       	<div className="wpapper__main__button">
           	<Link to="/"><StyleButton onClick = {this.clearLocalStorage}>Out</StyleButton></Link>
-          </div> 
+          </div>
+
+					{this.props.testStore.showModalEdit ? <ModalEdit /> : null}
+					
 						<StyleMain>
+						
 							<StyleWrapperDiv>
 								<table>
 									<thead>
@@ -53,22 +59,25 @@ class Main extends Component{
 												<th>{item.salary}</th>
 												<th>{item.gender}</th>
 												<th>{item.position}</th>
-												<th><StyleEditButton></StyleEditButton><StyleEditButton></StyleEditButton></th>
+												<th><StyleEditButton><MdCreate /></StyleEditButton>
+												<StyleEditButton><MdDelete /></StyleEditButton></th>
 												</tr>
 														</tbody>
 										})}
-	
 								</table>
-								{/* <Item /> */}
 							</StyleWrapperDiv>
 						</StyleMain>
+						<StyleButtonEdit onClick={this.openModalEdit}>
+							<MdAdd />
+							</StyleButtonEdit>
+						
       		</div>
         );
     }
 }
 const mapDispatchToProps = dispatch => ({
 	showUsers: userInfo => dispatch(showUsers(userInfo)),
-	deleteUsers :userInfo => dispatch(deleteUsers(userInfo))
+	showModalEdit :modal => dispatch(showModalEdit(modal))
 })
 const mapStateToProps = state =>({
   testStore: state
