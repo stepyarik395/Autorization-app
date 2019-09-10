@@ -75,6 +75,18 @@ export const hideModal = toggle =>{
 	}
 
 }
+export const deleteUser = drible =>{
+	return dispath=>{
+		const options = {
+			url:'/',
+			type:'delete',
+		}
+		requestHendler(options)
+		.then(res =>{
+			console.log(res)
+		})
+	}
+}
 	
 
 

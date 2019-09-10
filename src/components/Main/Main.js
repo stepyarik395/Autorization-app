@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {StyleButton,StyleMain} from "./StyleMain";
+import {StyleButton,StyleMain,StyleWrapperDiv,StyleEditButton} from "./StyleMain";
 import { connect } from "react-redux";
 import {showUsers} from '../Actions/Actions';
-import MainContactInformation from './MainContactInformation'
-import MainGender from './MainGender'
-import Mainid  from './Mainid'
-import MainLastName from './MainLastName'
-import MainFirstName from './ManFirstName'
+import {deleteUsers} from '../Actions/Actions';
+
+import Item from '../Item/Item';
 
 
 class Main extends Component{
 	constructor(props){
 		super(props);
+		this.deleteUser = this.deleteUser.bind(this);
 	}
 
 	componentDidMount() {
 	this.props.showUsers();
 	}
 
-
+	deleteUser(){
+		this.props.deleteUsers();
+	}
 	clearLocalStorage(){
 		localStorage.clear()
 	}
@@ -32,47 +33,42 @@ class Main extends Component{
           	<Link to="/"><StyleButton onClick = {this.clearLocalStorage}>Out</StyleButton></Link>
           </div> 
 						<StyleMain>
-							<table>
-								<tbody>
-								<tr>
-									<th>Id</th>
-									<th>First Name</th>
-									<th>Last Name</th>
-									<th>Gender</th>
-									<th>Contact Infomation</th>
-								</tr>
-								<tr>
-									<th>
-									<Mainid />
-									</th>
-									<th>
-									<MainFirstName />
-									</th>
-									<th>
-									<MainLastName />
-									</th>
-									<th>
-									<MainGender />
-									</th>
-									<th>
-									<MainContactInformation />
-									</th>
-								</tr>
-								</tbody>
-							</table>
-								
-							
-								
-								
-								
+							<StyleWrapperDiv>
+								<table>
+									<thead>
+										<tr>
+											<th>First Name</th>
+											<th>Last Name</th>
+											<th>Salary</th>
+											<th>Gender</th>
+											<th>Position</th>
+											<th>delete/edit</th>
+										</tr>
+									</thead>
+										{this.props.testStore.arrUsers.map((item,i)=>{
+											return <tbody key={i}>
+												<tr>
+												<th>{item.firstName}</th>
+												<th>{item.lastName}</th>
+												<th>{item.salary}</th>
+												<th>{item.gender}</th>
+												<th>{item.position}</th>
+												<th><StyleEditButton></StyleEditButton><StyleEditButton></StyleEditButton></th>
+												</tr>
+														</tbody>
+										})}
+	
+								</table>
+								{/* <Item /> */}
+							</StyleWrapperDiv>
 						</StyleMain>
       		</div>
-
         );
     }
 }
 const mapDispatchToProps = dispatch => ({
-  showUsers: userInfo => dispatch(showUsers(userInfo))
+	showUsers: userInfo => dispatch(showUsers(userInfo)),
+	deleteUsers :userInfo => dispatch(deleteUsers(userInfo))
 })
 const mapStateToProps = state =>({
   testStore: state
