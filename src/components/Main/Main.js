@@ -83,10 +83,10 @@ class Main extends Component{
     }
 }
 const mapDispatchToProps = dispatch => ({
-	showUsers:userInfo => dispatch(showUsers(userInfo)),
-	showModalEdit:modal => dispatch(showModalEdit(modal)),
-	deleteUser:del => dispatch(deleteUser(del)),
-	showModalUpdate:tako => dispatch(showModalUpdate(tako))
+	showUsers:showU => dispatch(showUsers(showU)),
+	showModalEdit:modalEdit => dispatch(showModalEdit(modalEdit)),
+	deleteUser:delUser => dispatch(deleteUser(delUser)),
+	showModalUpdate:modallUp => dispatch(showModalUpdate(modallUp))
 })
 const mapStateToProps = state =>({
   testStore: state

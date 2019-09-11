@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {addUser} from '../Actions/Actions';
 import {selectUser} from '../Actions/Actions';
 import {updateUser} from '../Actions/Actions';
+import Fade from 'react-reveal/Fade';
 
 
 class ModalUpdate extends Component{
@@ -19,13 +20,13 @@ class ModalUpdate extends Component{
           position:props.testStore.selectUser.position,
 					gender:props.testStore.selectUser.gender,
 				}
-				this.handleName = this.handleName.bind(this);
-				this.handleLastName = this.handleLastName.bind(this);
-				this.handleSalary = this.handleSalary.bind(this);
-				this.handlePosition = this.handlePosition.bind(this);
-				this.handleGender = this.handleGender.bind(this);
-				this.closeModalUpdate = this.closeModalUpdate.bind(this);
-				this.updateUser = this.updateUser.bind(this);
+				this.handleName=this.handleName.bind(this);
+				this.handleLastName=this.handleLastName.bind(this);
+				this.handleSalary=this.handleSalary.bind(this);
+				this.handlePosition=this.handlePosition.bind(this);
+				this.handleGender=this.handleGender.bind(this);
+				this.closeModalUpdate=this.closeModalUpdate.bind(this);
+				this.updateUser=this.updateUser.bind(this);
 
 		}
 		componentDidMount(){
@@ -55,19 +56,22 @@ class ModalUpdate extends Component{
     render(){
 			console.log(this.props.testStore.selectUser.firstName)
         return(
+					<div>
+					
 					<StyleContainerModal >
+					<Fade>
             <WrapperModalEdit>
 							<StyleTitle>Update user</StyleTitle>
 								<StyleInput value={this.state.firstName}
 								onChange={this.handleName}
 								type="text"
-								placeholder = "First Name"
+								placeholder="First Name"
 								>
 								</StyleInput>
 								<StyleInput value={this.state.lastName}
 								onChange={this.handleLastName}
 								type="text"
-								placeholder = "Last Name"
+								placeholder="Last Name"
 								>
 								</StyleInput>
 								<StyleInput value={this.state.salary}
@@ -77,18 +81,21 @@ class ModalUpdate extends Component{
 								></StyleInput>
 								<StyleInput value={this.state.position}
 								onChange={this.handlePosition}
-								placeholder = "Position"
+								placeholder="Position"
 								type="text"
 								></StyleInput>
 								<StyleInput value={this.state.gender}
 								onChange={this.handleGender}
 								type="text"
-								placeholder = "Gender"
+								placeholder="Gender"
 								></StyleInput>
                 <StyleButtonAdd onClick={this.updateUser}>Update</StyleButtonAdd>
                 <ButtonCloseEdit onClick={this.closeModalUpdate}><MdClear /></ButtonCloseEdit>
             </WrapperModalEdit>
+						</Fade>
 					</StyleContainerModal>
+				
+				</div>
 
         );
     }
@@ -97,7 +104,6 @@ class ModalUpdate extends Component{
 
 const mapDispatchToProps = dispatch => ({
 	closeModalUpdate:colol => dispatch(closeModalUpdate(colol)),
-	addUser:add => dispatch(addUser(add)),
 	selectUser: select => dispatch(selectUser(select)),
 	updateUser: update => dispatch(updateUser(update)),
 	

@@ -100,6 +100,7 @@ export const addUser = (user) =>{
 			.then(res =>{
 				console.log(res)
 			})
+			dispatch(showUsers());
 			dispatch({type:'CLOSE_MODAL_EDIT',payload:false});
 
 	}
@@ -151,6 +152,7 @@ export const updateUser = (user) =>{
 			.then(res =>{
 				console.log(res)
 				dispatch(showUsers());
+				dispatch(closeModalUpdate());
 			})
 	
 	}

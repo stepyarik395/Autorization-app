@@ -4,15 +4,13 @@ import Sign from './components/Sign/Sign';
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import Main from "./components/Main/Main";
-import { Route,Redirect,Switch } from 'react-router-dom';
+import { Route,Redirect } from 'react-router-dom';
 
 
 
 
 class App extends Component {
-  constructor(props){
-    super(props)
-  }
+  
 
   render() {
    
