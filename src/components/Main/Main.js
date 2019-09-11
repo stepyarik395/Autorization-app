@@ -38,7 +38,6 @@ class Main extends Component{
 					{this.props.testStore.showModalEdit ? <ModalEdit /> : null}
 					
 						<StyleMain>
-						
 							<StyleWrapperDiv>
 								<table>
 									<thead>
@@ -66,17 +65,18 @@ class Main extends Component{
 										})}
 								</table>
 							</StyleWrapperDiv>
-						</StyleMain>
-						<StyleButtonEdit onClick={this.openModalEdit}>
+
+							<StyleButtonEdit onClick={this.openModalEdit}>
 							<MdAdd />
 							</StyleButtonEdit>
-						
+							
+						</StyleMain>
       		</div>
         );
     }
 }
 const mapDispatchToProps = dispatch => ({
-	showUsers: userInfo => dispatch(showUsers(userInfo)),
+	showUsers:userInfo => dispatch(showUsers(userInfo)),
 	showModalEdit :modal => dispatch(showModalEdit(modal))
 })
 const mapStateToProps = state =>({

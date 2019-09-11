@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import {WrapperModalEdit,StyleContainerModal,StyleInput,StyleButtonAdd,ButtonCloseEdit} from "./ModalStyles";
+import {WrapperModalEdit,StyleContainerModal,StyleInput,StyleButtonAdd,ButtonCloseEdit,StyleTitle} from "./ModalStyles";
 import {MdClear} from 'react-icons/md';
+import {closeModalEdit} from '../Actions/Actions';
+import { connect } from "react-redux";
 
 
 class ModalEdit extends Component{
@@ -18,6 +20,7 @@ class ModalEdit extends Component{
 				this.handleSalary = this.handleSalary.bind(this);
 				this.handlePosition = this.handlePosition.bind(this);
 				this.handleGender = this.handleGender.bind(this);
+				this.closeModalEdit = this.closeModalEdit.bind(this);
 
 		}
 		handleName(e){
@@ -35,11 +38,14 @@ class ModalEdit extends Component{
 		handleGender(e){
 			this.setState({ gender: e.target.value });
 		}
-		
+		closeModalEdit(){
+			this.props.closeModalEdit();
+		}
     render(){
         return(
 					<StyleContainerModal>
             <WrapperModalEdit>
+							<StyleTitle>Add user</StyleTitle>
 								<StyleInput value={this.state.firstName}
 								onChange={this.handleName}
 								type="text"
@@ -67,7 +73,7 @@ class ModalEdit extends Component{
 								placeholder = "Gender"
 								></StyleInput>
                 <StyleButtonAdd>Add</StyleButtonAdd>
-                <ButtonCloseEdit><MdClear /></ButtonCloseEdit>
+                <ButtonCloseEdit onClick={this.closeModalEdit}><MdClear /></ButtonCloseEdit>
             </WrapperModalEdit>
 					</StyleContainerModal>
 
@@ -75,4 +81,12 @@ class ModalEdit extends Component{
     }
 
 }
-export default ModalEdit;
+
+
+const mapDispatchToProps = dispatch => ({
+	closeModalEdit:colol => dispatch(closeModalEdit(colol))
+})
+const mapStateToProps = state =>({
+  testStore: state
+})
+export default connect(mapStateToProps,mapDispatchToProps)(ModalEdit)

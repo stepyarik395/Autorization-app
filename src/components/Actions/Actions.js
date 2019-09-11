@@ -53,7 +53,7 @@ console.log(users);
 		}
 	}
 	
-	export const showUsers = users =>{
+	export const showUsers = () =>{
 
 		return dispatch =>{
 
@@ -69,13 +69,13 @@ console.log(users);
 		}
 	}
 
-export const hideModal = toggle =>{
+export const hideModal = () =>{
 	return dispatch =>{
 		dispatch({type:'CLOSE_MODAL',payload:false});
 	}
 
 }
-export const deleteUser = drible =>{
+export const deleteUser = () =>{
 	return dispath=>{
 		const options = {
 			url:'/',
@@ -88,9 +88,14 @@ export const deleteUser = drible =>{
 	}
 }
 
-export const showModalEdit = rdaga =>{
+export const showModalEdit = () =>{
 	return dispatch =>{
 		dispatch({type:'OPEN_MODAL__EDIT',payload:true});
+	}
+}
+export const closeModalEdit = () =>{
+	return dispatch =>{
+		dispatch({type:'CLOSE_MODAL__EDIT',payload:false});
 	}
 }
 

@@ -28,6 +28,10 @@ const reducers = (state = initialState, action) =>{
         return {...state, ErrorText: action.payload}
         case 'SHOW_USERS':
         return {...state, arrUsers: action.payload}
+        case 'OPEN_MODAL__EDIT':
+        return {...state, showModalEdit: action.payload}
+        case 'CLOSE_MODAL__EDIT':
+        return {...state, showModalEdit: action.payload}
     default:
       return state;
   }

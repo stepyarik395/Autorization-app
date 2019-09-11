@@ -14,6 +14,7 @@ float: right;
 export const StyleMain = styled.main`
 height:60vh;
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
 `
@@ -57,9 +58,9 @@ transition:0.3s all ease-out;
 }
 `
 export const StyleButtonEdit = styled.button`
+box-shadow: 0 0 10px rgba(0,0,0,0.9);
+margin-top:3rem;
 outline:none;
-left:48%;
-position:absolute;
 cursor:pointer;
 display:flex;
 align-items:center;
