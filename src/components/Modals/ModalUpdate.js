@@ -12,11 +12,12 @@ class ModalUpdate extends Component{
     constructor(props){
         super(props)
         this.state = {
-            firstName:"",
-            lastName:"",
-            salary:"",
-            position:"",
-						gender:"",
+					id:props.testStore.selectUser._id,
+          firstName:props.testStore.selectUser.firstName,
+          lastName:props.testStore.selectUser.lastName,
+          salary:props.testStore.selectUser.salary,
+          position:props.testStore.selectUser.position,
+					gender:props.testStore.selectUser.gender,
 				}
 				this.handleName = this.handleName.bind(this);
 				this.handleLastName = this.handleLastName.bind(this);
@@ -57,29 +58,29 @@ class ModalUpdate extends Component{
 					<StyleContainerModal >
             <WrapperModalEdit>
 							<StyleTitle>Update user</StyleTitle>
-								<StyleInput value={this.props.testStore.selectUser.firstName}
+								<StyleInput value={this.state.firstName}
 								onChange={this.handleName}
 								type="text"
 								placeholder = "First Name"
 								>
 								</StyleInput>
-								<StyleInput value={this.props.testStore.selectUser.lastName}
+								<StyleInput value={this.state.lastName}
 								onChange={this.handleLastName}
 								type="text"
 								placeholder = "Last Name"
 								>
 								</StyleInput>
-								<StyleInput value={this.props.testStore.selectUser.salary}
+								<StyleInput value={this.state.salary}
 								onChange={this.handleSalary}
 								type="text"
 								placeholder = "Salary"
 								></StyleInput>
-								<StyleInput value={this.props.testStore.selectUser.position}
+								<StyleInput value={this.state.position}
 								onChange={this.handlePosition}
 								placeholder = "Position"
 								type="text"
 								></StyleInput>
-								<StyleInput value={this.props.testStore.selectUser.gender}
+								<StyleInput value={this.state.gender}
 								onChange={this.handleGender}
 								type="text"
 								placeholder = "Gender"

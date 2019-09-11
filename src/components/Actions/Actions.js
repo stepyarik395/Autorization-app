@@ -138,21 +138,23 @@ export const closeModalUpdate = () =>{
 }
 
 
-// export const updateUser = () =>{
-// 	return dispatch =>{
-// 		const options = {
-// 			url:`/update/${id}`,
-// 			type:'put',
-// 			}
-// 			console.log(options);
-// 			requestHendler(options)
-// 			.then(res =>{
-// 				console.log(res)
-// 				dispatch(showUsers());
-// 			})
+export const updateUser = (user) =>{
+	console.log(user);
+	return dispatch =>{
+		const options = {
+			url:`/update/${user.id}`,
+			type:'put',
+			data:user
+			}
+			console.log(options);
+			requestHendler(options)
+			.then(res =>{
+				console.log(res)
+				dispatch(showUsers());
+			})
 	
-// 	}
-// }
+	}
+}
 	
 
 
