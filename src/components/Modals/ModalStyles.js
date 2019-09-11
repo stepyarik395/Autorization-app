@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled,{keyframes} from 'styled-components';
 
 
 
@@ -107,5 +107,5 @@ export const StyleTitle = styled.h3`
 margin-left:1rem;
 text-transform:uppercase;
 color:#fff;
-
 `
+

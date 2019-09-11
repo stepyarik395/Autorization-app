@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {WrapperModalEdit,StyleContainerModal,StyleInput,StyleButtonAdd,ButtonCloseEdit,StyleTitle} from "./ModalStyles";
 import {MdClear} from 'react-icons/md';
 import {closeModalEdit} from '../Actions/Actions';
-import { connect } from "react-redux";
+import {connect} from "react-redux";
+import {addUser} from '../Actions/Actions';
 
 
 class ModalEdit extends Component{
@@ -10,10 +11,11 @@ class ModalEdit extends Component{
         super(props)
         this.state = {
             firstName:"",
-            lasttName:"",
+            lastName:"",
             salary:"",
             position:"",
-            gender:""
+						gender:"",
+						animatedClass: ''
 				}
 				this.handleName = this.handleName.bind(this);
 				this.handleLastName = this.handleLastName.bind(this);
@@ -21,6 +23,7 @@ class ModalEdit extends Component{
 				this.handlePosition = this.handlePosition.bind(this);
 				this.handleGender = this.handleGender.bind(this);
 				this.closeModalEdit = this.closeModalEdit.bind(this);
+				this.addUser = this.addUser.bind(this);
 
 		}
 		handleName(e){
@@ -41,9 +44,12 @@ class ModalEdit extends Component{
 		closeModalEdit(){
 			this.props.closeModalEdit();
 		}
+		addUser(){
+			this.props.addUser(this.state);
+		}
     render(){
         return(
-					<StyleContainerModal>
+					<StyleContainerModal >
             <WrapperModalEdit>
 							<StyleTitle>Add user</StyleTitle>
 								<StyleInput value={this.state.firstName}
@@ -56,7 +62,8 @@ class ModalEdit extends Component{
 								onChange={this.handleLastName}
 								type="text"
 								placeholder = "Last Name"
-								></StyleInput>
+								>
+								</StyleInput>
 								<StyleInput value={this.state.salary}
 								onChange={this.handleSalary}
 								type="text"
@@ -72,7 +79,7 @@ class ModalEdit extends Component{
 								type="text"
 								placeholder = "Gender"
 								></StyleInput>
-                <StyleButtonAdd>Add</StyleButtonAdd>
+                <StyleButtonAdd onClick={this.addUser}>Add</StyleButtonAdd>
                 <ButtonCloseEdit onClick={this.closeModalEdit}><MdClear /></ButtonCloseEdit>
             </WrapperModalEdit>
 					</StyleContainerModal>
@@ -84,7 +91,9 @@ class ModalEdit extends Component{
 
 
 const mapDispatchToProps = dispatch => ({
-	closeModalEdit:colol => dispatch(closeModalEdit(colol))
+	closeModalEdit:colol => dispatch(closeModalEdit(colol)),
+	addUser:daet => dispatch(addUser(daet)),
+
 })
 const mapStateToProps = state =>({
   testStore: state

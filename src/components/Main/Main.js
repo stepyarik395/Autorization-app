@@ -4,6 +4,7 @@ import {StyleButton,StyleMain,StyleWrapperDiv,StyleEditButton,StyleButtonEdit} f
 import { connect } from "react-redux";
 import {showUsers} from '../Actions/Actions';
 import {showModalEdit} from '../Actions/Actions';
+import {deleteUser} from '../Actions/Actions';
 import { MdCreate} from 'react-icons/md';
 import { MdDelete,MdAdd} from 'react-icons/md';
 import ModalEdit from "../Modals/ModalEdit";
@@ -14,6 +15,7 @@ class Main extends Component{
 	constructor(props){
 		super(props);
 		this.openModalEdit = this.openModalEdit.bind(this);
+		this.deleteUser = this.deleteUser.bind(this);
 	}
 
 	componentDidMount() {
@@ -25,7 +27,9 @@ class Main extends Component{
 	openModalEdit(){
 		this.props.showModalEdit()
 	}
-
+	deleteUser(id){
+		this.props.deleteUser(id);
+	}
 	render(){
 		console.log(this.props.testStore.arrUsers);
   	return(
@@ -59,9 +63,9 @@ class Main extends Component{
 												<th>{item.gender}</th>
 												<th>{item.position}</th>
 												<th><StyleEditButton><MdCreate /></StyleEditButton>
-												<StyleEditButton><MdDelete /></StyleEditButton></th>
+												<StyleEditButton onClick={() => this.deleteUser(item._id)}><MdDelete /></StyleEditButton></th>
 												</tr>
-														</tbody>
+											</tbody>
 										})}
 								</table>
 							</StyleWrapperDiv>
@@ -77,7 +81,8 @@ class Main extends Component{
 }
 const mapDispatchToProps = dispatch => ({
 	showUsers:userInfo => dispatch(showUsers(userInfo)),
-	showModalEdit :modal => dispatch(showModalEdit(modal))
+	showModalEdit:modal => dispatch(showModalEdit(modal)),
+	deleteUser:del => dispatch(deleteUser(del))
 })
 const mapStateToProps = state =>({
   testStore: state

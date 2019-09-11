@@ -75,19 +75,6 @@ export const hideModal = () =>{
 	}
 
 }
-export const deleteUser = () =>{
-	return dispath=>{
-		const options = {
-			url:'/',
-			type:'delete',
-		}
-		requestHendler(options)
-		.then(res =>{
-			console.log(res)
-		})
-	}
-}
-
 export const showModalEdit = () =>{
 	return dispatch =>{
 		dispatch({type:'OPEN_MODAL__EDIT',payload:true});
@@ -96,6 +83,45 @@ export const showModalEdit = () =>{
 export const closeModalEdit = () =>{
 	return dispatch =>{
 		dispatch({type:'CLOSE_MODAL__EDIT',payload:false});
+	}
+}
+
+export const addUser = (user) =>{
+
+	return dispatch =>{
+		console.log(user);
+
+		const options = {
+			url:'/create',
+			type:'post',
+			data: JSON.stringify(user),
+			}
+			requestHendler(options)
+			.then(res =>{
+				console.log(res)
+			})
+			dispatch({type:'CLOSE_MODAL__EDIT',payload:false});
+
+	}
+}
+
+export const deleteUser = (id) =>{
+
+	return dispatch =>{
+	
+		const options = {
+			url:`/delete/${id}`,
+			type:'delete',
+			// data:id
+			}
+			console.log(options);
+			requestHendler(options)
+			.then(res =>{
+				console.log(res)
+				dispatch(showUsers());
+
+			})
+
 	}
 }
 
