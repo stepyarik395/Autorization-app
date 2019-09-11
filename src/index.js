@@ -13,7 +13,9 @@ const initialState = {
   currentUserToken: {},
   showModalError:false,
   showModalEdit:false,
+  showModalUpdate:false,
   ErrorText:"",
+  selectUser:{},
   arrUsers:[]
 }
 const reducers = (state = initialState, action) =>{
@@ -28,10 +30,16 @@ const reducers = (state = initialState, action) =>{
         return {...state, ErrorText: action.payload}
         case 'SHOW_USERS':
         return {...state, arrUsers: action.payload}
-        case 'OPEN_MODAL__EDIT':
+        case 'OPEN_MODAL_EDIT':
         return {...state, showModalEdit: action.payload}
-        case 'CLOSE_MODAL__EDIT':
+        case 'CLOSE_MODAL_EDIT':
         return {...state, showModalEdit: action.payload}
+        case 'SHOW_MODAL_UPDATE':
+        return {...state, showModalUpdate: action.payload}
+        case 'CLOSE_MODAL_UPDATE':
+        return {...state, showModalUpdate: action.payload}
+        case 'SELECT_USER':
+        return {...state, selectUser: action.payload}
     default:
       return state;
   }

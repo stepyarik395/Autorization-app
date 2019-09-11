@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import {WrapperModalEdit,StyleContainerModal,StyleInput,StyleButtonAdd,ButtonCloseEdit,StyleTitle} from "./ModalStyles";
 import {MdClear} from 'react-icons/md';
-import {closeModalEdit} from '../Actions/Actions';
+import {closeModalUpdate} from '../Actions/Actions';
 import {connect} from "react-redux";
 import {addUser} from '../Actions/Actions';
+import {selectUser} from '../Actions/Actions';
+import {updateUser} from '../Actions/Actions';
 
 
-class ModalEdit extends Component{
+class ModalUpdate extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -21,8 +23,11 @@ class ModalEdit extends Component{
 				this.handleSalary = this.handleSalary.bind(this);
 				this.handlePosition = this.handlePosition.bind(this);
 				this.handleGender = this.handleGender.bind(this);
-				this.closeModalEdit = this.closeModalEdit.bind(this);
-				this.addUser = this.addUser.bind(this);
+				this.closeModalUpdate = this.closeModalUpdate.bind(this);
+				this.updateUser = this.updateUser.bind(this);
+
+		}
+		componentDidMount(){
 
 		}
 		handleName(e){
@@ -40,46 +45,47 @@ class ModalEdit extends Component{
 		handleGender(e){
 			this.setState({ gender: e.target.value });
 		}
-		closeModalEdit(){
-			this.props.closeModalEdit();
+		closeModalUpdate(){
+			this.props.closeModalUpdate();
 		}
-		addUser(){
-			this.props.addUser(this.state);
+		updateUser(){
+			this.props.updateUser(this.state);
 		}
     render(){
+			console.log(this.props.testStore.selectUser.firstName)
         return(
 					<StyleContainerModal >
             <WrapperModalEdit>
-							<StyleTitle>Add user</StyleTitle>
-								<StyleInput value={this.state.firstName}
+							<StyleTitle>Update user</StyleTitle>
+								<StyleInput value={this.props.testStore.selectUser.firstName}
 								onChange={this.handleName}
 								type="text"
 								placeholder = "First Name"
 								>
 								</StyleInput>
-								<StyleInput value={this.state.lastName}
+								<StyleInput value={this.props.testStore.selectUser.lastName}
 								onChange={this.handleLastName}
 								type="text"
 								placeholder = "Last Name"
 								>
 								</StyleInput>
-								<StyleInput value={this.state.salary}
+								<StyleInput value={this.props.testStore.selectUser.salary}
 								onChange={this.handleSalary}
 								type="text"
 								placeholder = "Salary"
 								></StyleInput>
-								<StyleInput value={this.state.position}
+								<StyleInput value={this.props.testStore.selectUser.position}
 								onChange={this.handlePosition}
 								placeholder = "Position"
 								type="text"
 								></StyleInput>
-								<StyleInput value={this.state.gender}
+								<StyleInput value={this.props.testStore.selectUser.gender}
 								onChange={this.handleGender}
 								type="text"
 								placeholder = "Gender"
 								></StyleInput>
-                <StyleButtonAdd onClick={this.addUser}>Add</StyleButtonAdd>
-                <ButtonCloseEdit onClick={this.closeModalEdit}><MdClear /></ButtonCloseEdit>
+                <StyleButtonAdd onClick={this.updateUser}>Update</StyleButtonAdd>
+                <ButtonCloseEdit onClick={this.closeModalUpdate}><MdClear /></ButtonCloseEdit>
             </WrapperModalEdit>
 					</StyleContainerModal>
 
@@ -88,13 +94,15 @@ class ModalEdit extends Component{
 
 }
 
-
 const mapDispatchToProps = dispatch => ({
-	closeModalEdit:colol => dispatch(closeModalEdit(colol)),
-	addUser:daet => dispatch(addUser(daet)),
+	closeModalUpdate:colol => dispatch(closeModalUpdate(colol)),
+	addUser:add => dispatch(addUser(add)),
+	selectUser: select => dispatch(selectUser(select)),
+	updateUser: update => dispatch(updateUser(update)),
+	
 
 })
 const mapStateToProps = state =>({
   testStore: state
 })
-export default connect(mapStateToProps,mapDispatchToProps)(ModalEdit)
+export default connect(mapStateToProps,mapDispatchToProps)(ModalUpdate)

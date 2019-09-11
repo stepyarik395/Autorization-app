@@ -8,6 +8,8 @@ import {deleteUser} from '../Actions/Actions';
 import { MdCreate} from 'react-icons/md';
 import { MdDelete,MdAdd} from 'react-icons/md';
 import ModalEdit from "../Modals/ModalEdit";
+import {showModalUpdate} from '../Actions/Actions';
+import ModalUpdate from '../Modals/ModalUpdate';
 
 
 
@@ -16,6 +18,7 @@ class Main extends Component{
 		super(props);
 		this.openModalEdit = this.openModalEdit.bind(this);
 		this.deleteUser = this.deleteUser.bind(this);
+		this.updateUser = this.updateUser.bind(this);
 	}
 
 	componentDidMount() {
@@ -25,22 +28,23 @@ class Main extends Component{
 		localStorage.clear()
 	}
 	openModalEdit(){
-		this.props.showModalEdit()
+		this.props.showModalEdit();
 	}
 	deleteUser(id){
 		this.props.deleteUser(id);
+	}
+	updateUser(item){
+	this.props.showModalUpdate(item);
 	}
 	render(){
 		console.log(this.props.testStore.arrUsers);
   	return(
     	<div>
-				
       	<div className="wpapper__main__button">
           	<Link to="/"><StyleButton onClick = {this.clearLocalStorage}>Out</StyleButton></Link>
           </div>
-
 					{this.props.testStore.showModalEdit ? <ModalEdit /> : null}
-					
+					{this.props.testStore.showModalUpdate ? <ModalUpdate /> : null}
 						<StyleMain>
 							<StyleWrapperDiv>
 								<table>
@@ -60,16 +64,15 @@ class Main extends Component{
 												<th>{item.firstName}</th>
 												<th>{item.lastName}</th>
 												<th>{item.salary}</th>
-												<th>{item.gender}</th>
 												<th>{item.position}</th>
-												<th><StyleEditButton><MdCreate /></StyleEditButton>
+												<th>{item.gender}</th>
+												<th><StyleEditButton onClick={() => this.updateUser(item)}><MdCreate /></StyleEditButton>
 												<StyleEditButton onClick={() => this.deleteUser(item._id)}><MdDelete /></StyleEditButton></th>
 												</tr>
 											</tbody>
 										})}
 								</table>
 							</StyleWrapperDiv>
-
 							<StyleButtonEdit onClick={this.openModalEdit}>
 							<MdAdd />
 							</StyleButtonEdit>
@@ -82,7 +85,8 @@ class Main extends Component{
 const mapDispatchToProps = dispatch => ({
 	showUsers:userInfo => dispatch(showUsers(userInfo)),
 	showModalEdit:modal => dispatch(showModalEdit(modal)),
-	deleteUser:del => dispatch(deleteUser(del))
+	deleteUser:del => dispatch(deleteUser(del)),
+	showModalUpdate:tako => dispatch(showModalUpdate(tako))
 })
 const mapStateToProps = state =>({
   testStore: state

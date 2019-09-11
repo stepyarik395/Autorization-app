@@ -68,8 +68,8 @@ justify-content:center;
 font-size:2rem;
 background-color:#9932CC;
 color:#fff;
-width:100px;
-height:100px;
+width:70px;
+height:70px;
 border-radius:50%;
 border:none;
 `
