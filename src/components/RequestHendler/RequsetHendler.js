@@ -9,6 +9,7 @@
       let axiosOptions = {
         url: options.url,
         method: options.type,
+
         headers: {
           'Content-Type': 'application/json',
           'x-access-token':token

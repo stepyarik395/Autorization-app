@@ -65,6 +65,7 @@ console.log(users);
 			.then(res =>{
 				console.log(res);
 				dispatch({type:'SHOW_USERS',payload:res.data.workers});
+				dispatch({type:'ADD_PAGES',payload:res.data.pages});
 			})
 		}
 	}
@@ -99,9 +100,11 @@ export const addUser = (user) =>{
 			requestHendler(options)
 			.then(res =>{
 				console.log(res)
+				dispatch(showUsers());
+				dispatch({type:'CLOSE_MODAL_EDIT',payload:false});
 			})
-			dispatch(showUsers());
-			dispatch({type:'CLOSE_MODAL_EDIT',payload:false});
+			// 
+			
 
 	}
 }
@@ -157,7 +160,30 @@ export const updateUser = (user) =>{
 	
 	}
 }
-	
+
+export const 	selectPage = (item) =>{
+	return dispatch =>{
+		const options = {
+			url:'/',
+			type:'post',
+			data:{
+				page: item
+			}
+
+			}
+			requestHendler(options)
+			.then(res=>{
+				console.log(res)
+				console.log(res.data)
+				dispatch({type:'SELECT_PAGE',payload:item});
+				// console.log(res)
+				dispatch({type:'SHOW_USERS',payload:res.data.workers});
+				history.push(`/main/${item}`);
+			})
+
+	}
+}
+
 
 
 	

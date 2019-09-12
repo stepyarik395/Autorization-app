@@ -3,7 +3,6 @@ import {WrapperModalEdit,StyleContainerModal,StyleInput,StyleButtonAdd,ButtonClo
 import {MdClear} from 'react-icons/md';
 import {closeModalUpdate} from '../Actions/Actions';
 import {connect} from "react-redux";
-import {addUser} from '../Actions/Actions';
 import {selectUser} from '../Actions/Actions';
 import {updateUser} from '../Actions/Actions';
 import Fade from 'react-reveal/Fade';
@@ -54,7 +53,6 @@ class ModalUpdate extends Component{
 			this.props.updateUser(this.state);
 		}
     render(){
-			console.log(this.props.testStore.selectUser.firstName)
         return(
 					<div>
 					

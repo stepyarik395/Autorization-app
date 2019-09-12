@@ -16,7 +16,12 @@ const initialState = {
   showModalUpdate:false,
   ErrorText:"",
   selectUser:{},
-  arrUsers:[]
+  arrUsers:[],
+  pages:[],
+  page:[]
+  
+
+
 }
 const reducers = (state = initialState, action) =>{
   switch (action.type) {
@@ -40,6 +45,12 @@ const reducers = (state = initialState, action) =>{
         return {...state, showModalUpdate: action.payload}
         case 'SELECT_USER':
         return {...state, selectUser: action.payload}
+        case 'ADD_PAGES':
+          return {...state, pages: action.payload}
+          // case 'ADD_PAGE':
+          //   return {...state, page: action.payload}
+            case 'SELECT_PAGE':
+              return {...state, page: action.payload}
     default:
       return state;
   }
@@ -50,7 +61,7 @@ console.log(store.getState());
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <App />
+      <App history={history}/>
     </Router>
     </Provider>,
   document.getElementById('root')

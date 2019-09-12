@@ -4,13 +4,16 @@ import Sign from './components/Sign/Sign';
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import Main from "./components/Main/Main";
-import { Route,Redirect } from 'react-router-dom';
+import { Route,Redirect,withRouter } from 'react-router-dom';
 
 
 
 
 class App extends Component {
   
+  componentDidMount(){
+    console.log("1111",this.props)
+  }  
 
   render() {
    
@@ -37,6 +40,13 @@ class App extends Component {
               <Login/>
             )
            )} />
+             <Route exact path="/main/:id" render={() => (
+            localStorage.getItem('token') ? (
+              <Main />
+            ) : (
+              <Redirect to ="/register" />
+            )
+           )} />
             <Route exact path="/main" render={() => (
             localStorage.getItem('token') ? (
               <Main />
@@ -48,5 +58,5 @@ class App extends Component {
     );
   }
 }
-export default App;
+export default withRouter(App);
   

@@ -10,6 +10,7 @@ import { MdDelete,MdAdd} from 'react-icons/md';
 import ModalEdit from "../Modals/ModalEdit";
 import {showModalUpdate} from '../Actions/Actions';
 import ModalUpdate from '../Modals/ModalUpdate';
+import Pagination from '../Pagination/Pagination';
 
 
 
@@ -37,8 +38,9 @@ class Main extends Component{
 	this.props.showModalUpdate(item);
 	}
 	render(){
-		console.log(this.props.testStore.arrUsers);
   	return(
+		
+		
     	<div>
       	<div className="wpapper__main__button">
           	<Link to="/"><StyleButton onClick = {this.clearLocalStorage}>Out</StyleButton></Link>
@@ -73,10 +75,10 @@ class Main extends Component{
 										})}
 								</table>
 							</StyleWrapperDiv>
-							<StyleButtonEdit onClick={this.openModalEdit}>
-							<MdAdd />
-							</StyleButtonEdit>
-							
+							<Pagination />
+								<StyleButtonEdit onClick={this.openModalEdit}>
+								<MdAdd />
+								</StyleButtonEdit>
 						</StyleMain>
       		</div>
         );
