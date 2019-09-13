@@ -16,7 +16,7 @@ console.log(users);
 				localStorage.setItem("token", res.data.token);
 				console.log(res.status);
 				if(res.status === 200){
-				history.push('/main');
+				history.push('/main/1');
 				}
 			})
 			.catch(error => {
@@ -66,6 +66,7 @@ console.log(users);
 				console.log(res);
 				dispatch({type:'SHOW_USERS',payload:res.data.workers});
 				dispatch({type:'ADD_PAGES',payload:res.data.pages});
+				dispatch({type:'ADD_PAGE',payload:res.data.page});
 			})
 		}
 	}
@@ -178,6 +179,7 @@ export const 	selectPage = (item) =>{
 				dispatch({type:'SELECT_PAGE',payload:item});
 				// console.log(res)
 				dispatch({type:'SHOW_USERS',payload:res.data.workers});
+				// dispatch({type:'ACTIVE_PAGE',payload:true})
 				history.push(`/main/${item}`);
 			})
 
@@ -185,5 +187,11 @@ export const 	selectPage = (item) =>{
 }
 
 
+// export const 	activePage = () =>{
+// 	return dispatch =>{
+// 		dispatch({type:'ACTIVE_PAGE',payload:'one'})
+// 	}
+
+// }
 
 	

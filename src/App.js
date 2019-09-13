@@ -47,13 +47,13 @@ class App extends Component {
               <Redirect to ="/register" />
             )
            )} />
-            <Route exact path="/main" render={() => (
+            {/* <Route exact path="/main/:1" render={() => (
             localStorage.getItem('token') ? (
               <Main />
             ) : (
               <Redirect to ="/register" />
             )
-           )} />
+           )} /> */}
         </div>
     );
   }
