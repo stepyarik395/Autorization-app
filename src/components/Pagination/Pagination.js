@@ -3,21 +3,29 @@ import { connect } from "react-redux";
 import {selectPage} from '../Actions/Actions';
 import {StyleDottsButton} from './StylePagination';
 import {activePage} from '../Actions/Actions';
+import {nextPage} from '../Actions/Actions';
+import {prevPage} from '../Actions/Actions';
+
 
 class Pagination extends Component{
 	constructor(props){
 		super(props)
 		this.state = {
 		}
-		this.someFunct = this.someFunct.bind(this);
-
+		this.nextPage = this.nextPage.bind(this);
+		this.prevPage=this.prevPage.bind(this);
 	}
+
+
 	selectPage(item,event){
 		this.props.selectPage(item)
 	}
-	someFunct() {
-    this.setState({ active: name })
-}
+	nextPage(){
+	this.props.nextPage(this.props.testStore.page)
+	}
+	prevPage(){
+		this.props.prevPage(this.props.testStore.page)
+	}
     render(){
 			console.log(this.props.testStore)
 			const arr = []
@@ -27,12 +35,16 @@ class Pagination extends Component{
 
         return(
             <div>
+							<button disabled = {this.props.testStore.page===1} onClick={this.prevPage}>prev</button>
 							{
 								arr.map((item,i)=>{
-								return <StyleDottsButton  onClick={()=>this.selectPage(item,event)}key={i}>{i+1}</StyleDottsButton>
+								return <StyleDottsButton 
+								className = {this.props.testStore.page === item &&`active`}
+								onClick={()=>this.selectPage(item,event)}
+								key={i}>{i+1}</StyleDottsButton>
 								})
-								
 							}
+								<button disabled = {this.props.testStore.page===this.props.testStore.pages}onClick={this.nextPage}>next</button>
 
             </div>
         )
@@ -41,7 +53,9 @@ class Pagination extends Component{
 }
 const mapDispatchToProps = dispatch => ({
 	selectPage: select => dispatch(selectPage(select)),
-	activePage:active =>dispatch(activePage(active))
+	activePage:active =>dispatch(activePage(active)),
+	nextPage:next =>dispatch(nextPage(next)),
+	prevPage:prev =>dispatch(prevPage(prev))
 
 })
 

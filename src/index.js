@@ -19,7 +19,6 @@ const initialState = {
   arrUsers:[],
   pages:[],
   page:[],
-  active:"active"
   
 
 
@@ -52,8 +51,8 @@ const reducers = (state = initialState, action) =>{
         return {...state, page: action.payload}
         case 'SELECT_PAGE':
         return {...state, page: action.payload}
-        // case 'ACTIVE_PAGE':
-        //   return {...state, active: action.payload}
+        case 'NEXT_PAGE':
+          return {...state, page: action.payload}
     default:
       return state;
   }
