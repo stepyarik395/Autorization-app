@@ -48,16 +48,31 @@ body {
   position: absolute;
 }
 
-/* .active1
-  background-color: red;
-}
-.active2{
-  background-color: red;
-}
-.active3{
-  background-color: red;
-} */
 .active{
   color:#fff;
   background-color: red;
 }
+/* .wrapper12355{
+  width:275px;
+  overflow: hidden;
+display: flex;
+} */
+.buttons{
+position:relative;
+outline:none;
+border:2px solid #9932CC;
+cursor:pointer;
+margin-top:10px;
+margin-left:5px;
+margin-right:5px;
+border-radius:50%;
+ margin:5px;
+width:30px;
+height:30px;
+background-color:transparent;
+
+}
+/* .dib{
+  position: relative;
+} */
+

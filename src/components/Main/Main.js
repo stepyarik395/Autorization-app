@@ -20,10 +20,8 @@ class Main extends Component{
 		this.openModalEdit = this.openModalEdit.bind(this);
 		this.deleteUser = this.deleteUser.bind(this);
 		this.updateUser = this.updateUser.bind(this);
-		this.state = {
-		}
-	}
 
+	}
 	componentDidMount(){
 		this.props.showUsers();
 	}
@@ -40,9 +38,10 @@ class Main extends Component{
 	updateUser(item){
 	this.props.showModalUpdate(item);
 	}
+
+
 	render(){
 	
-
 
   	return(
 		

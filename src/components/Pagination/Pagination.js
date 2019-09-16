@@ -7,45 +7,58 @@ import {nextPage} from '../Actions/Actions';
 import {prevPage} from '../Actions/Actions';
 
 
+
+
+
+
 class Pagination extends Component{
 	constructor(props){
 		super(props)
 		this.state = {
+			
 		}
 		this.nextPage = this.nextPage.bind(this);
 		this.prevPage=this.prevPage.bind(this);
+	
 	}
-
 
 	selectPage(item,event){
 		this.props.selectPage(item)
 	}
 	nextPage(){
-	this.props.nextPage(this.props.testStore.page)
+
+		this.props.nextPage(this.props.testStore.page)
 	}
 	prevPage(){
 		this.props.prevPage(this.props.testStore.page)
 	}
+
+	pager(){
+		const page = this.props.testStore.page;
+		const pages = this.props.testStore.pages;
+		const arr = []
+		for(let i = 1;i <=this.props.testStore.pages;i++){
+			arr.push(i)
+
+		}
+			return arr
+			
+	}
     render(){
-			console.log(this.props.testStore)
-			const arr = []
-			for(let i = 1;i <=this.props.testStore.pages;i++){
-				arr.push(i)
-			}
-
         return(
-            <div>
-							<button disabled = {this.props.testStore.page===1} onClick={this.prevPage}>prev</button>
-							{
-								arr.map((item,i)=>{
-								return <StyleDottsButton 
-								className = {this.props.testStore.page === item &&`active`}
-								onClick={()=>this.selectPage(item,event)}
-								key={i}>{i+1}</StyleDottsButton>
-								})
+							<div>
+								{
+								 this.pager().map((item,i)=>{
+								 return <StyleDottsButton 
+								 className = {this.props.testStore.page === item &&`active`}
+								 onClick={()=>this.selectPage(item,event)}
+								 key={i}>{i+1}
+								 </StyleDottsButton>
+								 })
+								
 							}
+								<button disabled = {this.props.testStore.page===1} onClick={this.prevPage}>prev</button>
 								<button disabled = {this.props.testStore.page===this.props.testStore.pages}onClick={this.nextPage}>next</button>
-
             </div>
         )
     }

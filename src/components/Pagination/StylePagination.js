@@ -15,4 +15,6 @@ border-radius:50%;
 width:30px;
 height:30px;
 background-color:transparent;
+// :nth-child(1){
+// }
 `
