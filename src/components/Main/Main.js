@@ -21,6 +21,10 @@ class Main extends Component{
 		this.deleteUser = this.deleteUser.bind(this);
 		this.updateUser = this.updateUser.bind(this);
 
+		this.state = {
+	
+		}
+
 	}
 	componentDidMount(){
 		this.props.showUsers();
@@ -44,8 +48,7 @@ class Main extends Component{
 	
 
   	return(
-		
-		
+	
     	<div>
       	<div className="wpapper__main__button">
           	<Link to="/"><StyleButton onClick = {this.clearLocalStorage}>Out</StyleButton></Link>
@@ -80,7 +83,7 @@ class Main extends Component{
 										})}
 								</table>
 							</StyleWrapperDiv>
-							<Pagination />
+							<Pagination/>
 								<StyleButtonEdit onClick={this.openModalEdit}>
 								<MdAdd />
 								</StyleButtonEdit>
