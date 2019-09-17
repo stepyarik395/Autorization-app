@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {Link,withRouter} from 'react-router-dom';
 import {StyleButton,StyleMain,StyleWrapperDiv,StyleEditButton,StyleButtonEdit} from "./StyleMain";
 import { connect } from "react-redux";
 import {showUsers} from '../Actions/Actions';
@@ -27,7 +27,14 @@ class Main extends Component{
 
 	}
 	componentDidMount(){
-		this.props.showUsers();
+		console.log(this.props.match.params)
+		let str = "";
+    console.log("1111",this.props.location.pathname);
+    this.props.history.push(this.props.location.pathname)
+    str = this.props.location.pathname.split("/");
+		let i = +str.pop();
+		this.props.showUsers(i);
+
 	}
 
 	clearLocalStorage(){
@@ -45,7 +52,7 @@ class Main extends Component{
 
 
 	render(){
-	
+	console.log(this.props.testStore.page)
 
   	return(
 	
@@ -104,4 +111,4 @@ const mapStateToProps = state =>({
 
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Main)
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Main))

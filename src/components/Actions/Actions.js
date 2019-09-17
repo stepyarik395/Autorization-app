@@ -53,17 +53,21 @@ console.log(users);
 		}
 	}
 	
-	export const showUsers = () =>{
+	export const showUsers = (i) =>{
 
 		return dispatch =>{
 
 			const options = {
 				url:'/',
 				type:'post',
+				data:{
+					page:i
+				}
 			}
 			requestHendler(options)
 			.then(res =>{
 				console.log(res);
+
 				dispatch({type:'SHOW_USERS',payload:res.data.workers});
 				dispatch({type:'ADD_PAGES',payload:res.data.pages});
 				dispatch({type:'ADD_PAGE',payload:res.data.page});
@@ -103,6 +107,7 @@ export const addUser = (user) =>{
 				console.log(res)
 				dispatch(showUsers());
 				dispatch({type:'CLOSE_MODAL_EDIT',payload:false});
+
 			})
 			// 
 			

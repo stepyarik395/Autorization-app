@@ -18,9 +18,7 @@ class Pagination extends Component{
 		this.prevPage = this.prevPage.bind(this);
 		this.handlePagination = this.handlePagination.bind(this);
 	}
-
-
-
+	
 	nextPage(){
 		this.props.nextPage(this.props.testStore.page)
 	}
