@@ -30,7 +30,6 @@ class Main extends Component{
 		const currentId = parseInt(this.props.match.params.id)
 		 this.props.history.push(this.props.location.pathname)
 		this.props.showUsers(currentId);
-
 	}
 
 	clearLocalStorage(){
