@@ -11,6 +11,7 @@ import ModalEdit from "../Modals/ModalEdit";
 import {showModalUpdate} from '../Actions/Actions';
 import ModalUpdate from '../Modals/ModalUpdate';
 import Pagination from '../Pagination/Pagination';
+import Search from '../Search/Search';
 
 
 
@@ -57,6 +58,7 @@ class Main extends Component{
           </div>
 					{this.props.testStore.showModalEdit ? <ModalEdit /> : null}
 					{this.props.testStore.showModalUpdate ? <ModalUpdate /> : null}
+					<Search />
 						<StyleMain>
 							<StyleWrapperDiv>
 								<table>

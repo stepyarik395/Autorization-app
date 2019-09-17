@@ -238,6 +238,31 @@ export const prevPage = (current) =>{
 	}
 
 }
+export const searchItems = (searchText) =>{
+	return dispatch =>{
+	
+		const options = {
+			url:'/',
+			type:'post',
+			data:{
+				q:searchText
+			}
+			}
+			console.log(options)
+			requestHendler(options)
+		
+			.then(res=>{
+				console.log(res)
+				console.log(res.data)
+				
+				dispatch({type:'SHOW_USERS',payload:res.data.workers});
+				dispatch({type:'ADD_PAGES',payload:res.data.pages});
+				dispatch({type:'ADD_PAGE',payload:res.data.page});
+			})
+
+	}
+
+}
 
 
 

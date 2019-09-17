@@ -84,3 +84,6 @@ background-color:transparent;
 .pagination{
   margin-top:20px;
 }
+::placeholder{
+color:#fff;
+}
