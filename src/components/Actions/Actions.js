@@ -162,13 +162,13 @@ export const updateUser = (user) =>{
 	}
 }
 
-export const selectPage = (item) =>{
+export const selectPage = (i) =>{
 	return dispatch =>{
 		const options = {
 			url:'/',
 			type:'post',
 			data:{
-				page: item
+				page: i
 			}
 
 			}
@@ -176,9 +176,9 @@ export const selectPage = (item) =>{
 			.then(res=>{
 				console.log(res)
 				console.log(res.data)
-				dispatch({type:'SELECT_PAGE',payload:item});
+				dispatch({type:'SELECT_PAGE',payload:i});
 				dispatch({type:'SHOW_USERS',payload:res.data.workers});
-				history.push(`/main/${item}`);
+				history.push(`/main/${i}`);
 			})
 
 	}

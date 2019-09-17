@@ -1,6 +1,7 @@
 import React from 'react';
+import {StyleSection,StyleDottsButton} from "./StylePaginator";
 
-const paginate = (currentPage, lastPage, clickEvent) => {
+ export const paginate = (currentPage, lastPage, clickEvent) => {
   const delta = 1;
   const range = [];
 
@@ -24,21 +25,21 @@ const paginate = (currentPage, lastPage, clickEvent) => {
       <button
         value={i}
         key={index}
-        onClick={clickEvent}
-        className={currentPage === i ? "active" : ""}
+        onClick={()=>clickEvent(i)}
+        className={currentPage === i ? "active" : "buttons"}
       >{i}</button>
       : <span key={index}>{i}</span>
   )
   });
 };
 
-const TestPagin = ({ currentPage, lastPage, clickEvent }) =>{
+const Paginator = ({ currentPage, lastPage, clickEvent }) =>{
   return(
-    <section className="pagination">
+    <StyleSection className="pagination">
       {paginate(currentPage, lastPage, clickEvent)}
-    </section>
+    </StyleSection>
   )
 };
 
 
-export default TestPagin;
+export default Paginator;
