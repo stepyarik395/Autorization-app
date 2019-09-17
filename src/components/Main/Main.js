@@ -27,13 +27,9 @@ class Main extends Component{
 
 	}
 	componentDidMount(){
-		console.log(this.props.match.params)
-		let str = "";
-    console.log("1111",this.props.location.pathname);
-    this.props.history.push(this.props.location.pathname)
-    str = this.props.location.pathname.split("/");
-		let i = +str.pop();
-		this.props.showUsers(i);
+		const currentId = parseInt(this.props.match.params.id)
+		 this.props.history.push(this.props.location.pathname)
+		this.props.showUsers(currentId);
 
 	}
 
