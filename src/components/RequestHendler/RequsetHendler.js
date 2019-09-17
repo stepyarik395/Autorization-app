@@ -1,10 +1,9 @@
-
-  import axios from 'axios';
-  import qs from 'qs';
-  export default function requestHendler(options){
-		const token = localStorage.getItem('token');
-      options.data = options.data || {}
-      options.url = process.env.REACT_APP_API_URL + options.url
+import axios from 'axios';
+import qs from 'qs';
+export default function requestHendler(options){
+  const token = localStorage.getItem('token');
+    options.data = options.data || {}
+    options.url = process.env.REACT_APP_API_URL + options.url
     console.log(options)
       let axiosOptions = {
         url: options.url,

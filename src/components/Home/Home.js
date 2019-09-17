@@ -14,7 +14,6 @@ class Mainpage extends Component{
           <Link to="/login"><StyleButton>Sign in</StyleButton></Link>
         </div>
       </div>
-
     );
   }
 }

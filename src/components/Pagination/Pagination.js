@@ -30,20 +30,24 @@ class Pagination extends Component{
 	}
 
     render(){
-        return(
-							<div>
-									<Paginator currentPage={this.props.testStore.page} lastPage={this.props.testStore.pages} clickEvent={this.handlePagination} />
-										<StyleWrapperPagin>
-										<StylePrev disabled = {this.props.testStore.page===1}
-										onClick={this.prevPage}><MdKeyboardArrowLeft /></StylePrev>
-										<StyleNext disabled = {this.props.testStore.page===this.props.testStore.pages}
-										onClick={this.nextPage}>
-										<MdKeyboardArrowRight /></StyleNext>
-										</StyleWrapperPagin>
-							</div>
-        )
-    }
-
+    	return(
+				<div>
+					<Paginator currentPage={this.props.testStore.page} lastPage={this.props.testStore.pages} clickEvent={this.handlePagination} />
+						<StyleWrapperPagin>
+							<StylePrev 
+								disabled={this.props.testStore.page===1}
+								onClick={this.prevPage}>
+								<MdKeyboardArrowLeft />
+							</StylePrev>
+							<StyleNext
+								 	disabled={this.props.testStore.page===this.props.testStore.pages}
+									onClick={this.nextPage}>
+									<MdKeyboardArrowRight />
+							</StyleNext>
+							</StyleWrapperPagin>	
+				</div>
+  	)
+  }
 }
 const mapDispatchToProps = dispatch => ({
 	selectPage: select => dispatch(selectPage(select)),

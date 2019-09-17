@@ -41,16 +41,16 @@ class App extends Component {
             localStorage.getItem('token') ? (
               
               <Main />,
-              <Redirect to ="/main/1" />
+              <Redirect to="/main/1" />
             ) : (
-              <Redirect to ="/register" />
+              <Redirect to="/register" />
             )
            )} />
             <Route path="/main/:id" render={() => (
             localStorage.getItem('token') ? (
               <Main />
             ) : (
-              <Redirect to ="/register" />
+              <Redirect to="/register" />
             )
            )} />
         </div>

@@ -1,5 +1,3 @@
-
-
 import styled from 'styled-components';
 
 export const StyleTitle = styled.h1`
@@ -8,9 +6,6 @@ export const StyleTitle = styled.h1`
   position:absolute;
   top:10%;
   left:40%;
-`
-export const StyleWrapper = styled.div`
-
 `
 export const StyleButton = styled.button`
 min-width:200px;

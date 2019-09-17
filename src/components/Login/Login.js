@@ -7,7 +7,7 @@ import ModalError from '../Modals/ModalError';
 class Login extends Component{
   constructor(props){
     super(props)
-    this.state = {
+      this.state = {
       name: "",
       password: "",
       email:"",
@@ -19,7 +19,7 @@ class Login extends Component{
   }
   valueName(e){
     this.setState({ name: e.target.value });
-      }
+  }
   valuePassword(e){
     this.setState({ password: e.target.value });
   }
@@ -35,29 +35,29 @@ class Login extends Component{
     return(
       <div className="global">
          {this.props.testStore.showModalError ? <ModalError inputValue={this.state} />: null}
-        <div className="wrapper__login">
-          <form onSubmit={this.handleSubmit}>
-          <label>name</label>
-          <input 
-            onChange={this.valueName}
-            type="text"
-            value={this.state.name}>
-           </input>
-          <label>email</label>
-          <input
-            onChange={this.valueEmail}
-            type="email"
-            value={this.state.email}>
-            </input>
-          <label>password</label>
-          <input
-            onChange={this.valuePassword}
-            type="password"
-            value={this.state.password}>
-           </input>
-          <br></br>
-          {this.state.password.length < 6 ? <ErrorPassword /> : null}
-          <button type="submit">Login in</button>
+          <div className="wrapper__login">
+           <form onSubmit={this.handleSubmit}>
+              <label>name</label>
+                <input 
+                  onChange={this.valueName}
+                  type="text"
+                  value={this.state.name}>
+                </input>
+               <label>email</label>
+                <input
+                   onChange={this.valueEmail}
+                    type="email"
+                    value={this.state.email}>
+                </input>
+                <label>password</label>
+                  <input
+                    onChange={this.valuePassword}
+                    type="password"
+                    value={this.state.password}>
+                  </input>
+                  <br></br>
+                    {this.state.password.length < 6 ? <ErrorPassword /> : null}
+                 <button type="submit">Login in</button>
           </form>
          </div>
         </div>

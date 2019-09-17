@@ -21,20 +21,15 @@ class Main extends Component{
 		this.openModalEdit = this.openModalEdit.bind(this);
 		this.deleteUser = this.deleteUser.bind(this);
 		this.updateUser = this.updateUser.bind(this);
-
-		this.state = {
-	
-		}
-
 	}
 	componentDidMount(){
-		const currentId = parseInt(this.props.match.params.id)
-		 this.props.history.push(this.props.location.pathname)
+		let currentId = parseInt(this.props.match.params.id);
+		this.props.history.push(this.props.location.pathname);
 		this.props.showUsers(currentId);
 	}
 
 	clearLocalStorage(){
-		localStorage.clear()
+		localStorage.clear();
 	}
 	openModalEdit(){
 		this.props.showModalEdit();
@@ -48,14 +43,11 @@ class Main extends Component{
 
 
 	render(){
-	console.log(this.props.testStore.page)
-
   	return(
-	
     	<div>
       	<div className="wpapper__main__button">
-          	<Link to="/"><StyleButton onClick = {this.clearLocalStorage}>Out</StyleButton></Link>
-          </div>
+        	<Link to="/"><StyleButton onClick={this.clearLocalStorage}>Out</StyleButton></Link>
+        </div>
 					{this.props.testStore.showModalEdit ? <ModalEdit /> : null}
 					{this.props.testStore.showModalUpdate ? <ModalUpdate /> : null}
 					<Search />

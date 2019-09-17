@@ -1,6 +1,4 @@
-import styled,{keyframes} from 'styled-components';
-
-
+import styled from 'styled-components';
 
 export const DivWrapperModal = styled.div`
 border-radius:10px;

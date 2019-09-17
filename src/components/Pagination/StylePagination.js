@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-
-
-
-
 export const StylePrev = styled.button`
 cursor:ponter;
 outline:none;

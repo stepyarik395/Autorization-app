@@ -31,10 +31,10 @@ class Search extends Component{
 								<StyleSearch 
 								value={this.state.searchValue}
 								onChange={this.inputChangeValue}
-								placeholder = "Search"
-								type = "text">
+								placeholder="Search"
+								type="text">
 								</StyleSearch>
-								<StyleButton onClick = {this.heandleSearch}><MdSearch /></StyleButton>
+								<StyleButton onClick={this.heandleSearch}><MdSearch /></StyleButton>
             </StyleWrapper>
 
         );

@@ -4,9 +4,6 @@ import { connect } from "react-redux";
 import { hideModal } from '../Actions/Actions';
 
 class ModalErrorLogin extends Component{
-	constructor(){
-		super();
-	}
 
 	componentDidMount(){
 		this.setState(()=>{
@@ -17,15 +14,15 @@ class ModalErrorLogin extends Component{
 	}
 	render(){
 		const{ErrorText}=this.props
-		return(
-			<div>
+			return(
+				<div>
 					<DivWrapperModal>
 						<DivFlexContainer>
 							<StyleSpanText>
 								 {ErrorText}
 								</StyleSpanText>
 						</DivFlexContainer>
-					<StyleButtonClose onClick = {this.props.hideModal}>close</StyleButtonClose>
+					<StyleButtonClose onClick={this.props.hideModal}>close</StyleButtonClose>
 				</DivWrapperModal>    
       </div>
 		);

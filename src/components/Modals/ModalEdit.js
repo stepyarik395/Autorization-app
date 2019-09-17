@@ -8,15 +8,15 @@ import Fade from 'react-reveal/Fade';
 
 
 class ModalEdit extends Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            firstName:"",
-            lastName:"",
-            salary:"",
-            position:"",
-						gender:"",
-				}
+	constructor(props){
+  	super(props)
+    	this.state = {
+      	firstName:"",
+        lastName:"",
+        salary:"",
+        position:"",
+				gender:"",
+			}
 				this.handleName=this.handleName.bind(this);
 				this.handleLastName=this.handleLastName.bind(this);
 				this.handleSalary=this.handleSalary.bind(this);
@@ -24,71 +24,72 @@ class ModalEdit extends Component{
 				this.handleGender=this.handleGender.bind(this);
 				this.closeModalEdit=this.closeModalEdit.bind(this);
 				this.addUser=this.addUser.bind(this);
-
 		}
-		handleName(e){
-			this.setState({ firstName: e.target.value });
-		}
-		handleLastName(e){
-			this.setState({ lastName: e.target.value });
-		}
-		handleSalary(e){
-			this.setState({ salary: e.target.value });
-		}
-		handlePosition(e){
-			this.setState({ position: e.target.value });
-		}
-		handleGender(e){
-			this.setState({ gender: e.target.value });
-		}
-		closeModalEdit(){
-			this.props.closeModalEdit();
-		}
-		addUser(){
-			this.props.addUser(this.state);
-		}
+			handleName(e){
+				this.setState({ firstName: e.target.value });
+			}
+			handleLastName(e){
+				this.setState({ lastName: e.target.value });
+			}
+			handleSalary(e){
+				this.setState({ salary: e.target.value });
+			}
+			handlePosition(e){
+				this.setState({ position: e.target.value });
+			}
+			handleGender(e){
+				this.setState({ gender: e.target.value });
+			}
+			closeModalEdit(){
+				this.props.closeModalEdit();
+			}
+			addUser(){
+				this.props.addUser(this.state);
+			}
     render(){
-        return(
-					<StyleContainerModal >
-						<Fade>
+    	return(
+				<StyleContainerModal >
+					<Fade>
             <WrapperModalEdit>
 							<StyleTitle>Add user</StyleTitle>
 								<StyleInput value={this.state.firstName}
-								onChange={this.handleName}
-								type="text"
-								placeholder="First Name"
-								>
+									onChange={this.handleName}
+									type="text"
+									placeholder="First Name">
 								</StyleInput>
+
 								<StyleInput value={this.state.lastName}
-								onChange={this.handleLastName}
-								type="text"
-								placeholder="Last Name"
-								>
+									onChange={this.handleLastName}
+									type="text"
+									placeholder="Last Name"
+									>
 								</StyleInput>
+
 								<StyleInput value={this.state.salary}
-								onChange={this.handleSalary}
-								type="text"
-								placeholder="Salary"
-								></StyleInput>
+									onChange={this.handleSalary}
+									type="text"
+									placeholder="Salary">
+								</StyleInput>
+
 								<StyleInput value={this.state.position}
-								onChange={this.handlePosition}
-								placeholder="Position"
-								type="text"
-								></StyleInput>
+									onChange={this.handlePosition}
+									placeholder="Position"
+									type="text">
+								</StyleInput>
+
 								<StyleInput value={this.state.gender}
-								onChange={this.handleGender}
-								type="text"
-								placeholder="Gender"
-								></StyleInput>
+									onChange={this.handleGender}
+									type="text"
+									placeholder="Gender">
+								</StyleInput>
+
                 <StyleButtonAdd onClick={this.addUser}>Add</StyleButtonAdd>
                 <ButtonCloseEdit onClick={this.closeModalEdit}><MdClear /></ButtonCloseEdit>
             </WrapperModalEdit>
-						</Fade>
-					</StyleContainerModal>
-
-        );
-    }
-
+					</Fade>
+			</StyleContainerModal>
+    );
+  }
 }
 
 

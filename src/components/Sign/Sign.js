@@ -28,7 +28,7 @@ class Sign extends Component{
   handleSubmit(e){
     e.preventDefault();
     this.props.userSign(this.state);
-    this.props.modalTogle;
+    // this.props.modalTogle;
   }
     render(){
     	return(

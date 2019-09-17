@@ -1,9 +1,4 @@
-import styled,{keyframes} from 'styled-components';
-
-
-
-
-
+import styled from 'styled-components';
 
 export const StyleSection = styled.section`
 width:400px;
@@ -11,7 +6,6 @@ display:flex;
 justify-content:center;
 align-items:center;
 `
-
 export const StyleDottsButton = styled.button`
 outline:none;
 border:2px solid #9932CC;

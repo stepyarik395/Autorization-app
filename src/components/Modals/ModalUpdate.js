@@ -9,16 +9,16 @@ import Fade from 'react-reveal/Fade';
 
 
 class ModalUpdate extends Component{
-    constructor(props){
-        super(props)
-        this.state = {
-					id:props.testStore.selectUser._id,
-          firstName:props.testStore.selectUser.firstName,
-          lastName:props.testStore.selectUser.lastName,
-          salary:props.testStore.selectUser.salary,
-          position:props.testStore.selectUser.position,
-					gender:props.testStore.selectUser.gender,
-				}
+	constructor(props){
+  	super(props)
+    	this.state = {
+				id:props.testStore.selectUser._id,
+        firstName:props.testStore.selectUser.firstName,
+        lastName:props.testStore.selectUser.lastName,
+        salary:props.testStore.selectUser.salary,
+        position:props.testStore.selectUser.position,
+				gender:props.testStore.selectUser.gender,
+			}
 				this.handleName=this.handleName.bind(this);
 				this.handleLastName=this.handleLastName.bind(this);
 				this.handleSalary=this.handleSalary.bind(this);
@@ -26,78 +26,80 @@ class ModalUpdate extends Component{
 				this.handleGender=this.handleGender.bind(this);
 				this.closeModalUpdate=this.closeModalUpdate.bind(this);
 				this.updateUser=this.updateUser.bind(this);
+		}
+	
+			handleName(e){
+				this.setState({ firstName: e.target.value });
+			}
+			handleLastName(e){
+				this.setState({ lastName: e.target.value });
+			}
+			handleSalary(e){
+				this.setState({ salary: e.target.value });
+			}
+			handlePosition(e){
+				this.setState({ position: e.target.value });
+			}
+			handleGender(e){
+				this.setState({ gender: e.target.value });
+			}
+			closeModalUpdate(){
+				this.props.closeModalUpdate();
+			}
+			updateUser(){
+				this.props.updateUser(this.state);
+			}
+				render(){
+					return(
+							<div>					
+								<StyleContainerModal >
+									<Fade>
+										<WrapperModalEdit>
+											<StyleTitle>Update user</StyleTitle>
 
-		}
-		componentDidMount(){
+										<StyleInput
+											value={this.state.firstName}
+											onChange={this.handleName}
+											type="text"
+											placeholder="First Name">
+										</StyleInput>
 
-		}
-		handleName(e){
-			this.setState({ firstName: e.target.value });
-		}
-		handleLastName(e){
-			this.setState({ lastName: e.target.value });
-		}
-		handleSalary(e){
-			this.setState({ salary: e.target.value });
-		}
-		handlePosition(e){
-			this.setState({ position: e.target.value });
-		}
-		handleGender(e){
-			this.setState({ gender: e.target.value });
-		}
-		closeModalUpdate(){
-			this.props.closeModalUpdate();
-		}
-		updateUser(){
-			this.props.updateUser(this.state);
-		}
-    render(){
-        return(
-					<div>
-					
-					<StyleContainerModal >
-					<Fade>
-            <WrapperModalEdit>
-							<StyleTitle>Update user</StyleTitle>
-								<StyleInput value={this.state.firstName}
-								onChange={this.handleName}
-								type="text"
-								placeholder="First Name"
-								>
-								</StyleInput>
-								<StyleInput value={this.state.lastName}
-								onChange={this.handleLastName}
-								type="text"
-								placeholder="Last Name"
-								>
-								</StyleInput>
-								<StyleInput value={this.state.salary}
-								onChange={this.handleSalary}
-								type="text"
-								placeholder = "Salary"
-								></StyleInput>
-								<StyleInput value={this.state.position}
-								onChange={this.handlePosition}
-								placeholder="Position"
-								type="text"
-								></StyleInput>
-								<StyleInput value={this.state.gender}
-								onChange={this.handleGender}
-								type="text"
-								placeholder="Gender"
-								></StyleInput>
-                <StyleButtonAdd onClick={this.updateUser}>Update</StyleButtonAdd>
-                <ButtonCloseEdit onClick={this.closeModalUpdate}><MdClear /></ButtonCloseEdit>
-            </WrapperModalEdit>
-						</Fade>
-					</StyleContainerModal>
-				
-				</div>
+										<StyleInput 
+											value={this.state.lastName}
+											onChange={this.handleLastName}
+											type="text"
+											placeholder="Last Name">
+										</StyleInput>
 
-        );
-    }
+										<StyleInput 
+											value={this.state.salary}
+											onChange={this.handleSalary}
+											type="text"
+											placeholder="Salary">
+										</StyleInput>
 
+										<StyleInput 
+											value={this.state.position}
+											onChange={this.handlePosition}
+											placeholder="Position"
+											type="text">
+										</StyleInput>
+
+										<StyleInput 
+											value={this.state.gender}
+											onChange={this.handleGender}
+											type="text"
+											placeholder="Gender">
+										</StyleInput>
+
+										<StyleButtonAdd onClick={this.updateUser}>Update</StyleButtonAdd>
+										<ButtonCloseEdit onClick={this.closeModalUpdate}><MdClear /></ButtonCloseEdit>
+								</WrapperModalEdit>
+								</Fade>
+						</StyleContainerModal>
+			</div>
+    );
+  }
 }
 
 const mapDispatchToProps = dispatch => ({

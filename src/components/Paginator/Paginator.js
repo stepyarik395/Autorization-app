@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSection,StyleDottsButton} from "./StylePaginator";
+import {StyleSection} from "./StylePaginator";
 
  export const paginate = (currentPage, lastPage, clickEvent) => {
   const delta = 1;
