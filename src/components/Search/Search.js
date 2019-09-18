@@ -9,8 +9,8 @@ class Search extends Component {
     this.state = {
       text: ''
     }
-    this.inputChangeValue = this.inputChangeValue.bind(this)
-    this.heandleSearch = this.heandleSearch.bind(this)
+    this.handleInputChangeValue = this.handleInputChangeValue.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   handleSearch () {

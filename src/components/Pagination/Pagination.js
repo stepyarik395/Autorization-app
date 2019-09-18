@@ -10,9 +10,9 @@ class Pagination extends Component {
     super(props)
     this.state = {
     }
-    this.nextPage = this.nextPage.bind(this)
-    this.prevPage = this.prevPage.bind(this)
-    this.handlePagination = this.handlePagination.bind(this)
+    this.handleNextPage = this.handleNextPage.bind(this)
+    this.handlePrevPage = this.handlePrevPage.bind(this)
+    this.OnhandlePagination = this.OnhandlePagination.bind(this)
   }
 
   handleNextPage () {
