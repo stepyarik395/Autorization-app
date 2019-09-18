@@ -4,21 +4,15 @@ import Sign from './components/Sign/Sign';
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import Main from "./components/Main/Main";
-import { Route,Redirect,withRouter } from 'react-router-dom';
-import { connect } from "react-redux";
-import {selectPage} from './components/Actions/Actions';
-
-
+import { Route,Redirect} from 'react-router-dom';
 
 class App extends Component {
-  
   render() {
-
     return (
         <div>
           <Route path="/" render={() => (
             localStorage.getItem('token') ? (
-              <Redirect to="/main" />
+             <Redirect to="/main" />
             ) : (
               <Home />
             )
@@ -39,7 +33,7 @@ class App extends Component {
            )} />
              <Route exact path="/main" render={() => (
             localStorage.getItem('token') ? (
-              
+
               <Main />,
               <Redirect to="/main/1" />
             ) : (
@@ -57,13 +51,5 @@ class App extends Component {
     );
   }
 }
+export default (App)
 
-const mapDispatchToProps = dispatch => ({
-	selectPage: select => dispatch(selectPage(select)),
-
-})
-const mapStateToProps = state =>({
-	testStore: state	
-})
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(App))
-  

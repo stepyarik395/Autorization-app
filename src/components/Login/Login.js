@@ -34,8 +34,8 @@ class Login extends Component{
   render(){
     return(
       <div className="global">
-         {this.props.testStore.showModalError ? <ModalError inputValue={this.state} />: null}
-          <div className="wrapper__login">
+        {this.props.testStore.showModalError ? <ModalError inputValue={this.state} />: null}
+            <div className="wrapper__login">
            <form onSubmit={this.handleSubmit}>
               <label>name</label>
                 <input

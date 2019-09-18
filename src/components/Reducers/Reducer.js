@@ -1,4 +1,3 @@
-
 const initialState = {
   currentUserToken: {},
   showModalError:false,
@@ -44,9 +43,3 @@ export function reducers(state = initialState, action){
       return state;
   }
 }
-
-
-
-
-
-

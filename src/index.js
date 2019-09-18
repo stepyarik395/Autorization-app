@@ -7,9 +7,10 @@ import { Provider } from "react-redux";
 import { Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import { history } from './history';
-import {reducers} from './components/Reducers/Reducers';
+import {reducers} from './components/Reducers/Reducer';
 
 const store = createStore(reducers,applyMiddleware(thunk));
+console.log(store.getState());
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
@@ -18,3 +19,10 @@ ReactDOM.render(
     </Provider>,
   document.getElementById('root')
 );
+
+
+
+
+
+
+

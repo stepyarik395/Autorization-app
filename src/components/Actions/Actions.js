@@ -1,67 +1,28 @@
 import requestHendler from '../RequestHendler/RequsetHendler';
 import  { history } from '../../history';
 
-export const userPost = users => {
-	return dispatch => {
-		const options = {
-			url:'/register',
-			type:'post',
-			data: JSON.stringify(users),
-		}
-			requestHendler(options)
-			.then(res =>{
-				localStorage.setItem("token", res.data.token);
+const showErrorModal = (error) =>{
+  return dispatch => {
+    dispatch({type:'SHOW_MODAL',payload:true});
+    dispatch({type:"ERROR_TEXT_SHOW",payload:error.response.data.message})
+  }
+}
+
+const showRefreshUsers = (res) =>{
+  return dispatch => {
+    	dispatch({type:'SHOW_USERS',payload:res.data.workers});
+			dispatch({type:'ADD_PAGES',payload:res.data.pages});
+			dispatch({type:'ADD_PAGE',payload:res.data.page});
+  }
+}
+const successfulRequest = (res)=>{
+  return dispatch =>{
+    localStorage.setItem("token", res.data.token);
 				if(res.status === 200){
-				history.push('/main/1');
-				}
-			})
-			.catch(error => {
-				// let errObj = JSON.parse(JSON.stringify(error));
-				dispatch({type:'SHOW_MODAL',payload:true});
-				dispatch({type:"ERROR_TEXT_SHOW",payload:error.response.data.message})
-			});
+				history.push('/main');
 		}
   }
-	export const userSign = users =>{
-		return dispatch => {
-			const options = {
-				url:'/login',
-				type:'post',
-				data: JSON.stringify(users)
-			}
-			requestHendler(options)
-			.then(res =>{
-				localStorage.setItem("token", res.data.token);
-				if(res.status === 200){
-					window.location = "/main"
-				}
-			})
-			.catch(error => {
-				// let errObj = JSON.parse(JSON.stringify(error));
-				dispatch({type:'SHOW_MODAL',payload:true});
-				dispatch({type:"ERROR_TEXT_SHOW",payload:error.response.data.message})
-			});
-		}
-	}
-
-	export const showUsers = (i) =>{
-		return dispatch =>{
-			const options = {
-				url:'/',
-				type:'post',
-				data:{
-					page:i
-				}
-			}
-			requestHendler(options)
-			.then(res =>{
-				dispatch({type:'SHOW_USERS',payload:res.data.workers});
-				dispatch({type:'ADD_PAGES',payload:res.data.pages});
-				dispatch({type:'ADD_PAGE',payload:res.data.page});
-			})
-		}
-	}
-
+}
 export const hideModal = () =>{
 	return dispatch =>{
 		dispatch({type:'CLOSE_MODAL',payload:false});
@@ -79,6 +40,68 @@ export const closeModalEdit = () =>{
 		dispatch({type:'CLOSE_MODAL_EDIT',payload:false});
 	}
 }
+
+export const showModalUpdate = (item) =>{
+	return dispatch =>{
+		dispatch({type:'SELECT_USER',payload:item});
+		dispatch({type:'SHOW_MODAL_UPDATE',payload:true});
+	}
+}
+export const closeModalUpdate = () =>{
+	return dispatch =>{
+		dispatch({type:'CLOSE_MODAL_UPDATE',payload:false});
+	}
+}
+
+export const userPost = users => {
+	return dispatch => {
+		const options = {
+			url:'/register',
+			type:'post',
+			data: JSON.stringify(users),
+		}
+			requestHendler(options)
+			.then(res =>{
+        dispatch(successfulRequest(res));
+			})
+			.catch(error => {
+        dispatch(showErrorModal(error))
+			});
+		}
+  }
+
+	export const userSign = users =>{
+		return dispatch => {
+			const options = {
+				url:'/login',
+				type:'post',
+				data: JSON.stringify(users)
+			}
+			requestHendler(options)
+			.then(res =>{
+        dispatch(successfulRequest(res));
+			})
+			.catch(error => {
+				dispatch(showErrorModal(error))
+			});
+		}
+	}
+
+	export const showUsers = (i) =>{
+		return dispatch =>{
+			const options = {
+				url:'/',
+				type:'post',
+				data:{
+					page:i
+				}
+			}
+			requestHendler(options)
+			.then(res =>{
+			  dispatch(showRefreshUsers(res))
+			})
+		}
+  }
 
 export const addUser = (user) =>{
 	return dispatch =>{
@@ -105,18 +128,6 @@ export const deleteUser = (id) =>{
 			.then(res =>{
 				dispatch(showUsers());
 		})
-	}
-}
-
-export const showModalUpdate = (item) =>{
-	return dispatch =>{
-		dispatch({type:'SELECT_USER',payload:item});
-		dispatch({type:'SHOW_MODAL_UPDATE',payload:true});
-	}
-}
-export const closeModalUpdate = () =>{
-	return dispatch =>{
-		dispatch({type:'CLOSE_MODAL_UPDATE',payload:false});
 	}
 }
 
@@ -200,9 +211,7 @@ export const searchItems = (searchText) =>{
 		}
 			requestHendler(options)
 			.then(res=>{
-				dispatch({type:'SHOW_USERS',payload:res.data.workers});
-				dispatch({type:'ADD_PAGES',payload:res.data.pages});
-				dispatch({type:'ADD_PAGE',payload:res.data.page});
+        dispatch(showRefreshUsers(res));
 		})
 	}
 }
@@ -213,4 +222,3 @@ export const searchItems = (searchText) =>{
 
 
 
-	

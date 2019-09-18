@@ -43,6 +43,7 @@ class Main extends Component{
 
 
 	render(){
+    console.log(this.props.testStore)
   	return(
     	<div>
       	<div className="wpapper__main__button">
