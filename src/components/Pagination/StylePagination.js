@@ -11,7 +11,6 @@ color:#4B0082;
 display:flex;
 justify-content:center;
 align-items:center;
-
 `
 export const StyleNext = styled.button`
 display:flex;
@@ -26,7 +25,6 @@ height:30px;
 background-color:#E6E6FA
 `
 export const StyleWrapperPagin = styled.div`
-
 margin-top:10px;
 display:flex;
 justify-content:center;

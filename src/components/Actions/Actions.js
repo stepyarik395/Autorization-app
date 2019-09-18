@@ -2,7 +2,6 @@ import requestHendler from '../RequestHendler/RequsetHendler';
 import  { history } from '../../history';
 
 export const userPost = users => {
-console.log(users);
 	return dispatch => {
 		const options = {
 			url:'/register',
@@ -12,17 +11,14 @@ console.log(users);
 			requestHendler(options)
 			.then(res =>{
 				localStorage.setItem("token", res.data.token);
-				console.log(res.status);
 				if(res.status === 200){
 				history.push('/main/1');
 				}
 			})
 			.catch(error => {
-				let errObj = JSON.parse(JSON.stringify(error));
-				console.log(errObj);
+				// let errObj = JSON.parse(JSON.stringify(error));
 				dispatch({type:'SHOW_MODAL',payload:true});
 				dispatch({type:"ERROR_TEXT_SHOW",payload:error.response.data.message})
-				console.log(error.response)
 			});
 		}
   }
@@ -36,7 +32,6 @@ console.log(users);
 			requestHendler(options)
 			.then(res =>{
 				localStorage.setItem("token", res.data.token);
-				console.log(res.status);
 				if(res.status === 200){
 					window.location = "/main"
 				}
@@ -45,7 +40,6 @@ console.log(users);
 				// let errObj = JSON.parse(JSON.stringify(error));
 				dispatch({type:'SHOW_MODAL',payload:true});
 				dispatch({type:"ERROR_TEXT_SHOW",payload:error.response.data.message})
-				console.log(error.response)
 			});
 		}
 	}
@@ -61,7 +55,6 @@ console.log(users);
 			}
 			requestHendler(options)
 			.then(res =>{
-				console.log(res);
 				dispatch({type:'SHOW_USERS',payload:res.data.workers});
 				dispatch({type:'ADD_PAGES',payload:res.data.pages});
 				dispatch({type:'ADD_PAGE',payload:res.data.page});
@@ -89,7 +82,6 @@ export const closeModalEdit = () =>{
 
 export const addUser = (user) =>{
 	return dispatch =>{
-		console.log(user);
 		const options = {
 			url:'/create',
 			type:'post',
@@ -97,7 +89,6 @@ export const addUser = (user) =>{
 			}
 			requestHendler(options)
 			.then(res =>{
-				console.log(res)
 				dispatch(showUsers());
 				dispatch({type:'CLOSE_MODAL_EDIT',payload:false});
 		})
@@ -110,17 +101,14 @@ export const deleteUser = (id) =>{
 			url:`/delete/${id}`,
 			type:'delete',
 		}
-			console.log(options);
 			requestHendler(options)
 			.then(res =>{
-				console.log(res)
 				dispatch(showUsers());
 		})
 	}
 }
 
 export const showModalUpdate = (item) =>{
-	console.log(item)
 	return dispatch =>{
 		dispatch({type:'SELECT_USER',payload:item});
 		dispatch({type:'SHOW_MODAL_UPDATE',payload:true});
@@ -133,17 +121,14 @@ export const closeModalUpdate = () =>{
 }
 
 export const updateUser = (user) =>{
-	console.log(user);
 	return dispatch =>{
 		const options = {
 			url:`/update/${user.id}`,
 			type:'put',
 			data:user
 		}
-			console.log(options);
 			requestHendler(options)
 			.then(res =>{
-				console.log(res)
 				dispatch(showUsers());
 				dispatch(closeModalUpdate());
 		})
@@ -161,8 +146,6 @@ export const selectPage = (i) =>{
 		}
 			requestHendler(options)
 			.then(res=>{
-				console.log(res)
-				console.log(res.data)
 				dispatch({type:'SELECT_PAGE',payload:i});
 				dispatch({type:'SHOW_USERS',payload:res.data.workers});
 				history.push(`/main/${i}`);
@@ -172,7 +155,6 @@ export const selectPage = (i) =>{
 
 export const nextPage = (current) =>{
 	return dispatch =>{
-		console.log(current);
 		const options = {
 			url:'/',
 			type:'post',
@@ -182,20 +164,16 @@ export const nextPage = (current) =>{
 		}
 			requestHendler(options)
 			.then(res=>{
-				console.log(res)
-				console.log(res.data)
 				dispatch({type:'SELECT_PAGE',payload:current+1});
 				dispatch({type:'SHOW_USERS',payload:res.data.workers});
 			  history.push(`/main/${current + 1}`);
 		})
 	}
-
 }
 
 
 export const prevPage = (current) =>{
 	return dispatch =>{
-		console.log(current);
 		const options = {
 			url:'/',
 			type:'post',
@@ -205,14 +183,11 @@ export const prevPage = (current) =>{
 		}
 			requestHendler(options)
 			.then(res=>{
-				console.log(res)
-				console.log(res.data)
 				dispatch({type:'SELECT_PAGE',payload:current-1});
 				dispatch({type:'SHOW_USERS',payload:res.data.workers});
 				history.push(`/main/${current + -1}`);
 		})
 	}
-
 }
 export const searchItems = (searchText) =>{
 	return dispatch =>{
@@ -223,11 +198,8 @@ export const searchItems = (searchText) =>{
 				q:searchText
 			}
 		}
-			console.log(options)
 			requestHendler(options)
 			.then(res=>{
-				console.log(res)
-				console.log(res.data)
 				dispatch({type:'SHOW_USERS',payload:res.data.workers});
 				dispatch({type:'ADD_PAGES',payload:res.data.pages});
 				dispatch({type:'ADD_PAGE',payload:res.data.page});

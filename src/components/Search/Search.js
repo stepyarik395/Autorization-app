@@ -26,20 +26,18 @@ class Search extends Component{
 	}
 
     render(){
-        return(
-            <StyleWrapper>
-								<StyleSearch 
-								value={this.state.searchValue}
-								onChange={this.inputChangeValue}
-								placeholder="Search"
-								type="text">
-								</StyleSearch>
-								<StyleButton onClick={this.heandleSearch}><MdSearch /></StyleButton>
-            </StyleWrapper>
-
-        );
-    }
-
+    	return(
+      	<StyleWrapper>
+					<StyleSearch 
+						value={this.state.searchValue}
+						onChange={this.inputChangeValue}
+						placeholder="Search"
+						type="text">
+					</StyleSearch>
+					<StyleButton onClick={this.heandleSearch}><MdSearch /></StyleButton>
+      </StyleWrapper>
+    );
+  }
 }
 
 const mapDispatchToProps = dispatch => ({

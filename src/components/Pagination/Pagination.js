@@ -8,7 +8,6 @@ import Paginator from "../Paginator/Paginator";
 import {MdKeyboardArrowLeft,MdKeyboardArrowRight} from 'react-icons/md';
 import {StylePrev,StyleNext,StyleWrapperPagin} from "./StylePagination";
 
-
 class Pagination extends Component{
 	constructor(props){
 		super(props)
@@ -32,7 +31,11 @@ class Pagination extends Component{
     render(){
     	return(
 				<div>
-					<Paginator currentPage={this.props.testStore.page} lastPage={this.props.testStore.pages} clickEvent={this.handlePagination} />
+					<Paginator
+						currentPage={this.props.testStore.page}
+						lastPage={this.props.testStore.pages}
+						clickEvent={this.handlePagination} />
+
 						<StyleWrapperPagin>
 							<StylePrev 
 								disabled={this.props.testStore.page===1}
@@ -44,11 +47,12 @@ class Pagination extends Component{
 									onClick={this.nextPage}>
 									<MdKeyboardArrowRight />
 							</StyleNext>
-							</StyleWrapperPagin>	
-				</div>
+						</StyleWrapperPagin>	
+			</div>
   	)
   }
 }
+
 const mapDispatchToProps = dispatch => ({
 	selectPage: select => dispatch(selectPage(select)),
 	activePage:active =>dispatch(activePage(active)),
@@ -60,7 +64,6 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state =>({
 	testStore: state,
-	
 	arrUsers: state.arrUsers
 		
 })

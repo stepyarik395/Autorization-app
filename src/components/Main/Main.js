@@ -23,7 +23,7 @@ class Main extends Component{
 		this.updateUser = this.updateUser.bind(this);
 	}
 	componentDidMount(){
-		let currentId = parseInt(this.props.match.params.id);
+		let currentId = parseInt(this.props.match.params.id,10);
 		this.props.history.push(this.props.location.pathname);
 		this.props.showUsers(currentId);
 	}

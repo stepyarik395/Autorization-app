@@ -38,30 +38,33 @@ class Login extends Component{
           <div className="wrapper__login">
            <form onSubmit={this.handleSubmit}>
               <label>name</label>
-                <input 
+                <input
                   onChange={this.valueName}
                   type="text"
-                  value={this.state.name}>
+                  value={this.state.name}
+                  required>
                 </input>
                <label>email</label>
                 <input
                    onChange={this.valueEmail}
                     type="email"
-                    value={this.state.email}>
+                    value={this.state.email}
+                    required>
                 </input>
                 <label>password</label>
                   <input
                     onChange={this.valuePassword}
                     type="password"
-                    value={this.state.password}>
+                    value={this.state.password}
+                    required>
                   </input>
                   <br></br>
                     {this.state.password.length < 6 ? <ErrorPassword /> : null}
                  <button type="submit">Login in</button>
-          </form>
-         </div>
+            </form>
         </div>
-        );
+    </div>
+    );
   }
 }
 

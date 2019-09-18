@@ -45,13 +45,16 @@ class Sign extends Component{
                 id="sign-name"
                 value={this.state.email}
                 type="email"
-                onChange={this.valueEmail}>
+                onChange={this.valueEmail}
+                required={true}>
               </input>
               <label>password</label>
               <input id="sign-password"
                value={this.state.password}
                type="password"
-               onChange={this.valuePassword}></input>
+               onChange={this.valuePassword}
+               required={true}>
+               </input>
                <span></span>
                {this.state.password.length < 6 ? <ErrorPassword /> : null}
               <button type="submit">Sing In</button>
