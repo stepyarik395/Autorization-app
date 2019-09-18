@@ -26,3 +26,7 @@ float: right;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827', GradientType=1 );
 }
 `
+export const StyleWrapperMain = styled.div`
+right:30px;
+  position: absolute;
+`
