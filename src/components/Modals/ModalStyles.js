@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const DivWrapperModal = styled.div`
 border-radius:10px;
@@ -106,4 +106,3 @@ margin-left:1rem;
 text-transform:uppercase;
 color:#fff;
 `
-

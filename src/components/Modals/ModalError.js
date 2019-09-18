@@ -1,42 +1,41 @@
-import React, { Component } from 'react';
-import { DivWrapperModal,StyleSpanText,StyleButtonClose,DivFlexContainer } from "./ModalStyles";
-import { connect } from "react-redux";
-import { hideModal } from '../Actions/Actions';
+import React, { Component } from 'react'
+import { DivWrapperModal, StyleSpanText, StyleButtonClose, DivFlexContainer } from './ModalStyles'
+import { connect } from 'react-redux'
+import { handleHideModal } from '../Actions/Actions'
 
-class ModalErrorLogin extends Component{
+class ModalErrorLogin extends Component {
+  componentDidMount () {
+    this.setState(() => {
+      this.props.inputValue.name = ''
+      this.props.inputValue.email = ''
+      this.props.inputValue.password = ''
+    })
+  }
 
-	componentDidMount(){
-		this.setState(()=>{
-			this.props.inputValue.name = ""
-			this.props.inputValue.email = ""
-			this.props.inputValue.password = ""
-		})
-	}
-	render(){
-		const{ErrorText}=this.props
-			return(
-				<div>
-					<DivWrapperModal>
-						<DivFlexContainer>
-							<StyleSpanText>
-								 {ErrorText}
-								</StyleSpanText>
-						</DivFlexContainer>
-					<StyleButtonClose onClick={this.props.hideModal}>close</StyleButtonClose>
-				</DivWrapperModal>    
+  render () {
+    const { ErrorText } = this.props
+    return (
+      <div>
+        <DivWrapperModal>
+          <DivFlexContainer>
+            <StyleSpanText>
+              {ErrorText}
+            </StyleSpanText>
+          </DivFlexContainer>
+          <StyleButtonClose onClick={this.props.handleHideModal}>close</StyleButtonClose>
+        </DivWrapperModal>
       </div>
-		);
-	}
+    )
+  }
 }
 const mapDispatchToProps = dispatch => ({
-  hideModal: modal => dispatch(hideModal(modal)),
+  handleHideModal: modal => dispatch(handleHideModal(modal))
 })
 
-const mapStateToProps = store =>{
-	console.log(store)
-	return{
-		ErrorText:store.ErrorText
-	}
-  // testStore: state
+const mapStateToProps = store => {
+  console.log(store)
+  return {
+    ErrorText: store.ErrorText
+  }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(ModalErrorLogin)
+export default connect(mapStateToProps, mapDispatchToProps)(ModalErrorLogin)

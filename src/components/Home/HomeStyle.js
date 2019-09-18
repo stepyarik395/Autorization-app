@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const StyleTitle = styled.h1`
   text-transform:uppercase;

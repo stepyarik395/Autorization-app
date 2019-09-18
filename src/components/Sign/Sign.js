@@ -1,79 +1,78 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { StyleButton } from "./SignStyle";
-import {userSign} from '../Actions/Actions';
-import { connect } from "react-redux";
-import ErrorPassword from '../Errors/ErrorPassword';
-import ModalError from '../Modals/ModalError';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { StyleButton } from './SignStyle'
+import { userSign } from '../Actions/Actions'
+import { connect } from 'react-redux'
+import ErrorPassword from '../Errors/ErrorPassword'
+import ModalError from '../Modals/ModalError'
 
-class Sign extends Component{
-  constructor(props){
+class Sign extends Component {
+  constructor (props) {
     super(props)
     this.state = {
-      email : "",
-      password : "",
+      email: '',
+      password: ''
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.valueEmail = this.valueEmail.bind(this);
-    this.valuePassword = this.valuePassword.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleValueEmail = this.handleValueEmail.bind(this)
+    this.handleValuePassword = this.handleValuePassword.bind(this)
   }
 
-  valueEmail(e){
-    this.setState({ email: e.target.value });
-      }
-  valuePassword(e){
-    this.setState({ password: e.target.value });
+  handleValueEmail (e) {
+    this.setState({ email: e.target.value })
   }
-  handleSubmit(e){
-    e.preventDefault();
-    this.props.userSign(this.state);
+
+  handleValuePassword (e) {
+    this.setState({ password: e.target.value })
+  }
+
+  handleSubmit (e) {
+    e.preventDefault()
+    this.props.userSign(this.state)
     // this.props.modalTogle;
   }
-    render(){
-    	return(
-        <div>
-          <div className="wpapper__main__button">
-            <Link to="/register"><StyleButton>Login in</StyleButton></Link>
-          </div>
-         	<div className="global">
-             {this.props.testStore.showModalError ? <ModalError inputValue={this.state} />: null}
-             <form onSubmit={this.handleSubmit}>
-            <div className="wrapper__login">
+
+  render () {
+    return (
+      <div>
+        <div className='wpapper__main__button'>
+          <Link to='/register'><StyleButton>Login in</StyleButton></Link>
+        </div>
+        <div className='global'>
+          {this.props.testStore.showModalError ? <ModalError inputValue={this.state} /> : null}
+          <form onSubmit={this.handleSubmit}>
+            <div className='wrapper__login'>
               <label>email</label>
               <input
-                id="sign-name"
+                id='sign-name'
                 value={this.state.email}
-                type="email"
-                onChange={this.valueEmail}
-                required={true}>
-              </input>
+                type='email'
+                onChange={this.handleValueEmail}
+                required
+              />
               <label>password</label>
-              <input id="sign-password"
-               value={this.state.password}
-               type="password"
-               onChange={this.valuePassword}
-               required={true}>
-               </input>
-               <span></span>
-               {this.state.password.length < 6 ? <ErrorPassword /> : null}
-              <button type="submit">Sing In</button>
+              <input
+                id='sign-password'
+                value={this.state.password}
+                type='password'
+                onChange={this.handleValuePassword}
+                required
+              />
+              {this.state.password.length < 6 ? <ErrorPassword /> : null}
+              <button type='submit'>Sing In</button>
             </div>
-            </form>
+          </form>
         </div>
       </div>
-    );
+    )
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  userSign: userInfo => dispatch(userSign(userInfo)),
+  userSign: userInfo => dispatch(userSign(userInfo))
 })
 
-const mapStateToProps = state =>({
+const mapStateToProps = state => ({
   testStore: state
 })
-
-
-export default connect(mapStateToProps,mapDispatchToProps)(Sign)
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(Sign)

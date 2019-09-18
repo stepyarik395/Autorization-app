@@ -1,7 +1,4 @@
-import styled from 'styled-components';
-
-
-
+import styled from 'styled-components'
 
 export const StyleSearch = styled.input`
 padding-left:1rem;
@@ -15,9 +12,8 @@ width:200px;
 height:50px;
 color:#fff
 background-color:#9932CC;
-:hover{    
+:hover{
 }
-
 `
 
 export const StyleButton = styled.button`
@@ -43,5 +39,4 @@ transition:0.3s;
 export const StyleWrapper = styled.div`
 display:flex;
 align-items:center;
-
 `
