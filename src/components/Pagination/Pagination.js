@@ -17,7 +17,7 @@ class Pagination extends Component{
 		this.prevPage = this.prevPage.bind(this);
 		this.handlePagination = this.handlePagination.bind(this);
 	}
-	
+
 	nextPage(){
 		this.props.nextPage(this.props.testStore.page)
 	}
@@ -37,17 +37,18 @@ class Pagination extends Component{
 						clickEvent={this.handlePagination} />
 
 						<StyleWrapperPagin>
-							<StylePrev 
+							<StylePrev
 								disabled={this.props.testStore.page===1}
 								onClick={this.prevPage}>
 								<MdKeyboardArrowLeft />
 							</StylePrev>
+
 							<StyleNext
 								 	disabled={this.props.testStore.page===this.props.testStore.pages}
 									onClick={this.nextPage}>
 									<MdKeyboardArrowRight />
 							</StyleNext>
-						</StyleWrapperPagin>	
+						</StyleWrapperPagin>
 			</div>
   	)
   }
@@ -65,7 +66,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state =>({
 	testStore: state,
 	arrUsers: state.arrUsers
-		
+
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Pagination)

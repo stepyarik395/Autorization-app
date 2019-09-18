@@ -9,6 +9,7 @@ const initialState = {
   pages:[],
   page:[],
 }
+
 export function reducers(state = initialState, action){
   switch (action.type) {
     case 'LOGIN_USER':

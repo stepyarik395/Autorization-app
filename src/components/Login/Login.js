@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux"; 
+import { connect } from "react-redux";
 import {userPost} from '../Actions/Actions';
 import ErrorPassword from '../Errors/ErrorPassword';
 import ModalError from '../Modals/ModalError';
@@ -17,15 +17,19 @@ class Login extends Component{
     this.valuePassword = this.valuePassword.bind(this);
     this.valueEmail = this.valueEmail.bind(this);
   }
+
   valueName(e){
     this.setState({ name: e.target.value });
   }
+
   valuePassword(e){
     this.setState({ password: e.target.value });
   }
+
   valueEmail(e){
     this.setState({ email: e.target.value });
   }
+
   handleSubmit(e){
     e.preventDefault();
     this.props.userPost(this.state);
@@ -76,7 +80,7 @@ const mapStateToProps = state =>({
 })
 export default connect(mapStateToProps,mapDispatchToProps)(Login)
 
-  
+
 
 
 

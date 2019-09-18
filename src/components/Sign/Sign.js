@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { StyleButton } from "./SignStyle";
@@ -18,7 +17,7 @@ class Sign extends Component{
     this.valueEmail = this.valueEmail.bind(this);
     this.valuePassword = this.valuePassword.bind(this);
   }
-  
+
   valueEmail(e){
     this.setState({ email: e.target.value });
       }
@@ -76,5 +75,5 @@ const mapStateToProps = state =>({
 
 
 export default connect(mapStateToProps,mapDispatchToProps)(Sign)
- 
+
 

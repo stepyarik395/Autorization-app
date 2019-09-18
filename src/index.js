@@ -10,7 +10,7 @@ import { history } from './history';
 import {reducers} from './components/Reducers/Reducer';
 
 const store = createStore(reducers,applyMiddleware(thunk));
-console.log(store.getState());
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>

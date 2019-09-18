@@ -18,7 +18,8 @@ class Search extends Component{
 	heandleSearch(){
 		this.props.searchItems(this.state.text)
 
-	}
+  }
+
 	inputChangeValue(e){
 		this.setState({
 			text:e.target.value
@@ -28,7 +29,7 @@ class Search extends Component{
     render(){
     	return(
       	<StyleWrapper>
-					<StyleSearch 
+					<StyleSearch
 						value={this.state.searchValue}
 						onChange={this.inputChangeValue}
 						placeholder="Search"
@@ -42,7 +43,7 @@ class Search extends Component{
 
 const mapDispatchToProps = dispatch => ({
 	searchItems:search =>dispatch(searchItems(search))
-	
+
 
 })
 

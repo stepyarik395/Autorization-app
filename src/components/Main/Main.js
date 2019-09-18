@@ -30,17 +30,19 @@ class Main extends Component{
 
 	clearLocalStorage(){
 		localStorage.clear();
-	}
+  }
+
 	openModalEdit(){
 		this.props.showModalEdit();
-	}
+  }
+
 	deleteUser(id){
 		this.props.deleteUser(id);
-	}
+  }
+
 	updateUser(item){
 	this.props.showModalUpdate(item);
-	}
-
+  }
 
 	render(){
     console.log(this.props.testStore)

@@ -27,31 +27,38 @@ class ModalUpdate extends Component{
 				this.closeModalUpdate=this.closeModalUpdate.bind(this);
 				this.updateUser=this.updateUser.bind(this);
 		}
-	
+
 			handleName(e){
 				this.setState({ firstName: e.target.value });
-			}
+      }
+
 			handleLastName(e){
 				this.setState({ lastName: e.target.value });
-			}
+      }
+
 			handleSalary(e){
 				this.setState({ salary: e.target.value });
-			}
+      }
+
 			handlePosition(e){
 				this.setState({ position: e.target.value });
-			}
+      }
+
 			handleGender(e){
 				this.setState({ gender: e.target.value });
-			}
+      }
+
 			closeModalUpdate(){
 				this.props.closeModalUpdate();
-			}
+      }
+
 			updateUser(){
 				this.props.updateUser(this.state);
-			}
+      }
+
 				render(){
 					return(
-							<div>					
+							<div>
 								<StyleContainerModal >
 									<Fade>
 										<WrapperModalEdit>
@@ -64,28 +71,28 @@ class ModalUpdate extends Component{
 											placeholder="First Name">
 										</StyleInput>
 
-										<StyleInput 
+										<StyleInput
 											value={this.state.lastName}
 											onChange={this.handleLastName}
 											type="text"
 											placeholder="Last Name">
 										</StyleInput>
 
-										<StyleInput 
+										<StyleInput
 											value={this.state.salary}
 											onChange={this.handleSalary}
 											type="text"
 											placeholder="Salary">
 										</StyleInput>
 
-										<StyleInput 
+										<StyleInput
 											value={this.state.position}
 											onChange={this.handlePosition}
 											placeholder="Position"
 											type="text">
 										</StyleInput>
 
-										<StyleInput 
+										<StyleInput
 											value={this.state.gender}
 											onChange={this.handleGender}
 											type="text"
@@ -103,10 +110,10 @@ class ModalUpdate extends Component{
 }
 
 const mapDispatchToProps = dispatch => ({
-	closeModalUpdate:colol => dispatch(closeModalUpdate(colol)),
+	closeModalUpdate:close => dispatch(closeModalUpdate(close)),
 	selectUser: select => dispatch(selectUser(select)),
 	updateUser: update => dispatch(updateUser(update)),
-	
+
 
 })
 const mapStateToProps = state =>({

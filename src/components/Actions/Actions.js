@@ -10,19 +10,21 @@ const showErrorModal = (error) =>{
 
 const showRefreshUsers = (res) =>{
   return dispatch => {
-    	dispatch({type:'SHOW_USERS',payload:res.data.workers});
-			dispatch({type:'ADD_PAGES',payload:res.data.pages});
-			dispatch({type:'ADD_PAGE',payload:res.data.page});
+    dispatch({type:'SHOW_USERS',payload:res.data.workers});
+		dispatch({type:'ADD_PAGES',payload:res.data.pages});
+		dispatch({type:'ADD_PAGE',payload:res.data.page});
   }
 }
+
 const successfulRequest = (res)=>{
   return dispatch =>{
     localStorage.setItem("token", res.data.token);
-				if(res.status === 200){
-				history.push('/main');
+		  if(res.status === 200){
+			history.push('/main');
 		}
   }
 }
+
 export const hideModal = () =>{
 	return dispatch =>{
 		dispatch({type:'CLOSE_MODAL',payload:false});
@@ -70,37 +72,37 @@ export const userPost = users => {
 		}
   }
 
-	export const userSign = users =>{
-		return dispatch => {
-			const options = {
-				url:'/login',
-				type:'post',
-				data: JSON.stringify(users)
-			}
+export const userSign = users =>{
+  return dispatch => {
+	  const options = {
+		  url:'/login',
+			type:'post',
+			data: JSON.stringify(users)
+		}
 			requestHendler(options)
-			.then(res =>{
-        dispatch(successfulRequest(res));
-			})
+			  .then(res =>{
+          dispatch(successfulRequest(res));
+			  })
 			.catch(error => {
 				dispatch(showErrorModal(error))
 			});
 		}
-	}
+}
 
-	export const showUsers = (i) =>{
-		return dispatch =>{
-			const options = {
-				url:'/',
-				type:'post',
-				data:{
+export const showUsers = (i) =>{
+  return dispatch =>{
+	  const options = {
+		  url:'/',
+			type:'post',
+			data:{
 					page:i
-				}
 			}
+		}
 			requestHendler(options)
-			.then(res =>{
+			  .then(res =>{
 			  dispatch(showRefreshUsers(res))
 			})
-		}
+    }
   }
 
 export const addUser = (user) =>{
@@ -132,7 +134,7 @@ export const deleteUser = (id) =>{
 }
 
 export const updateUser = (user) =>{
-	return dispatch =>{
+  return dispatch =>{
 		const options = {
 			url:`/update/${user.id}`,
 			type:'put',
