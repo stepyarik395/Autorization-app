@@ -14,22 +14,23 @@ class Sign extends Component {
       password: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleValueEmail = this.handleValueEmail.bind(this)
-    this.handleValuePassword = this.handleValuePassword.bind(this)
+    this.handleChangeInput = this.handleChangeInput.bind(this)
   }
 
-  handleValueEmail (e) {
-    this.setState({ email: e.target.value })
-  }
-
-  handleValuePassword (e) {
-    this.setState({ password: e.target.value })
+  handleChangeInput (event) {
+    const nam = event.target.name
+    const val = event.target.value
+    this.setState({ [nam]: val })
   }
 
   handleSubmit (e) {
+    this.setState({
+      email: '',
+      password: ''
+
+    })
     e.preventDefault()
     this.props.userSign(this.state)
-    // this.props.modalTogle;
   }
 
   render () {
@@ -39,29 +40,29 @@ class Sign extends Component {
           <Link to='/register'><StyleButton>Login in</StyleButton></Link>
         </div>
         <div className='global'>
-          {this.props.testStore.showModalError ? <ModalError inputValue={this.state} /> : null}
-          <form onSubmit={this.handleSubmit}>
-            <div className='wrapper__login'>
-              <label>email</label>
-              <input
-                id='sign-name'
-                value={this.state.email}
-                type='email'
-                onChange={this.handleValueEmail}
-                required
-              />
-              <label>password</label>
-              <input
-                id='sign-password'
-                value={this.state.password}
-                type='password'
-                onChange={this.handleValuePassword}
-                required
-              />
-              {this.state.password.length < 6 ? <ErrorPassword /> : null}
-              <button type='submit'>Sing In</button>
-            </div>
-          </form>
+          {this.props.testStore.showModalError ? <ModalError /> : null}
+          <div className='wrapper__login'>
+            <label>email</label>
+            <input
+              name='email'
+              id='sign-name'
+              value={this.state.email}
+              type='email'
+              onChange={this.handleChangeInput}
+              required
+            />
+            <label>password</label>
+            <input
+              name='password'
+              id='sign-password'
+              value={this.state.password}
+              type='password'
+              onChange={this.handleChangeInput}
+              required
+            />
+            {this.state.password.length < 6 ? <ErrorPassword /> : null}
+            <button onClick={this.handleSubmit}>Sing In</button>
+          </div>
         </div>
       </div>
     )

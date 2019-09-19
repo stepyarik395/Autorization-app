@@ -4,14 +4,6 @@ import { connect } from 'react-redux'
 import { handleHideModal } from '../Actions/Actions'
 
 class ModalErrorLogin extends Component {
-  componentDidMount () {
-    this.setState(() => {
-      this.props.inputValue.name = ''
-      this.props.inputValue.email = ''
-      this.props.inputValue.password = ''
-    })
-  }
-
   render () {
     const { ErrorText } = this.props
     return (

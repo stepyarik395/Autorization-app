@@ -8,59 +8,58 @@ class Login extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      name: '',
       password: '',
+      name: '',
       email: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleValueName = this.handleValueName.bind(this)
-    this.handleValuePassword = this.handleValuePassword.bind(this)
-    this.handleValueEmail = this.handleValueEmail.bind(this)
+    this.handleChangeInput = this.handleChangeInput.bind(this)
   }
 
-  handleValueName (e) {
-    this.setState({ name: e.target.value })
-  }
-
-  handleValuePassword (e) {
-    this.setState({ password: e.target.value })
-  }
-
-  handleValueEmail (e) {
-    this.setState({ email: e.target.value })
+  handleChangeInput (event) {
+    const nam = event.target.name
+    const val = event.target.value
+    this.setState({ [nam]: val })
   }
 
   handleSubmit (e) {
+    console.log(this.state)
+    this.setState({
+      name: '',
+      email: '',
+      password: ''
+    })
     e.preventDefault()
     this.props.userPost(this.state)
   }
 
   render () {
     return (
+
       <div className='global'>
-        {this.props.testStore.showModalError ? <ModalError inputValue={this.state} /> : null}
+        {this.props.testStore.showModalError ? <ModalError /> : null}
         <div className='wrapper__login'>
-          <form onSubmit={this.handleSubmit}>
-            <label>name</label>
-            <input onChange={this.handleValueName} type='text' value={this.state.name} required />
-            <label>email</label>
-            <input
-              onChange={this.handleValueEmail}
-              type='email'
-              value={this.state.email}
-              required
-            />
-            <label>password</label>
-            <input
-              onChange={this.handleValuePassword}
-              type='password'
-              value={this.state.password}
-              required
-            />
-            <br />
-            {this.state.password.length < 6 ? <ErrorPassword /> : null}
-            <button type='submit'>Login in</button>
-          </form>
+          <label>name</label>
+          <input name='name' value={this.state.name} onChange={this.handleChangeInput} type='text' required />
+          <label>email</label>
+          <input
+            name='email'
+            value={this.state.email}
+            onChange={this.handleChangeInput}
+            type='email'
+            required
+          />
+          <label>password</label>
+          <input
+            name='password'
+            value={this.state.password}
+            onChange={this.handleChangeInput}
+            type='password'
+            required
+          />
+          <br />
+          {this.state.password.length < 6 ? <ErrorPassword /> : null}
+          <button onClick={this.handleSubmit}>Login in</button>
         </div>
       </div>
     )

@@ -25,7 +25,7 @@ class Main extends Component {
   }
 
   handleClearLocalStorage () {
-    window.localStorage.clear()
+    window.localStorage.clear('token')
   }
 
   handleOpenModalEdit () {
