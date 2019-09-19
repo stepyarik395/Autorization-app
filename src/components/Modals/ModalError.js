@@ -1,4 +1,4 @@
-import React,{ Component } from 'react'
+import React, { Component } from 'react'
 import { DivWrapperModal, StyleSpanText, StyleButtonClose, DivFlexContainer } from './ModalStyles'
 import { connect } from 'react-redux'
 import { handleHideModal } from '../Actions/Actions'
@@ -26,7 +26,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = store => {
-  console.log(store)
   return {
     ErrorText: store.ErrorText
   }

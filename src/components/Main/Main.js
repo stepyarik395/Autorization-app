@@ -74,8 +74,7 @@ class Main extends Component {
                     <th><StyleEditButton onClick={() => this.updateUser(item)}><MdCreate /></StyleEditButton>
                       <StyleEditButton onClick={() => this.deleteUser(item._id)}><MdDelete /></StyleEditButton>
                     </th>
-                  </tr>
-                </tbody>
+                  </tr></tbody>
               })}
             </table>
           </StyleWrapperDiv>

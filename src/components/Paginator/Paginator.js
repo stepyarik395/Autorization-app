@@ -28,8 +28,7 @@ export const paginate = (currentPage, lastPage, clickEvent) => {
           key={index}
           onClick={() => clickEvent(i)}
           className={currentPage === i ? 'active' : 'buttons'}
-        >
-        {i}
+        >{i}
         </button>
         : <span key={index}>{i}</span>
     )
