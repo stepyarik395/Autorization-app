@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { StyleButton, StyleMain, StyleWrapperDiv, StyleEditButton, StyleButtonEdit } from './StyleMain'
+import { StyleButton, StyleMain, StyleWrapperDiv, StyleEditButton, StyleButtonEdit, StyleWrapperMain } from './StyleMain'
 import { connect } from 'react-redux'
 import { showUsers, showModalEdit, deleteUser, showModalUpdate } from '../Actions/Actions'
 import { MdDelete, MdAdd, MdCreate } from 'react-icons/md'
@@ -44,9 +44,9 @@ class Main extends Component {
     console.log(this.props.testStore)
     return (
       <div>
-        <div className='wpapper__main__button'>
+        <StyleWrapperMain>
           <Link to='/'><StyleButton onClick={this.handleClearLocalStorage}>Out</StyleButton></Link>
-        </div>
+        </StyleWrapperMain>
         {this.props.testStore.showModalEdit ? <ModalEdit /> : null}
         {this.props.testStore.showModalUpdate ? <ModalUpdate /> : null}
         <Search />

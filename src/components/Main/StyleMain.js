@@ -72,3 +72,7 @@ height:70px;
 border-radius:50%;
 border:none;
 `
+export const StyleWrapperMain = styled.div`
+right:30px;
+  position: absolute;
+`

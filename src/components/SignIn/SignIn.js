@@ -3,6 +3,7 @@ import { userSign } from '../Actions/Actions'
 import { connect } from 'react-redux'
 import ErrorPassword from '../Errors/ErrorPassword'
 import ModalError from '../Modals/ModalError'
+import { StyleGlobalWrapper, StyleWrapperSign, StyleInputSign, StyleLabel, StyleButton } from './SignStyle';
 
 class SignIn extends Component {
   constructor (props) {
@@ -33,11 +34,11 @@ class SignIn extends Component {
   render () {
     return (
       <div>
-        <div className='global'>
+        <StyleGlobalWrapper>
           {this.props.testStore.showModalError ? <ModalError /> : null}
-          <div className='wrapper__login'>
-            <label>email</label>
-            <input
+          <StyleWrapperSign>
+            <StyleLabel>email</StyleLabel>
+            <StyleInputSign
               name='email'
               id='sign-name'
               value={this.state.email}
@@ -45,8 +46,8 @@ class SignIn extends Component {
               onChange={this.handleChangeInput}
               required
             />
-            <label>password</label>
-            <input
+            <StyleLabel>password</StyleLabel>
+            <StyleInputSign
               name='password'
               id='sign-password'
               value={this.state.password}
@@ -55,9 +56,9 @@ class SignIn extends Component {
               required
             />
             {this.state.password.length < 6 ? <ErrorPassword /> : null}
-            <button onClick={this.handleSubmit}>Sign in</button>
-          </div>
-        </div>
+            <StyleButton onClick={this.handleSubmit}>Sign in</StyleButton>
+          </StyleWrapperSign>
+        </StyleGlobalWrapper>
       </div>
     )
   }

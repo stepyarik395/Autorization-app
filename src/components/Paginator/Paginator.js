@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSection } from './StylePaginator'
+import { StyleSection, StyleDottsButton } from './StylePaginator'
 
 export const paginate = (currentPage, lastPage, clickEvent) => {
   const delta = 1
@@ -23,13 +23,13 @@ export const paginate = (currentPage, lastPage, clickEvent) => {
   return range.map((i, index) => {
     return (
       !isNaN(i)
-        ? <button
+        ? <StyleDottsButton
           value={i}
           key={index}
           onClick={() => clickEvent(i)}
-          className={currentPage === i ? 'active' : 'buttons'}
+          className={currentPage === i ? 'active' : ''}
         >{i}
-        </button>
+        </StyleDottsButton>
         : <span key={index}>{i}</span>
     )
   })
@@ -37,7 +37,7 @@ export const paginate = (currentPage, lastPage, clickEvent) => {
 
 const Paginator = ({ currentPage, lastPage, clickEvent }) => {
   return (
-    <StyleSection className='pagination'>
+    <StyleSection>
       {paginate(currentPage, lastPage, clickEvent)}
     </StyleSection>
   )

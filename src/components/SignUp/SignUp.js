@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { userPost } from '../Actions/Actions'
 import ErrorPassword from '../Errors/ErrorPassword'
 import ModalError from '../Modals/ModalError'
+import { StyleGlobalWrapper, StyleWrapperSign, StyleInputSign, StyleLabel, StyleButton } from '../SignIn/SignStyle';
 
 class SignUp extends Component {
   constructor (props) {
@@ -34,21 +35,21 @@ class SignUp extends Component {
 
   render () {
     return (
-      <div className='global'>
+      <StyleGlobalWrapper>
         {this.props.testStore.showModalError ? <ModalError /> : null}
-        <div className='wrapper__login'>
-          <label>name</label>
-          <input name='name' value={this.state.name} onChange={this.handleChangeInput} type='text' required />
-          <label>email</label>
-          <input
+        <StyleWrapperSign>
+          <StyleLabel>name</StyleLabel>
+          <StyleInputSign name='name' value={this.state.name} onChange={this.handleChangeInput} type='text' required />
+          <StyleLabel>email</StyleLabel>
+          <StyleInputSign
             name='email'
             value={this.state.email}
             onChange={this.handleChangeInput}
             type='email'
             required
           />
-          <label>password</label>
-          <input
+          <StyleLabel>password</StyleLabel>
+          <StyleInputSign
             name='password'
             value={this.state.password}
             onChange={this.handleChangeInput}
@@ -57,9 +58,9 @@ class SignUp extends Component {
           />
           <br />
           {this.state.password.length < 6 ? <ErrorPassword /> : null}
-          <button onClick={this.handleSubmit}>Sign up</button>
-        </div>
-      </div>
+          <StyleButton onClick={this.handleSubmit}>Sign up</StyleButton>
+        </StyleWrapperSign>
+      </StyleGlobalWrapper>
     )
   }
 }

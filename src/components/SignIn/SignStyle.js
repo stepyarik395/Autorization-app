@@ -1,15 +1,14 @@
 import styled from 'styled-components'
 
 export const StyleButton = styled.button`
-min-width:200px;
+width:100%;
 outline: none;
 cursor: pointer;
-margin:0.5rem;
+margin-top:20px;
 height: 50px;
 background-color: transparent;
 border: 1px solid #9932CC;
 text-transform: uppercase;
-float: right;
 :hover{
   color:#fff;
   transition: 0.3s all;
@@ -19,3 +18,35 @@ float: right;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827', GradientType=1 );
 }
 `
+export const StyleGlobalWrapper = styled.div`
+height: 70vh;
+display: flex;
+justify-content:center;
+align-items: center;
+`
+export const StyleWrapperSign = styled.div`
+box-sizing: border-box;
+text-align: center;
+flex-direction: column;
+display: flex;
+`
+export const StyleInputSign = styled.input`
+min-width:300px;
+font-size: 2rem;
+border: 2px solid  #9932CC;
+`
+export const StyleLabel = styled.label`
+display:block;
+margin:1rem;
+ text-transform: uppercase;
+`
+// export const StyleButton = styled.button`
+// width:100%;
+//   outline: none;
+//   cursor: pointer;
+//   margin-top:20px;
+//   height: 50px;
+//   background-color: transparent;
+//   border: 1px solid #9932CC;
+//   text-transform: uppercase;
+// `
