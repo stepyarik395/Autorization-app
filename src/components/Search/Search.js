@@ -41,8 +41,4 @@ class Search extends Component {
 const mapDispatchToProps = dispatch => ({
   searchItems: search => dispatch(searchItems(search))
 })
-
-const mapStateToProps = state => ({
-  testStore: state
-})
-export default connect(mapStateToProps, mapDispatchToProps)(Search)
+export default connect(mapDispatchToProps)(Search)

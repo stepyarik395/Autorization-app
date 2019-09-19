@@ -69,7 +69,4 @@ class Login extends Component {
 const mapDispatchToProps = dispatch => ({
   userPost: userInfo => dispatch(userPost(userInfo))
 })
-const mapStateToProps = state => ({
-  testStore: state
-})
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapDispatchToProps)(Login)

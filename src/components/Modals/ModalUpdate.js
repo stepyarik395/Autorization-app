@@ -16,33 +16,20 @@ class ModalUpdate extends Component {
       position: props.testStore.selectUser.position,
       gender: props.testStore.selectUser.gender
     }
-    this.handleName = this.handleName.bind(this)
-    this.handleLastName = this.handleLastName.bind(this)
-    this.handleSalary = this.handleSalary.bind(this)
-    this.handlePosition = this.handlePosition.bind(this)
-    this.handleGender = this.handleGender.bind(this)
+    // this.handleName = this.handleName.bind(this)
+    // this.handleLastName = this.handleLastName.bind(this)
+    // this.handleSalary = this.handleSalary.bind(this)
+    // this.handlePosition = this.handlePosition.bind(this)
+    // this.handleGender = this.handleGender.bind(this)
     this.handleCloseModalUpdate = this.handleCloseModalUpdate.bind(this)
     this.handleUpdateUser = this.handleUpdateUser.bind(this)
+    this.handleChangeInput = this.handleChangeInput.bind(this)
   }
 
-  handleName (e) {
-    this.setState({ firstName: e.target.value })
-  }
-
-  handleLastName (e) {
-    this.setState({ lastName: e.target.value })
-  }
-
-  handleSalary (e) {
-    this.setState({ salary: e.target.value })
-  }
-
-  handlePosition (e) {
-    this.setState({ position: e.target.value })
-  }
-
-  handleGender (e) {
-    this.setState({ gender: e.target.value })
+  handleChangeInput (event) {
+    const nam = event.target.name
+    const val = event.target.value
+    this.setState({ [nam]: val })
   }
 
   handleCloseModalUpdate () {
@@ -61,32 +48,37 @@ class ModalUpdate extends Component {
             <WrapperModalEdit>
               <StyleTitle>Update user</StyleTitle>
               <StyleInput
+                name='firstName'
                 value={this.state.firstName}
-                onChange={this.handleName}
+                onChange={this.handleChangeInput}
                 type='text'
                 placeholder='First Name'
               />
               <StyleInput
+                name='lastName'
                 value={this.state.lastName}
-                onChange={this.handleLastName}
+                onChange={this.handleChangeInput}
                 type='text'
                 placeholder='Last Name'
               />
               <StyleInput
+                name='salary'
                 value={this.state.salary}
-                onChange={this.handleSalary}
+                onChange={this.handleChangeInput}
                 type='text'
                 placeholder='Salary'
               />
               <StyleInput
+                name='position'
                 value={this.state.position}
-                onChange={this.handlePosition}
+                onChange={this.handleChangeInput}
                 placeholder='Position'
                 type='text'
               />
               <StyleInput
+                name='gender'
                 value={this.state.gender}
-                onChange={this.handleGender}
+                onChange={this.handleChangeInput}
                 type='text'
                 placeholder='Gender'
               />
