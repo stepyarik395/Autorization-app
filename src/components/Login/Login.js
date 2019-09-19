@@ -23,7 +23,6 @@ class Login extends Component {
   }
 
   handleSubmit (e) {
-
     console.log(this.state)
     this.setState({
       name: '',
@@ -35,7 +34,6 @@ class Login extends Component {
 
   render () {
     return (
-
       <div className='global'>
         {this.props.testStore.showModalError ? <ModalError /> : null}
         <div className='wrapper__login'>
