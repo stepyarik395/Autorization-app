@@ -40,13 +40,3 @@ display:block;
 margin:1rem;
  text-transform: uppercase;
 `
-// export const StyleButton = styled.button`
-// width:100%;
-//   outline: none;
-//   cursor: pointer;
-//   margin-top:20px;
-//   height: 50px;
-//   background-color: transparent;
-//   border: 1px solid #9932CC;
-//   text-transform: uppercase;
-// `
