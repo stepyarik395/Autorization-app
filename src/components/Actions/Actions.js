@@ -20,7 +20,7 @@ const successfulRequest = (res) => {
   return dispatch => {
     window.localStorage.setItem('token', res.data.token)
     if (res.status === 200) {
-      history.push('/main')
+      history.push('/main/1')
     }
   }
 }

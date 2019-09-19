@@ -19,6 +19,7 @@ class Main extends Component {
 
   componentDidMount () {
     const currentId = parseInt(this.props.match.params.id, 10)
+    console.log(this.props)
     this.props.history.push(this.props.location.pathname)
     this.props.showUsers(currentId)
   }
