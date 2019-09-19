@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
-import Sign from './components/Sign/Sign'
-import Login from './components/Login/Login'
+import SignUp from './components/SignUp/SignUp'
+import SignIn from './components/SignIn/SignIn'
 import Home from './components/Home/Home'
 import Main from './components/Main/Main'
 import { Route, Redirect } from 'react-router-dom'
@@ -28,13 +28,13 @@ class App extends Component {
           )}
         />
         <Route
-          path='/login' render={() => (
-            isAut(<Sign />)
+          path='/signup' render={() => (
+            isAut(<SignUp />)
           )}
         />
         <Route
-          path='/register' render={() => (
-            isAut(<Login />)
+          path='/signin' render={() => (
+            isAut(<SignIn />)
           )}
         />
         <Route

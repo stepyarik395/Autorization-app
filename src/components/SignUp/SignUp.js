@@ -4,7 +4,7 @@ import { userPost } from '../Actions/Actions'
 import ErrorPassword from '../Errors/ErrorPassword'
 import ModalError from '../Modals/ModalError'
 
-class Login extends Component {
+class SignUp extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -57,7 +57,7 @@ class Login extends Component {
           />
           <br />
           {this.state.password.length < 6 ? <ErrorPassword /> : null}
-          <button onClick={this.handleSubmit}>Login in</button>
+          <button onClick={this.handleSubmit}>Sign up</button>
         </div>
       </div>
     )
@@ -70,4 +70,4 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   testStore: state
 })
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

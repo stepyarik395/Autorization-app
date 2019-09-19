@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { StyleButton } from './SignStyle'
 import { userSign } from '../Actions/Actions'
 import { connect } from 'react-redux'
 import ErrorPassword from '../Errors/ErrorPassword'
 import ModalError from '../Modals/ModalError'
 
-class Sign extends Component {
+class SignIn extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -35,9 +33,6 @@ class Sign extends Component {
   render () {
     return (
       <div>
-        <div className='wpapper__main__button'>
-          <Link to='/register'><StyleButton>Login in</StyleButton></Link>
-        </div>
         <div className='global'>
           {this.props.testStore.showModalError ? <ModalError /> : null}
           <div className='wrapper__login'>
@@ -60,7 +55,7 @@ class Sign extends Component {
               required
             />
             {this.state.password.length < 6 ? <ErrorPassword /> : null}
-            <button onClick={this.handleSubmit}>Sing In</button>
+            <button onClick={this.handleSubmit}>Sign in</button>
           </div>
         </div>
       </div>
@@ -75,4 +70,4 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   testStore: state
 })
-export default connect(mapStateToProps, mapDispatchToProps)(Sign)
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
