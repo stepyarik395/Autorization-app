@@ -46,6 +46,7 @@ class ModalEdit extends Component {
               onChange={this.handleChangeInput}
               type='text'
               placeholder='First Name'
+              required
             />
             <StyleInput
               name='lastName'
@@ -53,6 +54,7 @@ class ModalEdit extends Component {
               onChange={this.handleChangeInput}
               type='text'
               placeholder='Last Name'
+              required
             />
 
             <StyleInput
@@ -61,6 +63,7 @@ class ModalEdit extends Component {
               onChange={this.handleChangeInput}
               type='text'
               placeholder='Salary'
+              required
             />
             <StyleInput
               name='position'
@@ -68,6 +71,7 @@ class ModalEdit extends Component {
               onChange={this.handleChangeInput}
               placeholder='Position'
               type='text'
+              required
             />
 
             <StyleInput
@@ -76,6 +80,7 @@ class ModalEdit extends Component {
               onChange={this.handleChangeInput}
               type='text'
               placeholder='Gender'
+              required
             />
 
             <StyleButtonAdd onClick={this.handleAddUser}>Add</StyleButtonAdd>
@@ -92,5 +97,8 @@ const mapDispatchToProps = dispatch => ({
   addUser: editUser => dispatch(addUser(editUser))
 
 })
+const mapStateToProps = state => ({
+  testStore: state
+})
 
-export default connect(mapDispatchToProps)(ModalEdit)
+export default connect(mapStateToProps, mapDispatchToProps)(ModalEdit)

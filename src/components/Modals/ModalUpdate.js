@@ -16,11 +16,6 @@ class ModalUpdate extends Component {
       position: props.testStore.selectUser.position,
       gender: props.testStore.selectUser.gender
     }
-    // this.handleName = this.handleName.bind(this)
-    // this.handleLastName = this.handleLastName.bind(this)
-    // this.handleSalary = this.handleSalary.bind(this)
-    // this.handlePosition = this.handlePosition.bind(this)
-    // this.handleGender = this.handleGender.bind(this)
     this.handleCloseModalUpdate = this.handleCloseModalUpdate.bind(this)
     this.handleUpdateUser = this.handleUpdateUser.bind(this)
     this.handleChangeInput = this.handleChangeInput.bind(this)

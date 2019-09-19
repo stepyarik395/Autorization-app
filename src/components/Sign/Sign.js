@@ -29,7 +29,6 @@ class Sign extends Component {
       password: ''
 
     })
-    e.preventDefault()
     this.props.userSign(this.state)
   }
 

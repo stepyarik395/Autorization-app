@@ -23,13 +23,13 @@ class Login extends Component {
   }
 
   handleSubmit (e) {
+
     console.log(this.state)
     this.setState({
       name: '',
       email: '',
       password: ''
     })
-    e.preventDefault()
     this.props.userPost(this.state)
   }
 
@@ -69,4 +69,7 @@ class Login extends Component {
 const mapDispatchToProps = dispatch => ({
   userPost: userInfo => dispatch(userPost(userInfo))
 })
-export default connect(mapDispatchToProps)(Login)
+const mapStateToProps = state => ({
+  testStore: state
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
