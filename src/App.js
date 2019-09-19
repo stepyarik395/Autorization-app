@@ -39,7 +39,8 @@ class App extends Component {
         />
         <Route
           path='/main' render={() => (
-            isAut()
+            isAut(),
+            <Redirect to='/main/1' />
             // <Main />
           )}
         />
