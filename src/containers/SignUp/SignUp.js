@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { userPost } from '../Actions/Actions'
-import ErrorPassword from '../Errors/ErrorPassword'
-import ModalError from '../Modals/ModalError'
-import { StyleGlobalWrapper, StyleWrapperSign, StyleInputSign, StyleLabel, StyleButton } from '../SignIn/SignStyle';
+import { userPost } from '../../components/Actions/Actions'
+import ErrorPassword from '../../components/Errors/ErrorPassword'
+import ModalError from '../../components/Modals/ModalError'
+import { StyleGlobalWrapper, StyleWrapperSign, StyleInputSign, StyleLabel, StyleButton } from '../SignIn/SignStyle'
 
 class SignUp extends Component {
   constructor (props) {
@@ -13,17 +13,15 @@ class SignUp extends Component {
       name: '',
       email: ''
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChangeInput = this.handleChangeInput.bind(this)
   }
 
-  handleChangeInput (event) {
+  handleChangeInput = (event) => {
     const nam = event.target.name
     const val = event.target.value
     this.setState({ [nam]: val })
   }
 
-  handleSubmit (e) {
+  handleSubmit = (e) => {
     console.log(this.state)
     this.setState({
       name: '',

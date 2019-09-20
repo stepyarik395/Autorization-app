@@ -7,7 +7,8 @@ const initialState = {
   selectUser: {},
   arrUsers: [],
   pages: [],
-  page: []
+  page: [],
+  isFetch: false
 }
 
 export function reducers (state = initialState, action) {
@@ -40,6 +41,8 @@ export function reducers (state = initialState, action) {
       return { ...state, page: action.payload }
     case 'NEXT_PAGE':
       return { ...state, page: action.payload }
+    case 'SHOW_PRELOADER':
+      return { ...state, isFetch: action.payload }
     default:
       return state
   }

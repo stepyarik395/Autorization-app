@@ -13,11 +13,11 @@ class Search extends Component {
     this.handleSearch = this.handleSearch.bind(this)
   }
 
-  handleSearch () {
+  handleSearch = () => {
     this.props.searchItems(this.state.text)
   }
 
-  handleInputChangeValue (e) {
+  handleInputChangeValue = (e) => {
     this.setState({
       text: e.target.value
     })

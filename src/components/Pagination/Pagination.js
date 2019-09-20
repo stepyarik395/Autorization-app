@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { selectPage, activePage, nextPage, prevPage } from '../Actions/Actions'
+import { selectPage, nextPage, prevPage } from '../Actions/Actions'
 import Paginator from '../Paginator/Paginator'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { StylePrev, StyleNext, StyleWrapperPagin } from './StylePagination'
@@ -10,20 +10,17 @@ class Pagination extends Component {
     super(props)
     this.state = {
     }
-    this.handleNextPage = this.handleNextPage.bind(this)
-    this.handlePrevPage = this.handlePrevPage.bind(this)
-    this.OnhandlePagination = this.OnhandlePagination.bind(this)
   }
 
-  handleNextPage () {
+  handleNextPage = () => {
     this.props.nextPage(this.props.testStore.page)
   }
 
-  handlePrevPage () {
+  handlePrevPage = () => {
     this.props.prevPage(this.props.testStore.page)
   }
 
-  OnhandlePagination (i) {
+  OnhandlePagination = (i) => {
     this.props.selectPage(i)
   }
 
@@ -58,7 +55,6 @@ class Pagination extends Component {
 
 const mapDispatchToProps = dispatch => ({
   selectPage: select => dispatch(selectPage(select)),
-  activePage: active => dispatch(activePage(active)),
   nextPage: next => dispatch(nextPage(next)),
   prevPage: prev => dispatch(prevPage(prev))
 

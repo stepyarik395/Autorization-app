@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { WrapperModalEdit, StyleContainerModal, StyleInput, StyleButtonAdd, ButtonCloseEdit, StyleTitle } from './ModalStyles'
 import { MdClear } from 'react-icons/md'
-import { closeModalEdit, addUser } from '../Actions/Actions'
+import { addUser } from '../Actions/Actions'
 import { connect } from 'react-redux'
 import Fade from 'react-reveal/Fade'
 
@@ -15,20 +15,18 @@ class ModalEdit extends Component {
       position: '',
       gender: ''
     }
-    this.handleCloseModalEdit = this.handleCloseModalEdit.bind(this)
-    this.handleAddUser = this.handleAddUser.bind(this)
-    this.handleChangeInput = this.handleChangeInput.bind(this)
   }
 
-  handleCloseModalEdit () {
+  handleCloseModalEdit = () => {
     this.props.closeModalEdit()
   }
 
-  handleAddUser () {
+  handleAddUser = () => {
     this.props.addUser(this.state)
+    this.props.closeModalEdit();
   }
 
-  handleChangeInput (event) {
+  handleChangeInput = (event) => {
     const nam = event.target.name
     const val = event.target.value
     this.setState({ [nam]: val })
@@ -93,7 +91,7 @@ class ModalEdit extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  closeModalEdit: closeEdit => dispatch(closeModalEdit(closeEdit)),
+  closeModalEdit: () => dispatch({ type: 'CLOSE_MODAL_EDIT', payload: false }),
   addUser: editUser => dispatch(addUser(editUser))
 
 })

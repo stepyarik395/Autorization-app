@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import './App.css'
-import SignUp from './components/SignUp/SignUp'
-import SignIn from './components/SignIn/SignIn'
-import Home from './components/Home/Home'
-import Main from './components/Main/Main'
+import SignUp from './containers/SignUp/SignUp'
+import SignIn from './containers/SignIn/SignIn'
+import Home from './containers/Home/Home'
+import Main from './containers/Main/Main'
 import { Route, Redirect } from 'react-router-dom'
 
 const isAut = (component) => {

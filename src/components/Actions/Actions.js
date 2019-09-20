@@ -9,10 +9,11 @@ const showErrorModal = (error) => {
 }
 
 const showRefreshUsers = (res) => {
+  const { workers, pages, page } = res.data
   return dispatch => {
-    dispatch({ type: 'SHOW_USERS', payload: res.data.workers })
-    dispatch({ type: 'ADD_PAGES', payload: res.data.pages })
-    dispatch({ type: 'ADD_PAGE', payload: res.data.page })
+    dispatch({ type: 'SHOW_USERS', payload: workers })
+    dispatch({ type: 'ADD_PAGES', payload: pages })
+    dispatch({ type: 'ADD_PAGE', payload: page })
   }
 }
 
@@ -25,33 +26,10 @@ const successfulRequest = (res) => {
   }
 }
 
-export const handleHideModal = () => {
-  return dispatch => {
-    dispatch({ type: 'CLOSE_MODAL', payload: false })
-  }
-}
-
-export const showModalEdit = () => {
-  return dispatch => {
-    dispatch({ type: 'OPEN_MODAL_EDIT', payload: true })
-  }
-}
-
-export const closeModalEdit = () => {
-  return dispatch => {
-    dispatch({ type: 'CLOSE_MODAL_EDIT', payload: false })
-  }
-}
-
 export const showModalUpdate = (item) => {
   return dispatch => {
     dispatch({ type: 'SELECT_USER', payload: item })
     dispatch({ type: 'SHOW_MODAL_UPDATE', payload: true })
-  }
-}
-export const closeModalUpdate = () => {
-  return dispatch => {
-    dispatch({ type: 'CLOSE_MODAL_UPDATE', payload: false })
   }
 }
 
@@ -60,7 +38,7 @@ export const userPost = users => {
     const options = {
       url: '/register',
       type: 'post',
-      data: JSON.stringify(users)
+      data: users
     }
     requestHendler(options)
       .then(res => {
@@ -110,12 +88,11 @@ export const addUser = (user) => {
     const options = {
       url: '/create',
       type: 'post',
-      data: JSON.stringify(user)
+      data: user
     }
     requestHendler(options)
       .then(res => {
         dispatch(showUsers())
-        dispatch({ type: 'CLOSE_MODAL_EDIT', payload: false })
       })
   }
 }
@@ -143,7 +120,6 @@ export const updateUser = (user) => {
     requestHendler(options)
       .then(res => {
         dispatch(showUsers())
-        dispatch(closeModalUpdate())
       })
   }
 }
@@ -172,14 +148,14 @@ export const nextPage = (current) => {
       url: '/',
       type: 'post',
       data: {
-        page: current + 1
+        page: current
       }
     }
     requestHendler(options)
       .then(res => {
-        dispatch({ type: 'SELECT_PAGE', payload: current + 1 })
-        dispatch({ type: 'SHOW_USERS', payload: res.data.workers })
-        history.push(`/main/${current + 1}`)
+        // dispatch({ type: 'SELECT_PAGE', payload: current + 1 })
+        // dispatch({ type: 'SHOW_USERS', payload: res.data.workers })
+        // history.push(`/main/${current + 1}`)
       })
   }
 }
@@ -190,14 +166,15 @@ export const prevPage = (current) => {
       url: '/',
       type: 'post',
       data: {
-        page: current - 1
+        page: current
       }
     }
     requestHendler(options)
       .then(res => {
-        dispatch({ type: 'SELECT_PAGE', payload: current - 1 })
-        dispatch({ type: 'SHOW_USERS', payload: res.data.workers })
-        history.push(`/main/${current + -1}`)
+        dispatch({})
+        // dispatch({ type: 'SELECT_PAGE', payload: current - 1 })
+        // dispatch({ type: 'SHOW_USERS', payload: res.data.workers })
+        // history.push(`/main/${current - 1}`)
       })
   }
 }

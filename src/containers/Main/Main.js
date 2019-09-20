@@ -2,41 +2,33 @@ import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { StyleButton, StyleMain, StyleWrapperDiv, StyleEditButton, StyleButtonEdit, StyleWrapperMain } from './StyleMain'
 import { connect } from 'react-redux'
-import { showUsers, showModalEdit, deleteUser, showModalUpdate } from '../Actions/Actions'
+import { showUsers, deleteUser, showModalUpdate } from '../../components/Actions/Actions'
 import { MdDelete, MdAdd, MdCreate } from 'react-icons/md'
-import ModalEdit from '../Modals/ModalEdit'
-import ModalUpdate from '../Modals/ModalUpdate'
-import Pagination from '../Pagination/Pagination'
-import Search from '../Search/Search'
+import ModalEdit from '../../components/Modals/ModalEdit'
+import ModalUpdate from '../../components/Modals/ModalUpdate'
+import Pagination from '../../components/Pagination/Pagination'
+import Search from '../../components/Search/Search'
+// import preloader from '../../assets/img/Ball-1s-200px.svg'
 
 class Main extends Component {
   constructor (props) {
     super(props)
     this.handleOpenModalEdit = this.handleOpenModalEdit.bind(this)
-    this.deleteUser = this.deleteUser.bind(this)
-    this.updateUser = this.updateUser.bind(this)
   }
 
   componentDidMount () {
     this.pageLocation()
   }
 
-  handleClearLocalStorage () {
+  handleClearLocalStorage = () => {
     window.localStorage.clear('token')
   }
 
-  handleOpenModalEdit () {
+  handleOpenModalEdit = () => {
     this.props.showModalEdit()
   }
 
-  deleteUser (id) {
-    this.props.deleteUser(id)
-  }
-
-  updateUser (item) {
-    this.props.showModalUpdate(item)
-  }
-  pageLocation(){
+  pageLocation = () => {
     const currentId = parseInt(this.props.match.params.id, 10)
     console.log(this.props)
     this.props.history.push(this.props.location.pathname)
@@ -44,7 +36,6 @@ class Main extends Component {
   }
 
   render () {
-    console.log(this.props.testStore)
     return (
       <div>
         <StyleWrapperMain>
@@ -54,6 +45,7 @@ class Main extends Component {
         {this.props.testStore.showModalUpdate ? <ModalUpdate /> : null}
         <Search />
         <StyleMain>
+          {/* {this.props.testStore.isFetch ? <img src={preloader} /> : null} */}
           <StyleWrapperDiv>
             <table>
               <thead>
@@ -74,8 +66,8 @@ class Main extends Component {
                     <th>{item.salary}</th>
                     <th>{item.position}</th>
                     <th>{item.gender}</th>
-                    <th><StyleEditButton onClick={() => this.updateUser(item)}><MdCreate /></StyleEditButton>
-                      <StyleEditButton onClick={() => this.deleteUser(item._id)}><MdDelete /></StyleEditButton>
+                    <th><StyleEditButton onClick={() => this.props.showModalUpdate(item)}><MdCreate /></StyleEditButton>
+                      <StyleEditButton onClick={() => this.props.deleteUser(item._id)}><MdDelete /></StyleEditButton>
                     </th>
                   </tr></tbody>
               })}
@@ -92,7 +84,7 @@ class Main extends Component {
 }
 const mapDispatchToProps = dispatch => ({
   showUsers: showU => dispatch(showUsers(showU)),
-  showModalEdit: modalEdit => dispatch(showModalEdit(modalEdit)),
+  showModalEdit: () => dispatch({ type: 'OPEN_MODAL_EDIT', payload: true }),
   deleteUser: delUser => dispatch(deleteUser(delUser)),
   showModalUpdate: modallUp => dispatch(showModalUpdate(modallUp))
 })

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { DivWrapperModal, StyleSpanText, StyleButtonClose, DivFlexContainer } from './ModalStyles'
 import { connect } from 'react-redux'
-import { handleHideModal } from '../Actions/Actions'
 
 class ModalErrorLogin extends Component {
   render () {
@@ -22,7 +21,7 @@ class ModalErrorLogin extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  handleHideModal: modal => dispatch(handleHideModal(modal))
+  handleHideModal: () => dispatch({ type: 'CLOSE_MODAL', payload: false })
 })
 
 const mapStateToProps = store => {
