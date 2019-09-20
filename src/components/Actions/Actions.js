@@ -55,7 +55,7 @@ export const userSign = users => {
     const options = {
       url: '/login',
       type: 'post',
-      data: JSON.stringify(users)
+      data: users
     }
     requestHendler(options)
       .then(res => {
@@ -153,9 +153,7 @@ export const nextPage = (current) => {
     }
     requestHendler(options)
       .then(res => {
-        // dispatch({ type: 'SELECT_PAGE', payload: current + 1 })
-        // dispatch({ type: 'SHOW_USERS', payload: res.data.workers })
-        // history.push(`/main/${current + 1}`)
+        dispatch(selectPage(current+1))
       })
   }
 }
@@ -171,10 +169,7 @@ export const prevPage = (current) => {
     }
     requestHendler(options)
       .then(res => {
-        dispatch({})
-        // dispatch({ type: 'SELECT_PAGE', payload: current - 1 })
-        // dispatch({ type: 'SHOW_USERS', payload: res.data.workers })
-        // history.push(`/main/${current - 1}`)
+        dispatch(selectPage(current-1))
       })
   }
 }
