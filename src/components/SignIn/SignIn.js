@@ -3,7 +3,7 @@ import { userSign } from '../Actions/Actions'
 import { connect } from 'react-redux'
 import ErrorPassword from '../Errors/ErrorPassword'
 import ModalError from '../Modals/ModalError'
-import { StyleGlobalWrapper, StyleWrapperSign, StyleInputSign, StyleLabel, StyleButton } from './SignStyle';
+import { StyleGlobalWrapper, StyleWrapperSign, StyleInputSign, StyleLabel, StyleButton } from './SignStyle'
 
 class SignIn extends Component {
   constructor (props) {
