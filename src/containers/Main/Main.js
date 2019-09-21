@@ -36,13 +36,14 @@ class Main extends Component {
   }
 
   render () {
+    const {modalEdit, modalUpdate, arrUsers} = this.props
     return (
       <div>
         <StyleWrapperMain>
           <Link to='/'><StyleButton onClick={this.handleClearLocalStorage}>Out</StyleButton></Link>
         </StyleWrapperMain>
-        {this.props.testStore.showModalEdit ? <ModalEdit /> : null}
-        {this.props.testStore.showModalUpdate ? <ModalUpdate /> : null}
+        {modalEdit ? <ModalEdit /> : null}
+        {modalUpdate ? <ModalUpdate /> : null}
         <Search />
         <StyleMain>
           {/* {this.props.testStore.isFetch ? <img src={preloader} /> : null} */}
@@ -58,7 +59,7 @@ class Main extends Component {
                   <th>delete/edit</th>
                 </tr>
               </thead>
-              {this.props.testStore.arrUsers.map((item, i) => {
+              {arrUsers.map((item, i) => {
                 return <tbody key={i}>
                   <tr>
                     <th>{item.firstName}</th>
@@ -88,7 +89,9 @@ const mapDispatchToProps = dispatch => ({
   deleteUser: delUser => dispatch(deleteUser(delUser)),
   showModalUpdate: modallUp => dispatch(showModalUpdate(modallUp))
 })
-const mapStateToProps = state => ({
-  testStore: state
+const mapStateToProps = store => ({
+  modalEdit: store.showModalEdit,
+  modalUpdate: store.showModalUpdate,
+  arrUsers: store.arrUsers
 })
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main))

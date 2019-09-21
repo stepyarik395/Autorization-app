@@ -8,7 +8,7 @@ const showErrorModal = (error) => {
   }
 }
 
-const showRefreshUsers = (res) => {
+const handleShow = (res) => {
   const { workers, pages, page } = res.data
   return dispatch => {
     dispatch({ type: 'SHOW_USERS', payload: workers })
@@ -78,7 +78,7 @@ export const showUsers = (i) => {
     }
     requestHendler(options)
       .then(res => {
-        dispatch(showRefreshUsers(res))
+        dispatch(handleShow(res))
       })
   }
 }
@@ -184,7 +184,7 @@ export const searchItems = (searchText) => {
     }
     requestHendler(options)
       .then(res => {
-        dispatch(showRefreshUsers(res))
+        dispatch(handleShow(res))
       })
   }
 }

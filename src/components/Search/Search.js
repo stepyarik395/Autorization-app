@@ -9,8 +9,6 @@ class Search extends Component {
     this.state = {
       text: ''
     }
-    this.handleInputChangeValue = this.handleInputChangeValue.bind(this)
-    this.handleSearch = this.handleSearch.bind(this)
   }
 
   handleSearch = () => {
@@ -42,6 +40,5 @@ const mapDispatchToProps = dispatch => ({
   searchItems: search => dispatch(searchItems(search))
 })
 const mapStateToProps = state => ({
-  testStore: state
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Search)

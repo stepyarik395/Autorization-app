@@ -32,9 +32,10 @@ class SignUp extends Component {
   }
 
   render () {
+    const {modalError} = this.props
     return (
       <StyleGlobalWrapper>
-        {this.props.testStore.showModalError ? <ModalError /> : null}
+        {modalError ? <ModalError /> : null}
         <StyleWrapperSign>
           <StyleLabel>name</StyleLabel>
           <StyleInputSign name='name' value={this.state.name} onChange={this.handleChangeInput} type='text' required />
@@ -66,7 +67,7 @@ class SignUp extends Component {
 const mapDispatchToProps = dispatch => ({
   userPost: userInfo => dispatch(userPost(userInfo))
 })
-const mapStateToProps = state => ({
-  testStore: state
+const mapStateToProps = store => ({
+  modalError:store.showModalError
 })
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

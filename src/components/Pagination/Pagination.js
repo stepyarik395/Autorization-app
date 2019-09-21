@@ -13,11 +13,11 @@ class Pagination extends Component {
   }
 
   handleNextPage = () => {
-    this.props.nextPage(this.props.testStore.page)
+    this.props.nextPage(this.props.page)
   }
 
   handlePrevPage = () => {
-    this.props.prevPage(this.props.testStore.page)
+    this.props.prevPage(this.props.page)
   }
 
   OnhandlePagination = (i) => {
@@ -25,24 +25,25 @@ class Pagination extends Component {
   }
 
   render () {
+    const {page, pages} = this.props
     return (
       <div>
         <Paginator
-          currentPage={this.props.testStore.page}
-          lastPage={this.props.testStore.pages}
+          currentPage={page}
+          lastPage={pages}
           clickEvent={this.OnhandlePagination}
         />
 
         <StyleWrapperPagin>
           <StylePrev
-            disabled={this.props.testStore.page === 1}
+            disabled={page === 1}
             onClick={this.handlePrevPage}
           >
             <MdKeyboardArrowLeft />
           </StylePrev>
 
           <StyleNext
-            disabled={this.props.testStore.page === this.props.testStore.pages}
+            disabled={page === pages}
             onClick={this.handleNextPage}
           >
             <MdKeyboardArrowRight />
@@ -60,9 +61,10 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
-const mapStateToProps = state => ({
-  testStore: state,
-  arrUsers: state.arrUsers
+const mapStateToProps = store => ({
+  arrUsers: store.arrUsers,
+  page: store.page,
+  pages: store.pages
 
 })
 

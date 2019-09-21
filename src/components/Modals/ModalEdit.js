@@ -16,11 +16,6 @@ class ModalEdit extends Component {
       gender: ''
     }
   }
-
-  handleCloseModalEdit = () => {
-    this.props.closeModalEdit()
-  }
-
   handleAddUser = () => {
     this.props.addUser(this.state)
     this.props.closeModalEdit();
@@ -82,7 +77,7 @@ class ModalEdit extends Component {
             />
 
             <StyleButtonAdd onClick={this.handleAddUser}>Add</StyleButtonAdd>
-            <ButtonCloseEdit onClick={this.handleCloseModalEdit}><MdClear /></ButtonCloseEdit>
+            <ButtonCloseEdit onClick={this.props.closeModalEdit}><MdClear /></ButtonCloseEdit>
           </WrapperModalEdit>
         </Fade>
       </StyleContainerModal>
@@ -96,7 +91,6 @@ const mapDispatchToProps = dispatch => ({
 
 })
 const mapStateToProps = state => ({
-  testStore: state
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalEdit)

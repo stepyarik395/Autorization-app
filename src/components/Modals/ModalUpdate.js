@@ -83,7 +83,6 @@ class ModalUpdate extends Component {
 
 const mapDispatchToProps = dispatch => ({
   handleCloseModalUpdate: () => dispatch({ type: 'CLOSE_MODAL_UPDATE', payload: false }),
-  // selectUser: select => dispatch(selectUser(select)),
   updateUser: update => dispatch(updateUser(update))
 })
 const mapStateToProps = state => ({
