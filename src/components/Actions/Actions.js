@@ -188,3 +188,10 @@ export const searchItems = (searchText) => {
       })
   }
 }
+
+export const showModalEdit = (item)=>{
+  return dispatch => {
+    dispatch({ type: 'SELECT_USER', payload: item })
+    dispatch({type: 'OPEN_MODAL_EDIT', payload: true})
+  }
+}

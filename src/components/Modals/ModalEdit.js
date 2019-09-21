@@ -16,9 +16,15 @@ class ModalEdit extends Component {
       gender: ''
     }
   }
+  
+  componentDidMount(){
+
+  }
   handleAddUser = () => {
     this.props.addUser(this.state)
     this.props.closeModalEdit();
+  }
+  handlerUpdate = () =>{
   }
 
   handleChangeInput = (event) => {
@@ -28,6 +34,7 @@ class ModalEdit extends Component {
   }
 
   render () {
+    console.log(this.props.selectUser)
     return (
       <StyleContainerModal>
         <Fade>
@@ -35,48 +42,42 @@ class ModalEdit extends Component {
             <StyleTitle>Add user</StyleTitle>
             <StyleInput
               name='firstName'
-              value={this.state.firstName}
+              value={this.props.selectUser.firstName}
               onChange={this.handleChangeInput}
               type='text'
               placeholder='First Name'
-              required
             />
             <StyleInput
               name='lastName'
-              value={this.state.lastName}
+              value={this.props.selectUser.lastName}
               onChange={this.handleChangeInput}
               type='text'
               placeholder='Last Name'
-              required
             />
 
             <StyleInput
               name='salary'
-              value={this.state.salary}
+              value={this.props.selectUser.salary}
               onChange={this.handleChangeInput}
               type='text'
               placeholder='Salary'
-              required
             />
             <StyleInput
               name='position'
-              value={this.state.position}
+              value={this.props.selectUser.position}
               onChange={this.handleChangeInput}
               placeholder='Position'
               type='text'
-              required
             />
 
             <StyleInput
               name='gender'
-              value={this.state.gender}
+              value={this.props.selectUser.gender}
               onChange={this.handleChangeInput}
               type='text'
               placeholder='Gender'
-              required
             />
-
-            <StyleButtonAdd onClick={this.handleAddUser}>Add</StyleButtonAdd>
+            {this.props.todo ? <button>1</button> : <button>2</button>}
             <ButtonCloseEdit onClick={this.props.closeModalEdit}><MdClear /></ButtonCloseEdit>
           </WrapperModalEdit>
         </Fade>
@@ -86,11 +87,16 @@ class ModalEdit extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  closeModalEdit: () => dispatch({ type: 'CLOSE_MODAL_EDIT', payload: false }),
+  closeModalEdit: () => (
+  dispatch({ type: 'CLOSE_MODAL_EDIT', payload: false }),
+  dispatch({ type: 'CLEAR_USER', payload: {} })),
   addUser: editUser => dispatch(addUser(editUser))
 
 })
-const mapStateToProps = state => ({
+const mapStateToProps = store => ({
+  selectUser: store.selectUser,
+  todo: store.toglebutton
+  
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalEdit)
