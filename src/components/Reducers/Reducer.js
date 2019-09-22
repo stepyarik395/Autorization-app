@@ -9,7 +9,7 @@ const initialState = {
   pages: [],
   page: [],
   isFetch: false,
-  toglebutton:false
+  // toglebutton:false
 }
 
 export function reducers (state = initialState, action) {
@@ -45,7 +45,7 @@ export function reducers (state = initialState, action) {
     // case 'SHOW_PRELOADER':
     //   return { ...state, isFetch: action.payload }
     // case 'CLEAR_USER':
-    //   return { ...state, toglebutton: action.payload }
+    //   return { ...state, toglebutton: !action.payload }
 
     default:
       return state

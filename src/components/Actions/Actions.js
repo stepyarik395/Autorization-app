@@ -111,6 +111,7 @@ export const deleteUser = (id) => {
 }
 
 export const updateUser = (user) => {
+  console.log(user)
   return dispatch => {
     const options = {
       url: `/update/${user.id}`,
@@ -119,6 +120,7 @@ export const updateUser = (user) => {
     }
     requestHendler(options)
       .then(res => {
+        console.log(res)
         dispatch(showUsers())
       })
   }

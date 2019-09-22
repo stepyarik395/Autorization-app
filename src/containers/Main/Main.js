@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { StyleButton, StyleMain, StyleWrapperDiv, StyleEditButton, StyleButtonEdit, StyleWrapperMain } from './StyleMain'
 import { connect } from 'react-redux'
-import { showUsers, deleteUser, showModalEdit } from '../../components/Actions/Actions'
+import { showUsers, deleteUser, showModalEdit,updateUser } from '../../components/Actions/Actions'
 import { MdDelete, MdAdd, MdCreate } from 'react-icons/md'
 import ModalEdit from '../../components/Modals/ModalEdit'
 import ModalUpdate from '../../components/Modals/ModalUpdate'
@@ -13,7 +13,10 @@ import Search from '../../components/Search/Search'
 class Main extends Component {
   constructor (props) {
     super(props)
-    this.handleOpenModalEdit = this.handleOpenModalEdit.bind(this)
+    this.state = {
+      toggle:true
+    }
+   
   }
 
   componentDidMount () {
@@ -25,15 +28,27 @@ class Main extends Component {
   }
 
   handleOpenModalEdit = (item) => {
-    // const kok = event.target
-    // if(kok.classList.contains('update')){
-    //   this.props.togle
-    // }
-    // else{
-    //   console.log("cool")
-    // }
+    const kok = event.target
+    console.log(kok)
+    if(kok.classList.contains('update')){
+      this.setState({
+        toggle:false
+      })
+    }
+    else{
+      this.setState({
+        toggle:true
+      })
+    }
     this.props.showModalEdit(item)
   }
+  // handleAddUser = () => {
+  //   console.log("123131");
+
+  // }
+  // handleUpdateUser = () =>{
+  //   this.props.updateUser
+  // }
 
   pageLocation = () => {
     const currentId = parseInt(this.props.match.params.id, 10)
@@ -43,14 +58,13 @@ class Main extends Component {
   }
 
   render () {
-    console.log(this.props.selectUser)
-    const {modalEdit, modalUpdate, arrUsers, selectUser} = this.props
+    const {modalEdit, modalUpdate, arrUsers, selectUser}=this.props
     return (
       <div>
         <StyleWrapperMain>
           <Link to='/'><StyleButton onClick={this.handleClearLocalStorage}>Out</StyleButton></Link>
         </StyleWrapperMain>
-        {modalEdit ? <ModalEdit /> : null}
+        {modalEdit ? <ModalEdit updateuser={this.handleUpdateUser} adduser={this.handleAddUser} /> : null}
         {/* {modalUpdate ? <ModalUpdate /> : null} */}
         <Search />
         <StyleMain>
@@ -75,7 +89,7 @@ class Main extends Component {
                     <th>{item.salary}</th>
                     <th>{item.position}</th>
                     <th>{item.gender}</th>
-                    <th><StyleEditButton className = 'update' onClick={()=>this.handleOpenModalEdit(item)}>1</StyleEditButton>
+                    <th><StyleEditButton className = 'update' onClick={()=>this.handleOpenModalEdit(item, event)}>1</StyleEditButton>
                       <StyleEditButton onClick={() => this.props.deleteUser(item._id)}><MdDelete /></StyleEditButton>
                     </th>
                   </tr></tbody>
@@ -83,8 +97,8 @@ class Main extends Component {
             </table>
           </StyleWrapperDiv>
           <Pagination />
-          <StyleButtonEdit className = 'add' onClick={this.handleOpenModalEdit}>
-            <MdAdd />
+          <StyleButtonEdit className = 'add' onClick={()=>this.handleOpenModalEdit(event)}>
+            {/* <MdAdd /> */}+
           </StyleButtonEdit>
         </StyleMain>
       </div>
@@ -93,11 +107,9 @@ class Main extends Component {
 }
 const mapDispatchToProps = dispatch => ({
   showUsers: showU => dispatch(showUsers(showU)),
-  // showModalEdit: () => dispatch({ type: 'OPEN_MODAL_EDIT', payload: true }),
   showModalEdit: showedit => dispatch(showModalEdit(showedit)),
   deleteUser: delUser => dispatch(deleteUser(delUser)),
-  showModalEdit: () => dispatch({ type: 'OPEN_MODAL_EDIT', payload: true }),
-  togle: () => dispatch({type: 'CLEAR_USER', payload:true})
+  updateUser: updateuser => dispatch(updateUser(updateuser))
 })
 const mapStateToProps = store => ({
   modalEdit: store.showModalEdit,
