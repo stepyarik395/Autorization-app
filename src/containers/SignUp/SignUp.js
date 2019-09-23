@@ -22,7 +22,6 @@ class SignUp extends Component {
   }
 
   handleSubmit = (e) => {
-    console.log(this.state)
     this.setState({
       name: '',
       email: '',

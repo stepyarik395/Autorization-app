@@ -12,23 +12,21 @@ class SignIn extends Component {
       email: '',
       password: ''
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChangeInput = this.handleChangeInput.bind(this)
   }
 
-  handleChangeInput (event) {
+  handleChangeInput = (event) => {
     const nam = event.target.name
     const val = event.target.value
     this.setState({ [nam]: val })
   }
 
-  handleSubmit (e) {
+  handleSubmit = (e) => {
+    this.props.userSign(this.state)
     this.setState({
       email: '',
       password: ''
 
     })
-    this.props.userSign(this.state)
   }
 
   render () {

@@ -1,37 +1,31 @@
 const initialState = {
   currentUserToken: {},
   showModalError: false,
-  showModalEdit: false,
-  showModalUpdate: false,
+  showModal: false,
   ErrorText: '',
   selectUser: {},
   arrUsers: [],
   pages: [],
   page: [],
   isFetch: false,
-  // toglebutton:false
 }
 
 export function reducers (state = initialState, action) {
   switch (action.type) {
     case 'LOGIN_USER':
       return { ...state, currentUserToken: action.payload }
-    case 'SHOW_MODAL':
+    case 'SHOW_MODAL_ERROR':
       return { ...state, showModalError: action.payload }
-    case 'CLOSE_MODAL':
+    case 'CLOSE_MODAL_ERROR':
       return { ...state, showModalError: action.payload }
     case 'ERROR_TEXT_SHOW':
       return { ...state, ErrorText: action.payload }
     case 'SHOW_USERS':
       return { ...state, arrUsers: action.payload }
-    case 'OPEN_MODAL_EDIT':
-      return { ...state, showModalEdit: action.payload }
-    case 'CLOSE_MODAL_EDIT':
-      return { ...state, showModalEdit: action.payload }
-    case 'SHOW_MODAL_UPDATE':
-      return { ...state, showModalUpdate: action.payload }
-    case 'CLOSE_MODAL_UPDATE':
-      return { ...state, showModalUpdate: action.payload }
+    case 'OPEN_MODAL_MAIN':
+      return { ...state, showModal: action.payload }
+    case 'CLOSE_MODAL_MAIN':
+      return { ...state, showModal: action.payload }
     case 'SELECT_USER':
       return { ...state, selectUser: action.payload }
     case 'ADD_PAGES':
@@ -42,10 +36,10 @@ export function reducers (state = initialState, action) {
       return { ...state, page: action.payload }
     case 'NEXT_PAGE':
       return { ...state, page: action.payload }
-    // case 'SHOW_PRELOADER':
-    //   return { ...state, isFetch: action.payload }
-    // case 'CLEAR_USER':
-    //   return { ...state, toglebutton: !action.payload }
+    case 'SHOW_PRELOADER':
+      return { ...state, isFetch: action.payload }
+    case 'CLOSE_PRELOADER':
+      return { ...state, isFetch: action.payload }
 
     default:
       return state

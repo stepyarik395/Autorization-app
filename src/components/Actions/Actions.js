@@ -3,7 +3,7 @@ import { history } from '../../history'
 
 const showErrorModal = (error) => {
   return dispatch => {
-    dispatch({ type: 'SHOW_MODAL', payload: true })
+    dispatch({ type: 'SHOW_MODAL_ERROR', payload: true })
     dispatch({ type: 'ERROR_TEXT_SHOW', payload: error.response.data.message })
   }
 }
@@ -26,13 +26,6 @@ const successfulRequest = (res) => {
   }
 }
 
-export const showModalUpdate = (item) => {
-  return dispatch => {
-    dispatch({ type: 'SELECT_USER', payload: item })
-    dispatch({ type: 'SHOW_MODAL_UPDATE', payload: true })
-  }
-}
-
 export const userPost = users => {
   return dispatch => {
     const options = {
@@ -40,8 +33,10 @@ export const userPost = users => {
       type: 'post',
       data: users
     }
+    dispatch(showPreloader())
     requestHendler(options)
       .then(res => {
+        setTimeout(()=>{dispatch(closepreloader())},500)
         dispatch(successfulRequest(res))
       })
       .catch(error => {
@@ -57,8 +52,11 @@ export const userSign = users => {
       type: 'post',
       data: users
     }
+    dispatch(showPreloader())
     requestHendler(options)
+ 
       .then(res => {
+        setTimeout(()=>{dispatch(closepreloader())},500)
         dispatch(successfulRequest(res))
       })
       .catch(error => {
@@ -90,8 +88,10 @@ export const addUser = (user) => {
       type: 'post',
       data: user
     }
+    dispatch(showPreloader())
     requestHendler(options)
       .then(res => {
+        setTimeout(()=>{dispatch(closepreloader())},500)
         dispatch(showUsers())
       })
   }
@@ -103,8 +103,10 @@ export const deleteUser = (id) => {
       url: `/delete/${id}`,
       type: 'delete'
     }
+    dispatch(showPreloader())
     requestHendler(options)
       .then(res => {
+        setTimeout(()=>{dispatch(closepreloader())},500)
         dispatch(showUsers())
       })
   }
@@ -118,9 +120,10 @@ export const updateUser = (user) => {
       type: 'put',
       data: user
     }
-    console.log(options.data)
+    dispatch(showPreloader())
     requestHendler(options)
       .then(res => {
+        setTimeout(()=>{dispatch(closepreloader())},500)
         dispatch(showUsers())
       })
   }
@@ -135,8 +138,10 @@ export const selectPage = (i) => {
         page: i
       }
     }
+    dispatch(showPreloader())
     requestHendler(options)
       .then(res => {
+        setTimeout(()=>{dispatch(closepreloader())},500)
         dispatch({ type: 'SELECT_PAGE', payload: i })
         dispatch({ type: 'SHOW_USERS', payload: res.data.workers })
         history.push(`/main/${i}`)
@@ -153,8 +158,11 @@ export const nextPage = (current) => {
         page: current
       }
     }
+    dispatch(showPreloader())
     requestHendler(options)
+
       .then(res => {
+        setTimeout(()=>{dispatch(closepreloader())},500)
         dispatch(selectPage(current+1))
       })
   }
@@ -169,8 +177,10 @@ export const prevPage = (current) => {
         page: current
       }
     }
+    dispatch(showPreloader())
     requestHendler(options)
       .then(res => {
+        setTimeout(()=>{dispatch(closepreloader())},500)
         dispatch(selectPage(current-1))
       })
   }
@@ -184,16 +194,28 @@ export const searchItems = (searchText) => {
         q: searchText
       }
     }
+    dispatch(showPreloader())
     requestHendler(options)
       .then(res => {
+        setTimeout(()=>{dispatch(closepreloader())},500)
         dispatch(handleShow(res))
       })
   }
 }
 
-export const showModalEdit = (item)=>{
+export const showModal = (item)=>{
   return dispatch => {
     dispatch({ type: 'SELECT_USER', payload: item })
-    dispatch({type: 'OPEN_MODAL_EDIT', payload: true})
+    dispatch({type: 'OPEN_MODAL_MAIN', payload: true})
+  }
+}
+export const showPreloader = ()=>{
+  return dispatch =>{
+    dispatch({ type: 'SHOW_PRELOADER', payload: true });
+  }
+}
+export const closepreloader = () =>{
+  return dispatch =>{
+    dispatch({ type: 'CLOSE_PRELOADER', payload: false });
   }
 }

@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { StyleButton, StyleMain, StyleWrapperDiv, StyleEditButton, StyleButtonEdit, StyleWrapperMain } from './StyleMain'
+import { StyleButton, StyleMain, StyleWrapperDiv, MainButtons, StyleButtonEdit, StyleWrapperMain } from './StyleMain'
 import { connect } from 'react-redux'
-import { showUsers, deleteUser, showModalEdit,updateUser } from '../../components/Actions/Actions'
-import { MdDelete, MdAdd, MdCreate } from 'react-icons/md'
-import ModalEdit from '../../components/Modals/ModalEdit'
+import { showUsers, deleteUser, showModal, updateUser, } from '../../components/Actions/Actions'
+import { MdDelete } from 'react-icons/md'
+import Modal from '../../components/Modals/Modal'
 import Pagination from '../../components/Pagination/Pagination'
 import Search from '../../components/Search/Search'
-// import preloader from '../../assets/img/Ball-1s-200px.svg'
+import MainPreloader from '../../components/Preloader/Preloader'
+
 
 class Main extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      toggle:true
+      changeButton:true
     }
-   
   }
 
   componentDidMount () {
@@ -30,32 +30,36 @@ class Main extends Component {
     const buttonTarget = event.target
     if(buttonTarget.classList.contains('update')){
       this.setState({
-        toggle:false
+        changeButton:false
       })
     }
     else{
       this.setState({
-        toggle:true
+        changeButton:true
       })
     }
-    this.props.showModalEdit(item)
+    this.props.showModal(item)
   }
 
   pageLocation = () => {
     const currentId = parseInt(this.props.match.params.id, 10)
-    console.log(this.props)
     this.props.history.push(this.props.location.pathname)
     this.props.showUsers(currentId)
   }
 
   render () {
-    const { modalEdit, arrUsers }=this.props
+    const { modal, arrUsers, preloader }=this.props
+  
     return (
       <div>
+        <div>
+        {preloader ? <MainPreloader /> : <div>
         <StyleWrapperMain>
           <Link to='/'><StyleButton onClick={this.handleClearLocalStorage}>Out</StyleButton></Link>
         </StyleWrapperMain>
-        {modalEdit ? <ModalEdit updateuser={this.handleUpdateUser} adduser={this.handleAddUser} toggle={this.state.toggle} /> : null}
+          {modal ? <Modal updateuser={this.handleUpdateUser} 
+            adduser={this.handleAddUser}
+            change={this.state.changeButton} /> : null}
         <Search />
         <StyleMain>
           <StyleWrapperDiv>
@@ -78,32 +82,36 @@ class Main extends Component {
                     <th>{item.salary}</th>
                     <th>{item.position}</th>
                     <th>{item.gender}</th>
-                    <th><StyleEditButton className = 'update' onClick={()=>this.handleOpenModalEdit(item, event)}>edit</StyleEditButton>
-                      <StyleEditButton onClick={() => this.props.deleteUser(item._id)}><MdDelete /></StyleEditButton>
+                    <th><MainButtons className='update' onClick={()=>this.handleOpenModalEdit(item, event)}>edit</MainButtons>
+                      <MainButtons onClick={() => this.props.deleteUser(item._id)}><MdDelete /></MainButtons>
                     </th>
                   </tr></tbody>
               })}
             </table>
           </StyleWrapperDiv>
           <Pagination />
-          <StyleButtonEdit className = 'add' onClick={()=>this.handleOpenModalEdit(event)}>
+          <StyleButtonEdit className='add' onClick={()=>this.handleOpenModalEdit(event)}>
             +
           </StyleButtonEdit>
         </StyleMain>
+
+        </div>}
+       
+        </div>
       </div>
     )
   }
 }
 const mapDispatchToProps = dispatch => ({
   showUsers: showU => dispatch(showUsers(showU)),
-  showModalEdit: showedit => dispatch(showModalEdit(showedit)),
+  showModal: showedit => dispatch(showModal(showedit)),
   deleteUser: delUser => dispatch(deleteUser(delUser)),
-  updateUser: updateuser => dispatch(updateUser(updateuser))
+  updateUser: updateuser => dispatch(updateUser(updateuser)),
 })
 const mapStateToProps = store => ({
-  modalEdit: store.showModalEdit,
-  modalUpdate: store.showModalUpdate,
+  modal: store.showModal,
   arrUsers: store.arrUsers,
-  selectUser: store.selectUser
+  selectUser: store.selectUser,
+  preloader:store.isFetch
 })
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main))

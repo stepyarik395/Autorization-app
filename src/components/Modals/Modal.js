@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { WrapperModalEdit, StyleContainerModal, StyleInput, StyleButtonAdd, ButtonCloseEdit, StyleTitle } from './ModalStyles'
+import { WrapperModalEdit, StyleContainerModal, StyleInput, StyleButtonAdd, ButtonCloseEdit } from './ModalStyles'
 import { MdClear } from 'react-icons/md'
 import { addUser, updateUser } from '../Actions/Actions'
 import { connect } from 'react-redux'
@@ -8,13 +8,14 @@ import Fade from 'react-reveal/Fade'
 class ModalEdit extends Component {
   constructor (props) {
     super(props)
+    const {firstName,lastName, salary, position, gender, _id } = this.props.selectUser
     this.state = {
-      firstName: this.props.selectUser.firstName || '',
-      lastName: this.props.selectUser.lastName || '',
-      salary: this.props.selectUser.salary || '',
-      position: this.props.selectUser.position ||'',
-      gender: this.props.selectUser.gender || '',
-      id: this.props.selectUser._id
+      firstName: firstName || '',
+      lastName: lastName || '',
+      salary: salary || '',
+      position: position ||'',
+      gender: gender || '',
+      id: _id
     }
   }
   
@@ -23,11 +24,11 @@ class ModalEdit extends Component {
   }
   handleAddUser = () => {
     this.props.addUser(this.state)
-    this.props.closeModalEdit();
+    this.props.closeModal();
   }
   handlerUpdate = () =>{
     this.props.updateUser(this.state)
-    this.props.closeModalEdit();
+    this.props.closeModal();
   }
 
   handleChangeInput = (event) => {
@@ -37,7 +38,6 @@ class ModalEdit extends Component {
   }
 
   render () {
-    // console.log(this.props.selectUser._id)
     return (
       <StyleContainerModal>
         <Fade>
@@ -79,9 +79,9 @@ class ModalEdit extends Component {
               type='text'
               placeholder='Gender'
             />
-            {this.props.toggle ? <StyleButtonAdd onClick={this.handleAddUser}>add</StyleButtonAdd> : 
+            {this.props.change ? <StyleButtonAdd onClick={this.handleAddUser}>add</StyleButtonAdd> : 
              <StyleButtonAdd onClick={this.handlerUpdate}>update</StyleButtonAdd>}
-            <ButtonCloseEdit onClick={this.props.closeModalEdit}><MdClear /></ButtonCloseEdit>
+            <ButtonCloseEdit onClick={this.props.closeModal}><MdClear /></ButtonCloseEdit>
           </WrapperModalEdit>
         </Fade>
       </StyleContainerModal>
@@ -90,8 +90,8 @@ class ModalEdit extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  closeModalEdit: () => 
-  dispatch({ type: 'CLOSE_MODAL_EDIT', payload: false }),
+  closeModal: () => 
+  dispatch({ type: 'CLOSE_MODAL_MAIN', payload: false }),
   addUser: editUser => dispatch(addUser(editUser)),
   updateUser: update => dispatch(updateUser(update))
 })
