@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { showUsers, deleteUser, showModalEdit,updateUser } from '../../components/Actions/Actions'
 import { MdDelete, MdAdd, MdCreate } from 'react-icons/md'
 import ModalEdit from '../../components/Modals/ModalEdit'
-import ModalUpdate from '../../components/Modals/ModalUpdate'
 import Pagination from '../../components/Pagination/Pagination'
 import Search from '../../components/Search/Search'
 // import preloader from '../../assets/img/Ball-1s-200px.svg'
@@ -28,9 +27,8 @@ class Main extends Component {
   }
 
   handleOpenModalEdit = (item) => {
-    const kok = event.target
-    console.log(kok)
-    if(kok.classList.contains('update')){
+    const buttonTarget = event.target
+    if(buttonTarget.classList.contains('update')){
       this.setState({
         toggle:false
       })
@@ -42,13 +40,6 @@ class Main extends Component {
     }
     this.props.showModalEdit(item)
   }
-  // handleAddUser = () => {
-  //   console.log("123131");
-
-  // }
-  // handleUpdateUser = () =>{
-  //   this.props.updateUser
-  // }
 
   pageLocation = () => {
     const currentId = parseInt(this.props.match.params.id, 10)
@@ -58,17 +49,15 @@ class Main extends Component {
   }
 
   render () {
-    const {modalEdit, modalUpdate, arrUsers, selectUser}=this.props
+    const { modalEdit, arrUsers }=this.props
     return (
       <div>
         <StyleWrapperMain>
           <Link to='/'><StyleButton onClick={this.handleClearLocalStorage}>Out</StyleButton></Link>
         </StyleWrapperMain>
-        {modalEdit ? <ModalEdit updateuser={this.handleUpdateUser} adduser={this.handleAddUser} /> : null}
-        {/* {modalUpdate ? <ModalUpdate /> : null} */}
+        {modalEdit ? <ModalEdit updateuser={this.handleUpdateUser} adduser={this.handleAddUser} toggle={this.state.toggle} /> : null}
         <Search />
         <StyleMain>
-          {/* {this.props.testStore.isFetch ? <img src={preloader} /> : null} */}
           <StyleWrapperDiv>
             <table>
               <thead>
@@ -89,7 +78,7 @@ class Main extends Component {
                     <th>{item.salary}</th>
                     <th>{item.position}</th>
                     <th>{item.gender}</th>
-                    <th><StyleEditButton className = 'update' onClick={()=>this.handleOpenModalEdit(item, event)}>1</StyleEditButton>
+                    <th><StyleEditButton className = 'update' onClick={()=>this.handleOpenModalEdit(item, event)}>edit</StyleEditButton>
                       <StyleEditButton onClick={() => this.props.deleteUser(item._id)}><MdDelete /></StyleEditButton>
                     </th>
                   </tr></tbody>
@@ -98,7 +87,7 @@ class Main extends Component {
           </StyleWrapperDiv>
           <Pagination />
           <StyleButtonEdit className = 'add' onClick={()=>this.handleOpenModalEdit(event)}>
-            {/* <MdAdd /> */}+
+            +
           </StyleButtonEdit>
         </StyleMain>
       </div>

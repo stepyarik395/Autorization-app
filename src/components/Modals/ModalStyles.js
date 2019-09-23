@@ -101,8 +101,4 @@ border:2px solid white;
 font-size:1.5rem;
 text-shadow: 1px 1px 2px black, 0 0 1em white;
 `
-export const StyleTitle = styled.h3`
-margin-left:1rem;
-text-transform:uppercase;
-color:#fff;
-`
+

@@ -5,14 +5,12 @@ color:#fff;
   border:none;
   background: rgba(248,80,50,1);/* Old Browsers */
   background: linear-gradient(135deg, rgba(248,80,50,1) 0%, rgba(245,12,229,1) 19%, rgba(240,47,23,1) 76%, rgba(231,56,39,1) 100%);/* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827', GradientType=1 );
 min-width:200px;
 outline: none;
 cursor: pointer;
 margin:0.5rem;
 height: 50px;
 text-transform: uppercase;
-float: right;
 :hover{
 `
 
@@ -42,8 +40,8 @@ outline:none;
 box-shadow: 0 0 5px rgba(0,0,0,0.3);
 margin:0.2rem;
 cursor:pointer;
-width:30px;
-height:30px;
+width:40px;
+height:40px;
 border-radius:50%;
 background-color:transparent;
 border:2px solid #9932CC;

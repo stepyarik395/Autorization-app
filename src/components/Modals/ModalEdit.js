@@ -9,11 +9,12 @@ class ModalEdit extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      firstName: this.props.selectUser.firstName,
-      lastName: this.props.selectUser.lastName,
-      salary: this.props.selectUser.salary,
-      position: this.props.selectUser.position,
-      gender: this.props.selectUser.gender
+      firstName: this.props.selectUser.firstName || '',
+      lastName: this.props.selectUser.lastName || '',
+      salary: this.props.selectUser.salary || '',
+      position: this.props.selectUser.position ||'',
+      gender: this.props.selectUser.gender || '',
+      id: this.props.selectUser._id
     }
   }
   
@@ -25,7 +26,7 @@ class ModalEdit extends Component {
     this.props.closeModalEdit();
   }
   handlerUpdate = () =>{
-    this.props.updateUser(this.props.selectUser)
+    this.props.updateUser(this.state)
     this.props.closeModalEdit();
   }
 
@@ -36,11 +37,11 @@ class ModalEdit extends Component {
   }
 
   render () {
+    // console.log(this.props.selectUser._id)
     return (
       <StyleContainerModal>
         <Fade>
           <WrapperModalEdit>
-            <StyleTitle>Add user</StyleTitle>
             <StyleInput
               name='firstName'
               value={this.state.firstName}
@@ -78,7 +79,8 @@ class ModalEdit extends Component {
               type='text'
               placeholder='Gender'
             />
-            {this.props.toggle ? <button onClick={this.handleAddUser}>add</button> :  <button onClick={this.handlerUpdate}>update</button>}
+            {this.props.toggle ? <StyleButtonAdd onClick={this.handleAddUser}>add</StyleButtonAdd> : 
+             <StyleButtonAdd onClick={this.handlerUpdate}>update</StyleButtonAdd>}
             <ButtonCloseEdit onClick={this.props.closeModalEdit}><MdClear /></ButtonCloseEdit>
           </WrapperModalEdit>
         </Fade>
@@ -90,7 +92,6 @@ class ModalEdit extends Component {
 const mapDispatchToProps = dispatch => ({
   closeModalEdit: () => 
   dispatch({ type: 'CLOSE_MODAL_EDIT', payload: false }),
-  // dispatch({ type: 'CLEAR_USER', payload: {} })),
   addUser: editUser => dispatch(addUser(editUser)),
   updateUser: update => dispatch(updateUser(update))
 })
