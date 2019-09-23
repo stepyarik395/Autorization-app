@@ -130,7 +130,8 @@ text-transform: uppercase;
 `
 
 export const StyleMain = styled.main`
-height:60vh;
+margin-top:2rem;
+height:100%;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -180,8 +181,8 @@ justify-content:center;
 font-size:2rem;
 background-color:#9932CC;
 color:#fff;
-width:70px;
-height:70px;
+min-width:70px;
+min-height:70px;
 border-radius:50%;
 border:none;
 `

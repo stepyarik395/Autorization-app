@@ -14,7 +14,6 @@ const Mainpage = () => {
 }
 export default Mainpage
 
-
 export const StyleTitle = styled.h1`
   text-transform:uppercase;
   font-size : 1rem;
@@ -45,4 +44,3 @@ export const StyleWrapperMain = styled.div`
 right:30px;
   position: absolute;
 `
-

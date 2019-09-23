@@ -37,7 +37,7 @@ const successfulRequest = (res) => {
   }
 }
 
-export const userPost = users => {
+export const userSignUp = users => {
   return dispatch => {
     const options = {
       url: '/register',
@@ -51,7 +51,12 @@ export const userPost = users => {
         dispatch(successfulRequest(res))
       })
       .catch(error => {
-        dispatch(showErrorModal(error))
+        if (error.data === undefined){
+          alert("ooops network connection failed")
+        }
+        else{
+          dispatch(showErrorModal());
+        }
       })
   }
 }
@@ -71,7 +76,13 @@ export const userSign = users => {
         dispatch(successfulRequest(res))
       })
       .catch(error => {
-        dispatch(showErrorModal(error))
+        if (error.data === undefined){
+          alert("ooops network connection failed")
+        }
+        else{
+          dispatch(showErrorModal());
+        }
+        
       })
   }
 }

@@ -106,15 +106,20 @@ export default connect(mapStateToProps, mapDispatchToProps)(ModalEdit)
 
 export const StyleContainerModal = styled.div`
 top:5%;
-left:32%;
+// left:32%;
+display:flex;
+justify-content:center;
+width:100%;
 position:absolute;
+align-items:center;
+height:60vh;
 `
 export const WrapperModalEdit = styled.div`
 position:relative;
 padding:3rem;
 background-color:#1B0A2A;
 border:1px solid green;
-width:500px;
+min-width:300px;
 display:flex;
 flex-direction:column;
 `

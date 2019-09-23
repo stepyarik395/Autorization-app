@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { userPost } from '../../components/Actions/Actions'
+import { userSignUp } from '../../components/Actions/Actions'
 import ErrorPassword from '../../components/Errors/ErrorPassword'
 import ModalError from '../../components/Modals/ModalError'
 import { StyleGlobalWrapper, StyleWrapperSign, StyleInputSign, StyleLabel, StyleButton } from '../SignIn/SignIn'
@@ -27,7 +27,7 @@ class SignUp extends Component {
       email: '',
       password: ''
     })
-    this.props.userPost(this.state)
+    this.props.userSignUp(this.state)
   }
 
   render () {
@@ -64,7 +64,7 @@ class SignUp extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  userPost: userInfo => dispatch(userPost(userInfo))
+  userSignUp: userInfo => dispatch(userSignUp(userInfo))
 })
 const mapStateToProps = store => ({
   modalError:store.showModalError
