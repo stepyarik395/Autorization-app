@@ -1,14 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-
- const MainPreloader = () =>{
-  return(
+const MainPreloader = () => {
+  return (
     <WrapperLoader>
-       <div className="loader" id="loader-1"></div>
+      <div className='loader' id='loader-1' />
     </WrapperLoader>
-
-  ) 
+  )
 }
 export default MainPreloader
 
@@ -18,5 +16,3 @@ justify-content:center;
 align-items:center;
 height:90vh;
 `
-
-

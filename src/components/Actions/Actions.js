@@ -1,6 +1,17 @@
 import requestHendler from '../RequestHendler/RequsetHendler'
 import { history } from '../../history'
 
+export const showPreloader = ()=>{
+  return dispatch =>{
+    dispatch({ type: 'SHOW_PRELOADER', payload: true });
+  }
+}
+export const closepreloader = () =>{
+  return dispatch =>{
+    dispatch({ type: 'CLOSE_PRELOADER', payload: false });
+  }
+}
+
 const showErrorModal = (error) => {
   return dispatch => {
     dispatch({ type: 'SHOW_MODAL_ERROR', payload: true })
@@ -36,7 +47,7 @@ export const userPost = users => {
     dispatch(showPreloader())
     requestHendler(options)
       .then(res => {
-        setTimeout(()=>{dispatch(closepreloader())},500)
+        setTimeout(() => { dispatch(closepreloader()) }, 500)
         dispatch(successfulRequest(res))
       })
       .catch(error => {
@@ -207,15 +218,5 @@ export const showModal = (item)=>{
   return dispatch => {
     dispatch({ type: 'SELECT_USER', payload: item })
     dispatch({type: 'OPEN_MODAL_MAIN', payload: true})
-  }
-}
-export const showPreloader = ()=>{
-  return dispatch =>{
-    dispatch({ type: 'SHOW_PRELOADER', payload: true });
-  }
-}
-export const closepreloader = () =>{
-  return dispatch =>{
-    dispatch({ type: 'CLOSE_PRELOADER', payload: false });
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleMessegeError } from '../Errors/StyleErrorPassword'
+import styled from 'styled-components'
 const ErrorPassword = () => {
   return (
     <StyleMessegeError>
@@ -9,3 +9,8 @@ const ErrorPassword = () => {
 }
 
 export default ErrorPassword
+
+export const StyleMessegeError = styled.label`
+margin-top:0.5rem;
+display:block;
+`

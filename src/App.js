@@ -6,7 +6,7 @@ import Home from './containers/Home/Home'
 import Main from './containers/Main/Main'
 import { Route, Redirect } from 'react-router-dom'
 
-const isAut = (component) => {
+const isAuth = (component) => {
   return (
     <div>
       {window.localStorage.getItem('token') ? (
@@ -24,22 +24,22 @@ class App extends Component {
       <div>
         <Route
           path='/' render={() => (
-            isAut(<Home />)
+            isAuth(<Home />)
           )}
         />
         <Route
           path='/signup' render={() => (
-            isAut(<SignUp />)
+            isAuth(<SignUp />)
           )}
         />
         <Route
           path='/signin' render={() => (
-            isAut(<SignIn />)
+            isAuth(<SignIn />)
           )}
         />
         <Route
           path='/main' render={() => {
-            isAut()
+            isAuth()
             return <Redirect to='/main/1' />
           }}
         />
