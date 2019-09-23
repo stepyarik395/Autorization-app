@@ -8,7 +8,7 @@ export const showPreloader = ()=>{
 }
 export const closepreloader = () =>{
   return dispatch =>{
-    dispatch({ type: 'CLOSE_PRELOADER', payload: false });
+    dispatch({ type: 'SHOW_PRELOADER', payload: false });
   }
 }
 
@@ -164,7 +164,7 @@ export const selectPage = (i) => {
     requestHendler(options)
       .then(res => {
         setTimeout(()=>{dispatch(closepreloader())},500)
-        dispatch({ type: 'SELECT_PAGE', payload: i })
+        dispatch({ type: 'ADD_PAGE', payload: i })
         dispatch({ type: 'SHOW_USERS', payload: res.data.workers })
         history.push(`/main/${i}`)
       })

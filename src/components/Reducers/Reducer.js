@@ -16,15 +16,11 @@ export function reducers (state = initialState, action) {
       return { ...state, currentUserToken: action.payload }
     case 'SHOW_MODAL_ERROR':
       return { ...state, showModalError: action.payload }
-    case 'CLOSE_MODAL_ERROR':
-      return { ...state, showModalError: action.payload }
     case 'ERROR_TEXT_SHOW':
       return { ...state, ErrorText: action.payload }
     case 'SHOW_USERS':
       return { ...state, arrUsers: action.payload }
     case 'OPEN_MODAL_MAIN':
-      return { ...state, showModal: action.payload }
-    case 'CLOSE_MODAL_MAIN':
       return { ...state, showModal: action.payload }
     case 'SELECT_USER':
       return { ...state, selectUser: action.payload }
@@ -32,13 +28,7 @@ export function reducers (state = initialState, action) {
       return { ...state, pages: action.payload }
     case 'ADD_PAGE':
       return { ...state, page: action.payload }
-    case 'SELECT_PAGE':
-      return { ...state, page: action.payload }
-    case 'NEXT_PAGE':
-      return { ...state, page: action.payload }
     case 'SHOW_PRELOADER':
-      return { ...state, isFetch: action.payload }
-    case 'CLOSE_PRELOADER':
       return { ...state, isFetch: action.payload }
 
     default:

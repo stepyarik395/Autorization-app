@@ -8,14 +8,14 @@ import styled from 'styled-components'
 class ModalEdit extends Component {
   constructor (props) {
     super(props)
-    const {firstName,lastName, salary, position, gender, _id } = this.props.selectUser
+    const {firstName,lastName, salary, position, gender } = this.props.selectUser
     this.state = {
       firstName: firstName || '',
       lastName: lastName || '',
       salary: salary || '',
       position: position ||'',
       gender: gender || '',
-      id: _id
+
     }
   }
   
@@ -42,7 +42,22 @@ class ModalEdit extends Component {
       <StyleContainerModal>
         <Fade>
           <WrapperModalEdit>
-            <StyleInput
+            {console.log(Object.keys(this.state))}
+            {Object.keys(this.state).map((item,i)=>{
+              return <StyleInput type ='text' onChange={this.handleChangeInput} value={this.state} key={i+1}></StyleInput>
+            })}
+            {/* {Object.entries(this.state).map((item, i)=>{
+              return(
+                <StyleInput value={this.state.firstName}
+                onChange={this.handleChangeInput}
+                type='text'>{item}</StyleInput>
+              )
+
+            })
+               
+          } */}
+
+            {/* <StyleInput
               name='firstName'
               value={this.state.firstName}
               onChange={this.handleChangeInput}
@@ -78,7 +93,7 @@ class ModalEdit extends Component {
               onChange={this.handleChangeInput}
               type='text'
               placeholder='Gender'
-            />
+            /> */}
             {this.props.change ? <StyleButtonAdd onClick={this.handleAddUser}>add</StyleButtonAdd> : 
              <StyleButtonAdd onClick={this.handlerUpdate}>update</StyleButtonAdd>}
             <ButtonCloseEdit onClick={this.props.closeModal}><MdClear /></ButtonCloseEdit>
@@ -91,7 +106,7 @@ class ModalEdit extends Component {
 
 const mapDispatchToProps = dispatch => ({
   closeModal: () => 
-  dispatch({ type: 'CLOSE_MODAL_MAIN', payload: false }),
+  dispatch({ type: 'OPEN_MODAL_MAIN', payload: false }),
   addUser: editUser => dispatch(addUser(editUser)),
   updateUser: update => dispatch(updateUser(update))
 })

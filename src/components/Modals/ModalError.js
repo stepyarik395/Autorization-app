@@ -20,7 +20,7 @@ class ModalErrorLogin extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  handleHideModal: () => dispatch({ type: 'CLOSE_MODAL_ERROR', payload: false })
+  handleHideModal: () => dispatch({ type: 'SHOW_MODAL_ERROR', payload: false })
 })
 
 const mapStateToProps = store => {
