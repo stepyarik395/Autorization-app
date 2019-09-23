@@ -51,11 +51,11 @@ export const userSignUp = users => {
         dispatch(successfulRequest(res))
       })
       .catch(error => {
-        if (error.data === undefined){
+        if (error.response === undefined){
           alert("ooops network connection failed")
         }
         else{
-          dispatch(showErrorModal());
+          dispatch(showErrorModal(error));
         }
       })
   }
@@ -76,11 +76,11 @@ export const userSign = users => {
         dispatch(successfulRequest(res))
       })
       .catch(error => {
-        if (error.data === undefined){
+        if (error.response === undefined){
           alert("ooops network connection failed")
         }
         else{
-          dispatch(showErrorModal());
+          dispatch(showErrorModal(error))
         }
         
       })

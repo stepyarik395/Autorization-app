@@ -87,7 +87,8 @@ text-transform: uppercase;
   border:none;
   background: rgba(248,80,50,1);/* Old Browsers */
   background: linear-gradient(135deg, rgba(248,80,50,1) 0%, rgba(245,12,229,1) 19%, rgba(240,47,23,1) 76%, rgba(231,56,39,1) 100%);/* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827', GradientType=1 );
+
+
 }
 `
 export const StyleGlobalWrapper = styled.div`
@@ -103,9 +104,12 @@ flex-direction: column;
 display: flex;
 `
 export const StyleInputSign = styled.input`
-min-width:300px;
+
+width:100%;
 font-size: 2rem;
 border: 2px solid  #9932CC;
+@media (max-width: 767.98px) {
+}
 `
 export const StyleLabel = styled.label`
 display:block;

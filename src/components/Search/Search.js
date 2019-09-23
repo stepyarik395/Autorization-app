@@ -43,7 +43,6 @@ const mapStateToProps = state => ({
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Search)
 
-
 export const StyleSearch = styled.input`
 padding-left:1rem;
 font-size:1.2rem;
@@ -76,8 +75,8 @@ height:30px;
 background-color:#9932CC;
 transition:0.3s;
 :hover{
-    font-size:1.5rem;
-    outline:none;
+  font-size:1.5rem;
+  outline:none;
 }
 `
 export const StyleWrapper = styled.div`
