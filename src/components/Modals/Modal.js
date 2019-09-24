@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { MdClear } from 'react-icons/md'
 import { addUser, updateUser } from '../Actions/Actions'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 class ModalEdit extends Component {
   constructor (props) {
@@ -105,6 +105,14 @@ position:absolute;
 align-items:center;
 height:60vh;
 `
+const fade = keyframes`
+0%{
+  opacity:0
+}
+100%{
+  opacity:1
+}
+`
 export const WrapperModalEdit = styled.div`
 position:relative;
 padding:3rem;
@@ -113,6 +121,7 @@ border:1px solid green;
 min-width:300px;
 display:flex;
 flex-direction:column;
+animation:${fade} 1s
 `
 export const StyleInput = styled.input`
 color:#fff;
