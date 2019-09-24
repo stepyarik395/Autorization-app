@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -37,10 +36,6 @@ float: right;
   border:none;
   background: rgba(248,80,50,1);/* Old Browsers */
   background: linear-gradient(135deg, rgba(248,80,50,1) 0%, rgba(245,12,229,1) 19%, rgba(240,47,23,1) 76%, rgba(231,56,39,1) 100%);/* W3C */
-  @media (max-width: 767.98px) {
-    float:left;
-    margin:0;
-  }
 }
 `
 export const StyleWrapperMain = styled.div`
