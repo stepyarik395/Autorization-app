@@ -51,7 +51,6 @@ class ModalEdit extends Component {
               type='text'
               placeholder='Last Name'
             />
-
             <StyleInput
               name='salary'
               value={this.state.salary}
@@ -66,7 +65,6 @@ class ModalEdit extends Component {
               placeholder='Position'
               type='text'
             />
-
             <StyleInput
               name='gender'
               value={this.state.gender}
@@ -96,7 +94,6 @@ const mapStateToProps = store => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalEdit)
-
 
 export const StyleContainerModal = styled.div`
 top:5%;

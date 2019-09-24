@@ -14,7 +14,7 @@ const store = createStore(reducers, applyMiddleware(thunk))
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <App history={history} />
+      <App />
     </Router>
   </Provider>,
   document.getElementById('root')
