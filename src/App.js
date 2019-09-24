@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './App.css'
 import SignUp from './containers/SignUp/SignUp'
 import SignIn from './containers/SignIn/SignIn'
 import Home from './containers/Home/Home'
