@@ -9,7 +9,6 @@ import Search from '../../components/Search/Search'
 import MainPreloader from '../../components/Preloader/Preloader'
 import styled from 'styled-components'
 
-
 class Main extends Component {
   constructor (props) {
     super(props)

@@ -2,26 +2,22 @@ import React, { Component } from 'react'
 import { MdClear } from 'react-icons/md'
 import { addUser, updateUser } from '../Actions/Actions'
 import { connect } from 'react-redux'
-import Fade from 'react-reveal/Fade'
 import styled from 'styled-components'
 
 class ModalEdit extends Component {
   constructor (props) {
     super(props)
-    const {firstName,lastName, salary, position, gender } = this.props.selectUser
+    const {firstName,lastName, salary, position, gender, _id } = this.props.selectUser
     this.state = {
       firstName: firstName || '',
       lastName: lastName || '',
       salary: salary || '',
-      position: position ||'',
+      position: position || '',
       gender: gender || '',
-
+      id:_id
     }
   }
-  
-  componentDidMount(){
 
-  }
   handleAddUser = () => {
     this.props.addUser(this.state)
     this.props.closeModal();
@@ -40,24 +36,8 @@ class ModalEdit extends Component {
   render () {
     return (
       <StyleContainerModal>
-        <Fade>
           <WrapperModalEdit>
-            {console.log(Object.keys(this.state))}
-            {Object.keys(this.state).map((item,i)=>{
-              return <StyleInput type ='text' onChange={this.handleChangeInput} value={this.state} key={i+1}></StyleInput>
-            })}
-            {/* {Object.entries(this.state).map((item, i)=>{
-              return(
-                <StyleInput value={this.state.firstName}
-                onChange={this.handleChangeInput}
-                type='text'>{item}</StyleInput>
-              )
-
-            })
-               
-          } */}
-
-            {/* <StyleInput
+            <StyleInput
               name='firstName'
               value={this.state.firstName}
               onChange={this.handleChangeInput}
@@ -93,12 +73,11 @@ class ModalEdit extends Component {
               onChange={this.handleChangeInput}
               type='text'
               placeholder='Gender'
-            /> */}
+            />
             {this.props.change ? <StyleButtonAdd onClick={this.handleAddUser}>add</StyleButtonAdd> : 
              <StyleButtonAdd onClick={this.handlerUpdate}>update</StyleButtonAdd>}
             <ButtonCloseEdit onClick={this.props.closeModal}><MdClear /></ButtonCloseEdit>
           </WrapperModalEdit>
-        </Fade>
       </StyleContainerModal>
     )
   }
@@ -147,11 +126,9 @@ border-right:none;
 border-top:none;
 border-bottom:1px solid #9932CC;
 margin:1rem;
-
-    :focus{
-        border-bottom:1px solid #fff;
-    }
-
+  :focus{
+    border-bottom:1px solid #fff;
+  }
 `
 export const StyleButtonAdd = styled.button`
 cursor:pointer;

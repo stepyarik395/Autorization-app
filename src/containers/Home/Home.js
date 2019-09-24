@@ -46,9 +46,4 @@ float: right;
 export const StyleWrapperMain = styled.div`
 right:30px;
   position: absolute;
-  @media (max-width: 767.98px) {
-    position:static
-    display:flex;
-    justify-content:center;
-  }
 `

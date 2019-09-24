@@ -37,14 +37,17 @@ class SignUp extends Component {
         {modalError ? <ModalError /> : null}
         <StyleWrapperSign>
           <StyleLabel>name</StyleLabel>
-          <StyleInputSign name='name' value={this.state.name} onChange={this.handleChangeInput} type='text' required />
+          <StyleInputSign name='name'
+            value={this.state.name} 
+            onChange={this.handleChangeInput}
+            type='text' 
+           />
           <StyleLabel>email</StyleLabel>
           <StyleInputSign
             name='email'
             value={this.state.email}
             onChange={this.handleChangeInput}
             type='email'
-            required
           />
           <StyleLabel>password</StyleLabel>
           <StyleInputSign
@@ -52,7 +55,6 @@ class SignUp extends Component {
             value={this.state.password}
             onChange={this.handleChangeInput}
             type='password'
-            required
           />
           <br />
           {this.state.password.length < 6 ? <ErrorPassword /> : null}
