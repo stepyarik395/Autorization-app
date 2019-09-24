@@ -93,11 +93,9 @@ class Main extends Component {
             +
           </StyleButtonEdit>
         </StyleMain>
-
         </div>}
-       
-        </div>
       </div>
+    </div>
     )
   }
 }
