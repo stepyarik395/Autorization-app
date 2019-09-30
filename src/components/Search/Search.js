@@ -25,7 +25,6 @@ class Search extends Component {
     return (
       <StyleWrapper>
         <StyleSearch
-          value={this.state.searchValue}
           onChange={this.handleInputChangeValue}
           placeholder='Search'
           type='text'
